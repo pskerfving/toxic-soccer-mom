@@ -1,7 +1,7 @@
 class WinnersTipsController < ApplicationController
 
   before_filter :cleared_required, :only => [:index, :edit, :update]
-  before_filter :first_game_not_started_required, :only => [:index, :edit, :update]
+  before_filter :first_game_not_started_required, :only => [:edit, :update]
 
   # GET /winners_tips
   # GET /winners_tips.json

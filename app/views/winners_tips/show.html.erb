@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<div class="text_box">
 <p>
   <b>Winning team:</b>
   <%= Team.find_by_id(@winners_tip.winning_team).country %>
@@ -20,6 +19,3 @@
   <%= @winners_tip.first_swedish_scorer %>
 </p>
 
-
-<%= link_to 'Edit', edit_winners_tip_path(@winners_tip) %> |
-<%= link_to 'Back', winners_tips_path %>

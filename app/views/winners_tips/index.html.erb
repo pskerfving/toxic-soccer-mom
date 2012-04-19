@@ -1,31 +1,32 @@
-<h1>Listing winners_tips</h1>
+<div class="title_box"><h1>Alla grundtips</h1></div>
 
 <table>
   <tr>
     <th>User</th>
     <th>Winning team</th>
     <th>Runner up</th>
-    <th>Goal scorer</th>
+    <th>Top goal scorer</th>
     <th>First swedish scorer</th>
+<% if current_user && current_user.admin? %>
     <th></th>
     <th></th>
     <th></th>
+<% end %>
   </tr>
 
 <% @winners_tips.each do |winners_tip| %>
   <tr>
-    <td><%= winners_tip.user_id %></td>
-    <td><%= winners_tip.winning_team %></td>
-    <td><%= winners_tip.runner_up %></td>
+    <td><%= winners_tip.user.name %></td>
+    <td><%= winners_tip.winning_team.country %></td>
+    <td><%= winners_tip.runner_up_team.country %></td>
     <td><%= winners_tip.goal_scorer %></td>
     <td><%= winners_tip.first_swedish_scorer %></td>
+	<% if current_user && current_user.admin? %>
     <td><%= link_to 'Show', winners_tip %></td>
     <td><%= link_to 'Edit', edit_winners_tip_path(winners_tip) %></td>
     <td><%= link_to 'Destroy', winners_tip, confirm: 'Are you sure?', method: :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Winners tip', new_winners_tip_path %>

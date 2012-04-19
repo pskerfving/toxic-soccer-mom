@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class SessionsController < ApplicationController
   def new
   end
@@ -7,18 +9,15 @@ class SessionsController < ApplicationController
 
     @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
     if @authorization
-#      render :text => "Welcome back #{@authorization.user.name}! You have already signed up."
       session[:user_id] = @authorization.user.id
-      redirect_to :root, :notice => "Inloggad. Lycka till med tippningen!"
+      redirect_to :root, :notice => "Du är inloggad. Lycka till med tippningen!"
     else
       user = User.new :name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
       user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
       user.admin = false
       user.cleared = false
       user.save
-      redirect_to :root, :notice => "Registrerad! Nu kan du logga in."
-
-#      render :text => "Hi #{user.name}! You've signed up."
+      redirect_to :root, :notice => "Nu är du registrerad. Nästa steg är att logga in."
     end
   end
 
@@ -28,7 +27,6 @@ class SessionsController < ApplicationController
   
   def destroy
     session[:user_id] = nil
-#    render :text => "You've logged out!"
     redirect_to :back
   end
 end

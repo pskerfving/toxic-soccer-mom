@@ -99,6 +99,15 @@ strong {
 .hilite, .me {
 	background-color:yellow;	
 }
+
+#site_logo {
+	float:left;
+}
+
+#header_menus {
+	float:right;
+}
+
 #site_title {
 	font-size:48px;
 	font-weight:900;
