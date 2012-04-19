@@ -1,0 +1,44 @@
+<%= form_for([@game, @tip]) do |f| %>
+  <% if @tip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this tip from being saved:</h2>
+
+      <ul>
+      <% @tip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<% if current_user %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :game_id %><br />
+    <%= f.number_field :game_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :home_score %><br />
+    <%= f.number_field :home_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :away_score %><br />
+    <%= f.number_field :away_score %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+	<% else %>
+	You have to be logged in to make a tip
+	<% end %>
+
+<% end %>

@@ -1,0 +1,48 @@
+<%= form_for(@team, :html => {:multipart => true }) do |f| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= f.label :abbreviation %><br />
+    <%= f.text_field :abbreviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %><br />
+    <%= f.select :group_id, Group.find(:all, :order => "name").collect {|s| [s.name, s.id]} %>
+  </div>
+
+  <div>
+	<%= f.label :flag %><br/>
+	<%= f.file_field :flag %>
+  </div>
+
+  <div>
+	<%= f.label :eliminated %><br/>
+	<%= f.check_box :eliminated %>
+  </div>
+
+  <div>
+	<%= f.label :placeholder %><br/>
+	<%= f.check_box :placeholder %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,183 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Where the action is --------------- */
+
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	background-color: #999;
+}
+
+#site_title {
+	font-size:36px;
+	font-weight:900;
+	color:FFFFFF;
+	width:auto;
+	float: left;
+	margin:10px;
+}
+
+#site_tagline {
+	float: right;
+	font-style:italic;
+	font-size:14px;
+	margin:10px;
+}
+
+
+#login {
+	float: right;
+	font-size:12px;
+	font-weight:700;
+	margin:10px;
+}
+
+#nav {
+	clear:both;
+ 	background-color: #666;
+	color:000000;
+	padding:5px;
+	margin:10px;
+}
+
+.nav_item {
+	color:FFFFFF;
+}
+
+#active {
+	font-weight:700;
+}
+
+#notifications {
+	height:30px;
+	background-color:808080;
+	margin:10px;
+	padding:5px;
+}
+
+.game_box {
+	width:200px;
+	float:left;
+	margin: 10px;
+}
+
+.game_datetime {
+	background-color:808080;
+	font-size:12px;
+	font-weight:700;
+	padding:5px;
+}
+
+.game_result {
+	background-color:FFFFFF;
+	height:100px;
+}
+
+.game_team {
+	text-align: center;
+	font-size: 24;
+	color:808080;
+	padding:3px;
+}
+
+.game_score {
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 72;
+	font-weight: 900;
+}
+
+.game_home {
+	width:100px;
+	float:left;
+	background-color:inherit;
+}
+
+.game_away {
+	width:100px;
+	float:left;
+	background-color:inherit;
+}
+
+.game_tip_results {
+	font-size:12px;
+	padding:5px;
+	background-color:808080;
+	color:000000;
+}
+
+.game_comments {
+	font-size:12px;
+	padding:5px;
+	background-color:606060;
+	color:FFFFFF;
+}
+
+.game_comments.split {
+	color:000000;
+}
+
+.tip_panel_score {
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 32;
+	font-weight: 900;
+	color:606060;
+}
+
+.tip_panel_button {
+	width:50;
+	float:left;
+	text-align: center;
+	font-size: 32;
+}

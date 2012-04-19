@@ -1,0 +1,2 @@
+module WinnersTipsHelper
+end

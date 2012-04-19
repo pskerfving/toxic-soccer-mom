@@ -1,0 +1,25 @@
+<div class="text_box">
+<h1>Lagen</h1>
+</div>
+
+<table>
+  <tr class="table_header_row">
+    <th>Lag</th>
+	<% if current_user && current_user.admin? %>
+    <th></th>
+    <th></th>
+    <th></th>
+	<% end %>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr class="table_row">
+    <td><%= link_to team.country, team %></td>
+	<% if current_user && current_user.admin? %>
+    <td><%= link_to 'Show', team %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>

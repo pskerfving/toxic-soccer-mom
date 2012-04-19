@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Winning team:</b>
+  <%= Team.find_by_id(@winners_tip.winning_team).country %>
+</p>
+
+<p>
+  <b>Runner up:</b>
+  <%= Team.find_by_id(@winners_tip.runner_up).country %>
+</p>
+
+<p>
+  <b>Goal scorer:</b>
+  <%= @winners_tip.goal_scorer %>
+</p>
+
+<p>
+  <b>First swedish scorer:</b>
+  <%= @winners_tip.first_swedish_scorer %>
+</p>
+
+
+<%= link_to 'Edit', edit_winners_tip_path(@winners_tip) %> |
+<%= link_to 'Back', winners_tips_path %>

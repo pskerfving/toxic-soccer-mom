@@ -1,0 +1,13 @@
+<div id="nav">
+    <span class="nav_item">
+    <%= link_to "Matcher", games_path %>
+    </span> |
+    <span class="nav_item">
+    <%= link_to "Topplistan", users_path %>
+    </span>
+	<% if current_user %>
+	| <span class="nav_item">
+	<%= link_to "Mina tips", current_user %>			
+	</span>
+	<% end %>
+</div>

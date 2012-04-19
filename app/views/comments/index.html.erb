@@ -1,0 +1,29 @@
+<div class="title_box"><h1>
+	Comments on <%= @commentable.name %>
+</h1></div>
+
+<div id="comments" class="text_box">
+	<% for comment in @comments %>
+	<div class="comment_time">
+		Tid
+	</div>
+	<div class="comment_author">
+		Skrev <%= comment.user.name%>:
+	</div>
+	<div class="comment_content">
+		<%= simple_format comment.content%>
+	</div>
+	<% end %>
+</div>
+
+<div class="text_box">
+<h2>Skriv en ny kommentar</h2>
+
+<%= form_for [@commentable, @new_comment] do |f| %>
+<br/>
+  <p>
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Post Comment" %></p>
+<% end %>
+</div>

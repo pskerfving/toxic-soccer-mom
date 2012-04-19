@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  winning_team: 1
+  runner_up: 1
+  goal_scorer: MyString
+  first_swedish_scorer: MyString
+
+two:
+  user_id: 1
+  winning_team: 1
+  runner_up: 1
+  goal_scorer: MyString
+  first_swedish_scorer: MyString

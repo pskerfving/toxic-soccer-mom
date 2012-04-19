@@ -1,0 +1,80 @@
+<%= render 'notifications'%>
+<div class="title_box"><h1><%= @user.name %></h1><h2>
+  Totalt antal poäng: <%= @user.points %>
+</h2></div>
+
+<div class="text_box">
+<h2>Grundtips</h2>
+
+<% if (@user == current_user) || @first_game_started %>
+	<% if @winners_tip %>
+	<table>
+		<tr>
+			<td>Vinnande lag</td>
+			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.winning_team).country %></td>
+		</tr>
+		<tr>
+			<td>Finalist</td>
+			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.runner_up).country %></td>
+		</tr>
+		<tr>
+			<td>Skyttekung</td>
+			<td class="loose_table_row"><%= @winners_tip.goal_scorer %></td>
+		</tr>
+		<tr>
+			<td>Första svenska målskytt</td>
+			<td class="loose_table_row"><%= @winners_tip.first_swedish_scorer %></td>
+		</tr>
+	</table>
+		<% if current_user == @user && !@first_game_started %>
+			<%= link_to "Ändra grundtips", edit_winners_tip_path %>
+		<% end %>
+	<% else %>
+		<% if current_user && current_user == @user%>
+		<p>Du har inte lämnat ditt grundtips. 
+			<% if !@first_game_started %>
+				Det kan du göra <%= link_to "här", new_winners_tip_path %>.</p>
+			<% else %>
+				Det är tyvärr inte längre möjligt p g a att första matchen startat.</p>
+			<% end %>
+		<% else %>
+			<p><%= @user.name %> har inte lämnat in något grundtips.</p>
+		<% end %>
+	<% end %>
+	</div>
+<% else%>
+	<p>Kommer att vara tillgängligt när första matchen startat.</p>
+<% end %>
+</div>
+
+<div class="text_box">
+<h2>Matchtips</h2>
+<% if @tips.length > 0 %>
+<table>
+  <tr class="table_header_row">
+    <th>Match</th>
+    <th>Tips</th>
+	<th>Resultat</th>
+    <th>Poäng</th>
+  </tr>
+
+<% for tip in @tips %>
+	<% if tip.game.started? || (current_user && (current_user == @user)) %>
+  <tr class="table_row">
+    <td><%= tip.game.name %></td>
+    <td><%= tip.home_score %> - <%= tip.away_score %></td>
+    <td><%= tip.game.home_score %> - <%= tip.game.away_score %></td>
+    <td><%= tip.points %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+<% else %>
+	<% if current_user && current_user == @user%>
+		<p>Du har inte lämnat in några tips. Det kan du göra <%= link_to "här", games_path %>.</p>
+	<% else %>
+		<p><%= @user.name %> har inte lämnat in några matchtips.</p>
+	<% end %>
+<% end %>
+
+</div>

@@ -1,0 +1,74 @@
+<div class="text_box">
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :home_id %><br />
+    <%= f.select :home_id, Team.find(:all, :order => "country").collect {|s| [s.country, s.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :away_id %><br />
+    <%= f.select :away_id, Team.find(:all, :order => "country").collect {|s| [s.country, s.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :final %><br />
+    <%= f.check_box :final %>
+  </div>
+
+  <div class="field">
+    <%= f.label :home_score %><br />
+    <%= f.number_field :home_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :away_score %><br />
+    <%= f.number_field :away_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %><br />
+    <%= f.select :group_id, Group.find(:all, :order => "name").collect {|s| [s.name, s.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :kickoff %><br />
+    <%= f.datetime_select :kickoff %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cup_game %><br />
+    <%= f.check_box :cup_final %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cup_home_score %><br />
+    <%= f.number_field :cup_home_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cup_away_score %><br />
+    <%= f.number_field :cup_away_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cup_final %><br />
+    <%= f.check_box :cup_final %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

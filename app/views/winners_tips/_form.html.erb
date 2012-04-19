@@ -1,0 +1,35 @@
+<div class="text_box">
+<%= form_for(@winners_tip) do |f| %>
+  <% if @winners_tip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@winners_tip.errors.count, "error") %> prohibited this winners_tip from being saved:</h2>
+
+      <ul>
+      <% @winners_tip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Vinnande lag<br />
+    <%= f.select :winning_team, @teams.collect {|s| [s.country, s.id]} %>
+  </div>
+  <div class="field">
+    Finalist<br />
+    <%= f.select :runner_up, @teams.collect {|s| [s.country, s.id]} %>
+  </div>
+  <div class="field">
+    Skyttekung<br />
+    <%= f.text_field :goal_scorer %>
+  </div>
+  <div class="field">
+    Första svenska målskytt<br />
+    <%= f.text_field :first_swedish_scorer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

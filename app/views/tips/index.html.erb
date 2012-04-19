@@ -1,0 +1,33 @@
+<h1>Tips for <%= @game.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Game</th>
+    <th>Home score</th>
+    <th>Away score</th>
+    <th>Points</th>	
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% for tip in @tips %>
+  <tr>
+    <td><%= User.find_by_id(tip.user_id).name %></td>
+    <td><%= Game.find_by_id(tip.game_id).name %></td>
+    <td><%= tip.home_score %></td>
+    <td><%= tip.away_score %></td>
+    <td><%= tip.points %></td>
+    <td><%= link_to 'Show', [@game, tip] %></td>
+    <td><%= link_to 'Edit', edit_game_tip_path(@game, tip) %></td>
+    <td><%= link_to 'Destroy', [@game, tip], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tip', new_game_tip_path(@game) %>

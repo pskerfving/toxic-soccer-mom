@@ -1,0 +1,67 @@
+<%= render 'notifications' %>
+
+<div class="title_box">
+	<h1>Topplistan</h1>
+	<% if @first_game_started %>
+		<%= link_to "Visa alla grundtips", winners_tips_path %>
+	<% end %>
+</div>
+
+
+
+<table>
+  <tr class="table_header_row">
+	<th>#</th>
+    <th>Namn</th>
+	<% if current_user && current_user.admin? %>
+    <th>Email</th>
+    <th>Admin</th>
+    <th>Cleared</th>
+	<% end %>
+    <th>Points</th>
+	<% @latest_games.each do |g| %>
+	<th><%= g.name %></th>
+	<% end %>
+  </tr>
+
+<% i = 1 %>
+<% place = 1 %>
+<% prev_pts = -1 %>
+
+<% @users.each do |user| %>
+  <tr class="table_row">
+	<% if user.points != prev_pts then place = i end %>
+	<% prev_pts = user.points%>
+	<% i += 1 %>
+	<td><%= place %></td>
+	<% if user == current_user %>
+		<%= content_tag(:td, link_to(user.name, user), :class => "me") %>
+	<% else %>
+    	<td><%= link_to user.name, user %></td>
+	<% end %>
+	<% if current_user && current_user.admin? %>
+    <td><%= user.email %></td>
+    <td><%= user.admin %></td>
+    <td><%= user.cleared %></td>
+	<% end %>
+	<td class="right_adjust"><strong><%= user.points %></strong></td>
+	<% @latest_games.each do |g| %>
+		<% if g.ongoing? %>
+			<%= tag("td", {:class => "centre_adjust table_game_ongoing"}, true) %>
+		<% else %>
+			<td class="center_adjust">
+		<% end %>
+		<% t = @latest_game_tip_hash[g.id][user.id] %>
+		<%= t ? "#{t.home_score} - #{t.away_score}" : "-"%>
+		</td>
+	<% end %>
+	<% if current_user && current_user.admin? %>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+		<% if !user.admin? %>
+		    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+		<% end %>
+	<% end %>
+  </tr>
+<% end %>
+</table>

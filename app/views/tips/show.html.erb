@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @tip.user_id %>
+</p>
+
+<p>
+  <b>Game:</b>
+  <%= @tip.game_id %>
+</p>
+
+<p>
+  <b>Home score:</b>
+  <%= @tip.home_score %>
+</p>
+
+<p>
+  <b>Away score:</b>
+  <%= @tip.away_score %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_tip_path(@tip) %> |
+<%= link_to 'Back', game_tips_path %>

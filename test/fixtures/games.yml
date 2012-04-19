@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  home_id: 1
+  away_id: 1
+  final: false
+  home_score: 1
+  away_score: 1
+  group_id: 1
+  kickoff: 2012-04-06 09:34:26
+
+two:
+  home_id: 1
+  away_id: 1
+  final: false
+  home_score: 1
+  away_score: 1
+  group_id: 1
+  kickoff: 2012-04-06 09:34:26

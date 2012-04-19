@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Abbr.</th>
+  </tr>
+
+  <% @group.teams.each do |team| %>
+    <tr>
+      <td><%= team.country %></td>
+      <td><%= team.abbreviation%></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

@@ -1,0 +1,283 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+
+@charset "UTF-8";
+/* CSS Document */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Where the action is ------------------------------------*/
+
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	background-image:url('../images/field.jpg');
+	background-attachment:fixed;
+	
+/*	background-color: #999; */
+}
+
+h1, h2 {
+	color:black;
+	font-weight:700;
+}
+
+h1 {
+	font-size:48px;
+}
+
+h2 {
+	font-size:32px;	
+}
+
+a {
+	color:inherit;
+}
+
+strong {
+	text-weight:800;
+}
+
+.hilite, .me {
+	background-color:yellow;	
+}
+#site_title {
+	font-size:48px;
+	font-weight:900;
+	color:white;
+	width:auto;
+	float: left;
+	margin:30px;
+}
+
+#site_tagline {
+	float: right;
+	font-style:italic;
+	font-size:14px;
+	margin:10px;
+}
+
+
+#login {
+	float: right;
+	font-size:12px;
+	font-weight:700;
+	margin:20px;
+	padding:10px;
+	color:black;
+	background-color:white;
+	border:4px solid black;
+	border-radius:15px/15px;
+}
+
+#nav {
+	clear:both;
+	padding:10px;
+	margin:20px;
+	color:black;
+	background-color:white;
+	border:4px solid black;
+	border-radius:15px/15px;
+}
+
+.nav_item {
+	color:black;
+}
+
+#active {
+	font-weight:700;
+}
+
+#notifications {
+	margin:20px;
+	padding:10px;
+	background-color:yellow;
+	border:4px solid black;
+	border-radius:15px/15px;
+}
+
+.title_box, .text_box {
+	margin:20px;
+	padding:10px;
+	color:black;
+	background-color:white;
+	border:4px solid black;
+	border-radius:15px/15px;
+}
+
+.title_box p {
+	color:inherit;
+}
+
+.title_box a {
+	color:inherit;
+}
+
+.game_container {
+	margin:20px;
+}
+
+#main_content {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.table_header_row {
+	margin:10px;
+	color:black;
+	text-align:left;
+}
+
+.table_row {
+	margin:10px;
+	color:black;
+}
+
+.loose_table_row {
+	font-weight:700;
+}
+
+table {
+	background-color:white;
+	margin:20px;
+	border: 4px solid black;
+}
+
+tr {
+	margin:10px;
+}
+
+td, th {
+	padding:10px;
+}
+
+th {
+	font-weight:700;
+	border-bottom: 1px solid black;
+}
+
+.right_adjust {
+	text-align:right;
+}
+
+table.game_odds_table {
+	color:black;
+	margin:5px;
+	width:180px;
+	border:2px solid black;
+}
+
+.game_odds_table_header {
+	margin-right:auto;
+	margin-left:auto;
+	font-weight:bold;
+	border-bottom:1px solid black;
+}
+
+.game_odds_table_header th {
+	margin:5px;
+	padding:3px;
+}
+
+
+.game_odds_table_row td {
+	margin:5px;
+	padding:3px;
+	text-align:center;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.3s;
+     -moz-transition-duration: 0.3s;
+      -ms-transition-duration: 0.3s;
+       -o-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}

@@ -1,0 +1,7 @@
+<div class="title_box"><h1>
+	Matcherna
+</h1>	<span> <%= link_to "Visa alla", games_path %> </span> | <span> <%= link_to "Visa kommande", :controller => "games", :show => "upcoming" %> </span>
+</div>
+
+
+<%= render 'games' %>
