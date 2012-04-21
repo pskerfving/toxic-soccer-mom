@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class UsersController < ApplicationController
 
 
@@ -48,9 +50,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.admin?
       #You cannot delete an administrator, first set as a regular user.
-      redirect_to :users, notice: 'You cannot destroy an admin.'
+      redirect_to :users, notice: 'Du kan inte ta bort en administrator. Ta bort användarens behörighet först.'
     end
-    @authorizations = Authorization.where("uid = ?", @user.id)
+    @authorizations = Authorization.where(:user_id => @user.id)
     @authorizations.each { |a| a.destroy }
     @user.destroy
 
