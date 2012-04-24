@@ -70,7 +70,11 @@
 							Du tippade inte. (0 poäng)
 						<% end %>
 					<% else %>
-						<div class="hilite">Tryck +/- för att tippa.</div>
+						<div class="hilite">Tryck +/- för att tippa.
+						<% if game.cup_game? %>
+						<br/>Resultat efter 90 min räknas.
+						<% end %>
+						</div>
 					<% end %>
 				<% end %>
 
