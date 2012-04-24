@@ -18,10 +18,8 @@
 							<div class="tip_panel_score home_score">
 								<% logger.info game.to_s %>
 								<% if current_user && current_user.admin? && game.ongoing? %>
-									<% logger.info '----------------------- NU ÄR DET GAME SCORE!' %>
 									<%= game.home_score %>
 								<% else %>
-									<% logger.info '----------------------- NU ÄR DET TIPS!' %>
 									<%= @user_tips_hash[game.id] ? @user_tips_hash[game.id].home_score : "-" %>
 								<% end %>
 							</div>
