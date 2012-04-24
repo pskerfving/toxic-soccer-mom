@@ -16,7 +16,6 @@
 					<% else %>
 						<div class="game_tip_panel">
 							<div class="tip_panel_score home_score">
-								<% logger.info game.to_s %>
 								<% if current_user && current_user.admin? && game.ongoing? %>
 									<%= game.home_score %>
 								<% else %>
