@@ -9,7 +9,7 @@ class GamesController < ApplicationController
     else
       @games = Game.order("kickoff")
     end
-      
+
     # Find all tips for the currently logged in user
     setup_user_tips_hash
     setup_winners_right_now
