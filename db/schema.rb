@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416213104) do
+ActiveRecord::Schema.define(:version => 20120424145359) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120416213104) do
     t.integer  "cup_home_score"
     t.integer  "cup_away_score"
     t.boolean  "cup_final"
+    t.string   "cup_name"
   end
 
   create_table "groups", :force => true do |t|

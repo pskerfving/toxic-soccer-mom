@@ -4,7 +4,11 @@
 	<% @games.each do |game| %>
 
 		<%= tag("div", :class => "game_box #{game.ongoing? ? 'game_ongoing' : ''} isotope-item", :id => game.id)%>
-			<div class="game_datetime"><%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %></div>
+			<div class="game_datetime">
+				<div><%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %></div>
+				<div class="game_cup_name"><%= game.cup_name %></div>
+				<div style="clear:both"></div>
+			</div>
 			<div class="game_result">
 		   		<div class="game_home">
 		        	<div class="game_team"><%= game.home_team.placeholder ? game.home_team.abbreviation : link_to(game.home_team.abbreviation, game.home_team) %></div>
