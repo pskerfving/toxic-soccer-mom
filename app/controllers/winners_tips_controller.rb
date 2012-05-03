@@ -47,6 +47,9 @@ class WinnersTipsController < ApplicationController
   # POST /winners_tips
   # POST /winners_tips.json
   def create
+    params.each do |p|
+      logger.info "WT ------------------ " + p.to_s
+    end
     @winners_tip = WinnersTip.new(params[:winners_tip])
     @winners_tip.user = current_user
 
@@ -91,7 +94,7 @@ class WinnersTipsController < ApplicationController
 
   # Remove all placeholders so they are not shown in the selectboxes.
   def setup_selectable_teams
-    @teams = Team.order("country")
+    @teams = Team.find(:all, :order => "country")
     @teams.delete_if { |t| t.placeholder? }
   end
 end

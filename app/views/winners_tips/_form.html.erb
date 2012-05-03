@@ -14,20 +14,24 @@
 
   <div class="field">
     Vinnande lag<br />
-    <%= f.select :winning_team, @teams.collect {|s| [s.country, s.id]} %>
+	<%= f.select :winning_team_id, @teams.collect {|s| [s.country, s.id]} %>
   </div>
+
   <div class="field">
     Finalist<br />
-    <%= f.select :runner_up, @teams.collect {|s| [s.country, s.id]} %>
+    <%= f.select :runner_up_id, @teams.collect {|s| [s.country, s.id]} %>
   </div>
+
   <div class="field">
     Skyttekung<br />
     <%= f.text_field :goal_scorer %>
   </div>
+
   <div class="field">
     Första svenska målskytt<br />
     <%= f.text_field :first_swedish_scorer %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= f.label :home_id %><br />
-    <%= f.select :home_id, Team.find(:all, :order => "country").collect {|s| [s.country, s.id]} %>
+    <%= f.select :home_id, Team.order("country").all.collect {|s| [s.country, s.id]} %>
   </div>
 
   <div class="field">
     <%= f.label :away_id %><br />
-    <%= f.select :away_id, Team.find(:all, :order => "country").collect {|s| [s.country, s.id]} %>
+    <%= f.select :away_id, Team.order("country").all.collect {|s| [s.country, s.id]} %>
   </div>
 
   <div class="field">
