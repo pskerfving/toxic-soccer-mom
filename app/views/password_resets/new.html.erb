@@ -1,0 +1,12 @@
+<div class="title_box"><h1>Skapa nytt lösenord</h1></div>
+
+<div class="text_box">
+<%= form_tag password_resets_path, :method => :post do %>
+  <p>Skriv in din email-adress för att ändra ditt lösenord. Du kommer att få ett mail med vidare instruktioner.</p><br/>
+  <div class="field">
+    <%= label_tag "E-mail:" %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div class="actions"><%= submit_tag "Skicka instruktioner" %></div>
+<% end %>
+</div>

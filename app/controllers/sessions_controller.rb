@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    render :text => "Sorry, det gick bananas!"
+    render :text => "Beklagar, det gick bananas!"
   end
   
   def destroy

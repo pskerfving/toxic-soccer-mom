@@ -30,6 +30,8 @@ Uefa::Application.routes.draw do
   end
 
   resources :users
+  
+  resources :password_resets
 
   get   '/login', :to => 'sessions#new', :as => :login
   match '/auth/:provider/callback', :to => 'sessions#create'
