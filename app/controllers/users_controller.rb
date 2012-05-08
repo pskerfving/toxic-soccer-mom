@@ -3,7 +3,11 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.order("points DESC")
+    if params[:show] == "unapproved"
+      @users = User.where(:cleared => false)
+    else
+      @users = User.where(:cleared => true).order("points DESC")
+    end
     setup_latest_game_tip_hash
     @first_game_started = first_game_started?
 
@@ -33,10 +37,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.send_user_cleared
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        @user.send_user_cleared
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

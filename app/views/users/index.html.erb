@@ -2,9 +2,13 @@
 
 <div class="title_box">
 	<h1>Topplistan</h1>
-	<% if @first_game_started %>
-		<%= link_to "Visa alla grundtips", winners_tips_path %>
+	<% if current_user && current_user.admin? %>
+		<span> <%= link_to "Visa godkända", users_path %> </span> | <span> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
 	<% end %>
+	<% if @first_game_started %>
+		<span><%= link_to "Visa alla grundtips", winners_tips_path %></span>
+	<% end %>
+	
 </div>
 
 
