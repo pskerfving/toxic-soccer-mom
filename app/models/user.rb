@@ -5,7 +5,13 @@ class User < ActiveRecord::Base
   has_many :authorizations
 
   validates :name, :email, :presence => true
-  
+
+  def send_user_cleared
+    if self.cleared?
+      UserMailer.user_cleared(self).deliver
+    end
+  end
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now

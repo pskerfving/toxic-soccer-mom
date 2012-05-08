@@ -2,7 +2,6 @@
 
 class UsersController < ApplicationController
 
-
   def index
     @users = User.order("points DESC")
     setup_latest_game_tip_hash
@@ -34,6 +33,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.send_user_cleared
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

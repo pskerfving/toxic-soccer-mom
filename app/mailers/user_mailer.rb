@@ -1,3 +1,4 @@
+# coding: UTF-8
 class UserMailer < ActionMailer::Base
   default from: "from@example.com"
 
@@ -8,6 +9,11 @@ class UserMailer < ActionMailer::Base
   #
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "Password Reset"
+    mail :to => user.email, :subject => "euro2012.ifkff.org - Nytt lösenord"
+  end
+  
+  def user_cleared(user)
+    @user = user
+    mail :to => user.email, :subject => "euro2012.ifkff.org - Godkänd för att tippa"
   end
 end
