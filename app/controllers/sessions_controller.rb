@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
       user.cleared = false
       user.save
       redirect_to :root, :notice => "Nu är du registrerad. Nästa steg är att logga in."
+      UserMailer.welcome(user).deliver
     end
   end
 
