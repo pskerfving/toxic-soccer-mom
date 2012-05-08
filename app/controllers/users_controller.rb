@@ -52,13 +52,15 @@ class UsersController < ApplicationController
       #You cannot delete an administrator, first set as a regular user.
       redirect_to :users, notice: 'Du kan inte ta bort en administrator. Ta bort användarens behörighet först.'
     end
-    # Delete all information related to the user (authorizations and tips)
+    # Delete all information related to the user (authorizations, tips and comments)
     auth = Authorization.where(:user_id => @user.id)
     auth.each { |i| i.destroy }
     wt = WinnersTip.where(:user_id => @user.id)
     wt.each { |i| i.destroy }
     tips = Tip.where(:user_id => @user.id)
     tips.each { |i| i.destroy }
+    comm = Comment.where(:user_id => @user.id)
+    comm.each { |i| i.destroy }
     @user.destroy
 
     respond_to do |format|
