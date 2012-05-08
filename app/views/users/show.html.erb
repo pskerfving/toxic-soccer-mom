@@ -27,7 +27,7 @@
 		</tr>
 	</table>
 		<% if current_user == @user && !@first_game_started %>
-			<%= link_to "Ändra grundtips", edit_winners_tip_path %>
+			<%= link_to "Ändra grundtips", edit_winners_tip_path(@winners_tip) %>
 		<% end %>
 	<% else %>
 		<% if current_user && current_user == @user%>
