@@ -53,12 +53,13 @@
 				url = url + "/ajax_update_tip";
 			}
 			var button = $(this);
-			$('p#notice').text("Sparar ditt tips...").closest('#notifications').show(200); // Funkar om div:en inte är gömd
+			var notification = $(this).closest('.game_box').find('.notification');
+			notification.text("Sparar...")
 			$.post(url, { adjust: $(this).attr('adjust'), team: $(this).attr('team') },
 				function(data) { 
 					button.closest('.game_result').find('.home_score').text(data.home_score);
 					button.closest('.game_result').find('.away_score').text(data.away_score);
-					$('p#notice').closest('#notifications').hide(200);
+					notification.text("Resultat sparat.");
 				 }, 'json');
 		});
 	});
