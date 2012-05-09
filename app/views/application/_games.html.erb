@@ -119,7 +119,7 @@
 						<div class="game_comment_content"><%= c.content %></div>
 						<% if current_user && c.user == current_user %>
 						<div class="game_comment_edit">
-						<%= link_to "Ändra", edit_polymorphic_path([game, c]) %>  <%= link_to "Ta bort", [game, c]%>
+						<%= link_to "Ändra", edit_polymorphic_path([game, c]) %>  <%= link_to "Ta bort", polymorphic_path([game, c]), method: :delete %>
 						</div>
 						<% end %>
 					</div>

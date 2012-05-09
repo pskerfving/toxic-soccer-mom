@@ -1,3 +1,4 @@
+# coding: UTF-8
 class CommentsController < ApplicationController
 
   before_filter :find_commentable
@@ -55,8 +56,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      flash[:notice] = "Successfully created comment."
-      redirect_to :id => nil
+      flash[:notice] = "Din kommentar är skapad."
+      redirect_to :root
     else
       render :action => 'new'
     end
@@ -70,7 +71,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to polymorphic_path(@comment), notice: 'Comment was successfully updated.' }
+        format.html { redirect_to :root, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,7 +87,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to :root }
       format.json { head :no_content }
     end
   end
