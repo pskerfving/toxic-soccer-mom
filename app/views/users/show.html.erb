@@ -6,7 +6,7 @@
 <div class="text_box">
 <h2>Grundtips</h2>
 
-<% if (@user == current_user) || @first_game_started %>
+<% if @first_game_started || (@user == current_user) %>
 	<% if @winners_tip %>
 	<table>
 		<tr>
@@ -26,16 +26,20 @@
 			<td class="loose_table_row"><%= @winners_tip.first_swedish_scorer %></td>
 		</tr>
 	</table>
-		<% if current_user == @user && !@first_game_started %>
+		<% if current_user && current_user == @user && !@first_game_started && @user.cleared? %>
 			<%= link_to "Ändra grundtips", edit_winners_tip_path(@winners_tip) %>
 		<% end %>
 	<% else %>
-		<% if current_user && current_user == @user%>
+		<% if current_user && current_user == @user %>
 		<p>Du har inte lämnat ditt grundtips. 
-			<% if !@first_game_started %>
+			<% if !@first_game_started && @user.cleared? %>
 				Det kan du göra <%= link_to "här", new_winners_tip_path %>.</p>
 			<% else %>
-				Det är tyvärr inte längre möjligt p g a att första matchen startat.</p>
+				<% if @first_game_started %>
+					Det är tyvärr inte längre möjligt p g a att första matchen startat.</p>
+				<% else %>
+					Det kommer du att kunna göra när du blivit godkänd.</p>
+				<% end %>
 			<% end %>
 		<% else %>
 			<p><%= @user.name %> har inte lämnat in något grundtips.</p>
@@ -43,7 +47,7 @@
 	<% end %>
 	</div>
 <% else%>
-	<p>Kommer att vara tillgängligt när första matchen startat.</p>
+	<p>Informationen kommer att vara tillgängligt när första matchen startat.</p>
 <% end %>
 </div>
 
