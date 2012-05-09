@@ -2,6 +2,7 @@
 
 class SessionsController < ApplicationController
   def new
+    @identity = @identity = env['omniauth.identity']
   end
 
   def create
