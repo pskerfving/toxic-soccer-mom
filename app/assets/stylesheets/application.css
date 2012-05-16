@@ -151,6 +151,10 @@ strong {
 	color:black;
 }
 
+.nav_instructions {
+	float:right;
+}
+
 #active {
 	font-weight:700;
 }

@@ -38,6 +38,8 @@ Uefa::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   get '/logout', :to => 'sessions#destroy'
 
+  get '/instructions', :to => 'instructions#instructions'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

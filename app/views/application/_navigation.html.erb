@@ -7,7 +7,10 @@
     </span>
 	<% if current_user %>
 	| <span class="nav_item">
-	<%= link_to "Mina tips", current_user %>			
+	<%= link_to "Mina tips", current_user %>
 	</span>
 	<% end %>
+	<span class="nav_item nav_instructions">
+		<%= link_to "Hur gör jag?", "/instructions" %>
+	</span>
 </div>
