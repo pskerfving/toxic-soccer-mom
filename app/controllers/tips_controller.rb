@@ -1,7 +1,7 @@
 class TipsController < ApplicationController
 
   before_filter :get_game
-  before_filter :cleared_required, :only => [:index, :edit, :update, :destroy. :show, :create]
+  before_filter :cleared_required, :only => [:index, :edit, :update, :destroy, :show, :create]
   before_filter :game_not_started_required, :only => [:edit, :update, :create, :new]
   before_filter :admin_required, :only => [:index, :show, :destroy]
 
