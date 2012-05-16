@@ -1,3 +1,4 @@
+# coding: UTF-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     if current_user
       return
     end
-    redirect_to "/login", notice: 'Please log in.'
+    redirect_to "/login", notice: 'Vv logga in.'
   end
 
   # Check that the user is logged in and admin
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.admin
       return
     end
-    redirect_to "/login", notice: 'Please log in as Admin.'
+    redirect_to "/login", notice: 'Logga in som administratör.'
   end
 
   #TODO: These should be overridden if the user is admin.
@@ -34,15 +35,15 @@ class ApplicationController < ActionController::Base
       if current_user.cleared
         return
       end
-      raise 'You are not cleared to place bets'
+      raise 'Du är ännu inte godkänd för att tippa.'
     end
-    redirect_to "/login", notice: 'Please log in to make tips.'
+    redirect_to "/login", notice: 'Logga in för att tippa.'
   end
 
   def first_game_not_started_required
     first_game = Game.find(:first, :order => 'kickoff')
     if first_game.kickoff < Time.zone.now
-      redirect_to game_tips_url(@game), notice: 'First game is started. It is too late to place a bet.'
+      redirect_to game_tips_url(@game), notice: 'Första matchen har börjat. Det är för sent att lämna tips.'
     end
   end
 

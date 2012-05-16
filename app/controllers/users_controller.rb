@@ -2,6 +2,8 @@
 
 class UsersController < ApplicationController
 
+  before_filter :admin_required, :only => [:new, :edit, :update, :create, :destroy]
+
   def index
     if params[:show] == "unapproved"
       @users = User.where(:cleared => false)
