@@ -76,7 +76,7 @@ body {
 }
 
 h1, h2 {
-	color:black;
+	color:inherit;
 	font-weight:700;
 }
 
@@ -108,8 +108,8 @@ strong {
 	float:right;
 }
 
-#site_title {
-	font-size:48px;
+#site_title h1 {
+	font-size:64px;
 	font-weight:900;
 	color:white;
 	width:auto;
