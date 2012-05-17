@@ -17,6 +17,10 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    if @team.placeholder?
+      redirect_to :root, notice: 'Inget riktigt lag.'
+      return
+    end
     @games = Game.where('home_id = ? OR away_id = ?', @team.id, @team.id)
     # Find all tips for the currently logged in user
     setup_user_tips_hash
