@@ -4,6 +4,7 @@ class TipsController < ApplicationController
   before_filter :cleared_required, :only => [:index, :edit, :update, :destroy, :show, :create]
   before_filter :game_not_started_required, :only => [:edit, :update, :create, :new]
   before_filter :admin_required, :only => [:index, :show, :destroy]
+  before_filter :users_own_tip_required, :only => [:show, :edit, :update, :destroy]
 
   # GET /tips
   # GET /tips.json
@@ -109,5 +110,13 @@ class TipsController < ApplicationController
     end
   end
 
+  # Before_filter to assure that you do not update someone elses tips.
+  def users_own_tip_required
+    @user = @game.user
+
+    if @user != current_user && current_user && !current_user.admin?
+      redirect_to :root, notice: 'Detta verkar inte vara ditt tips.'
+    end
+  end
   
 end

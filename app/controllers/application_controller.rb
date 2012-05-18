@@ -41,9 +41,16 @@ class ApplicationController < ActionController::Base
   end
 
   def first_game_not_started_required
-    first_game = Game.find(:first, :order => 'kickoff')
-    if first_game.kickoff < Time.zone.now
-      redirect_to game_tips_url(@game), notice: 'Första matchen har börjat. Det är för sent att lämna tips.'
+    first_game = Game.order('kickoff').first
+    if first_game.kickoff < Time.zone.now && current_user && !current_user.admin?
+      redirect_to :root, notice: 'Första matchen har börjat. Det är för sent att ändra grundtips.'
+    end
+  end
+
+  def first_game_started_required
+    first_game = Game.order('kickoff').first
+    if first_game.kickoff > Time.zone.now && current_user && !current_user.admin?
+      redirect_to :root, notice: 'Första matchen har inte startat.'
     end
   end
 
