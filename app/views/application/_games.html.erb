@@ -1,12 +1,12 @@
-<div class="game_container">
-<div id="main_content" class="isotope">
+<div id="main_content">
+<div id="game_container" class="isotope">
 
 	<% @games.each do |game| %>
 
 		<%= tag("div", :class => "game_box #{game.ongoing? ? 'game_ongoing' : ''} isotope-item", :id => game.id)%>
 			<div class="game_datetime">
+				<% if game.cup_name && !game.cup_name.empty? %> <div> <%= game.cup_name %> </div><% end %>
 				<%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %>
-				<% if game.cup_name && !game.cup_name.empty? %> - <%= game.cup_name %> <% end %>
 			</div>
 			<div class="game_result">
 		   		<div class="game_home">
@@ -144,5 +144,5 @@
 
 	<% end %>
 
+</div> 
 </div> <!-- main_content -->
-</div>

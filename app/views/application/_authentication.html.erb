@@ -1,8 +1,8 @@
-<div id="login">
+<span id="login" class="nav_item">
 	<% if current_user %>
 		<%= current_user.name %>
 		<%= link_to "Logga ut", "/logout" %>
 	<% else %>
 		<%= link_to "Logga in", "/login" %>
 	<% end %>
-</div>
+</span>

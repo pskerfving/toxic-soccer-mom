@@ -69,14 +69,14 @@ table {
 
 body {
 	font-family:Helvetica;
-	background-image:url('../images/field.jpg');
+	background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
 	background-attachment:fixed;
 	
 /*	background-color: #999; */
 }
 
-h1, h2 {
-	color:inherit;
+h1, h2, h3 {
+	color:black;
 	font-weight:700;
 }
 
@@ -88,16 +88,22 @@ h2 {
 	font-size:32px;	
 }
 
+h3 {
+	font-size:24px;	
+}
+
 a {
 	color:inherit;
 }
 
 strong {
-	text-weight:800;
+	font-weight:800;
 }
 
 .hilite, .me {
-	background-color:yellow;	
+	font-weight:700;
+	background:url('../images/stripe_trans.png');
+/*	background-color:rgb(50, 228, 234); */
 }
 
 #site_logo {
@@ -111,10 +117,10 @@ strong {
 #site_title h1 {
 	font-size:64px;
 	font-weight:900;
-	color:white;
+	color:black;
 	width:auto;
 	float: left;
-	margin:30px;
+	margin:20px 20px 5px 15px;
 }
 
 #site_tagline {
@@ -126,25 +132,15 @@ strong {
 
 
 #login {
-	float: right;
-	font-size:12px;
-	font-weight:700;
-	margin:20px;
-	padding:10px;
 	color:black;
-	background-color:white;
-	border:4px solid black;
-	border-radius:15px/15px;
 }
 
 #nav {
 	clear:both;
 	padding:10px;
 	margin:20px;
-	color:black;
-	background-color:white;
-	border:4px solid black;
-	border-radius:15px/15px;
+	color:rgb(251, 142, 26);
+	background-color:rgb(234, 75,49);
 }
 
 .nav_item {
@@ -162,19 +158,33 @@ strong {
 #notifications {
 	margin:20px;
 	padding:10px;
-	background-color:yellow;
-	border:4px solid black;
-	border-radius:15px/15px;
+	font-weight:700;
+	background:url('../images/stripe_trans.png');
 }
 
-.title_box, .text_box {
+.title_box {
 	margin:20px;
 	padding:10px;
-	color:black;
-	background-color:white;
-	border:4px solid black;
-	border-radius:15px/15px;
+	color:rgb(234, 75, 49);
+	background-color:rgb(251, 142, 26);
 }
+
+.text_box {
+	margin:20px;
+	padding:10px;
+	color:rgb(234, 75, 49);
+	background-color:rgb(225, 225, 225);
+	color:inherit;
+}
+
+.text_box_lvl2 {
+	margin:20px;
+	padding:10px;
+	color:rgb(234, 75, 49);
+	background-color:rgb(200, 200, 200);
+	color:inherit;
+}
+
 
 .title_box p {
 	color:inherit;
@@ -184,13 +194,13 @@ strong {
 	color:inherit;
 }
 
-.game_container {
-	margin:20px;
+
+#game_container {
 }
 
 #main_content {
-	margin-left:auto;
-	margin-right:auto;
+	margin:20px;
+	padding-left:240px;
 }
 
 .table_header_row {

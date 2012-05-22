@@ -7,17 +7,15 @@
 .game_box {
 	width:200px;
 	float:left;
-	margin: 10px;
-	background-color:#FFFFFF;
-	border:4px solid black;
-	border-radius:15px/15px;
+	margin: 0px 10px 20px 10px;
+	background-color:rgb(251, 220, 45);
 }
 
 .game_datetime {
 	font-size:12px;
 	font-weight:700;
 	padding:5px 5px 5px 10px;
-	border-bottom:1px solid black;
+	border-bottom:1px solid white;
 }
 
 .game_cup_name {
@@ -25,9 +23,8 @@
 }
 
 .game_result {
-	background-color:#FFFFFF;
 	height:100px;
-	border-bottom:1px solid black;
+	border-bottom:1px solid white;
 }
 
 .game_ongoing .game_result {
@@ -63,7 +60,7 @@
 
 .game_tip_results {
 	font-size:12px;
-	border-bottom:1px solid black;
+	border-bottom:1px solid white;
 }
 
 .game_tip_results div {
@@ -76,13 +73,13 @@
 
 .game_comments {
 	font-size:12px;
-	border-bottom:1px solid black;
+	border-bottom:1px solid white;
 }
 
 .game_comment {
 	padding:10px;
 //	margin: 5px 0px 5px 0px;
-	border-bottom:1px solid black;
+	border-bottom:1px solid white;
 }
 
 .game_comment .game_commenter {

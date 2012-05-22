@@ -19,8 +19,7 @@
 (function($) {
 	
 	$(function(){
-//	  $.scrollingParallax('asphalt.jpg');
-	  $('#main_content').isotope({
+	  $('#game_container').isotope({
 	    itemSelector : '.game_box',
 	    columnWidth : 220,		
 	  });
@@ -37,7 +36,7 @@
 				$(this).text('Visa');
 				$('.game_comment_list', $(this).closest('.game_comments')).hide();								
 			}
-			$('#main_content').isotope('reLayout');
+			$('#game_container').isotope('reLayout');
 			return false;
 		});
 	});
@@ -65,8 +64,8 @@
 	});
 
 	$(document).ready(function() {
-		$('#main_content').isotope('reLayout');	
-		
+		$('#game_container').isotope('reLayout');	
+
 		// Hide the notification if it is empty.
 		$('div#notifications').find('p:empty').parent().hide();
 	});

@@ -1,4 +1,6 @@
 <div class="title_box"><h1>Inloggning</h1></div>
+<div id="main_content">
+
 <div class="text_box">
 	<h2>Facebook</h2>
 	<p>Enklast är att logga in med ditt Facebook-konto. Vi kommer inte att ta del av någon information utöver ditt namn och din email-adress. Vi kommer att be Facebook att verifiera din identitet men ser inte ditt lösenord.</p><br/>
@@ -10,8 +12,8 @@
 	<h2>UEFA-2012-konto</h2>
 <p>Vi rekommenderar inloggning med Facebook men i det fall att du inte har Facebook kan du också skapa ett konto direkt hos oss och logga in med detta. (Notera att du loggar in med din email-adress som användarnamn.)</p><br/>
 
-<div style="float:left">
-<h2>Skapa konto här...</h2>
+<div class="text_box_lvl2" style="float:left">
+<h3>Skapa konto här...</h3>
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
     <div class="error_messages">
@@ -43,8 +45,8 @@
 <% end %>
 </div>
 
-<div style="float:left">
-<h2>Logga in här...</h2>
+<div class="text_box_lvl2" style="float:left">
+<h3>Logga in här...</h3>
 <%= form_tag "/auth/identity/callback" do %>
   <div class="field">
     <%= label_tag :auth_key, "E-mail" %><br>
@@ -60,4 +62,5 @@
 </div>
 <div style="clear:both"></div>
 
+</div>
 </div>

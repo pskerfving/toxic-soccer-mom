@@ -2,6 +2,8 @@
   Totalt antal poäng: <%= @user.points %>
 </h2></div>
 
+<div id="main_content">
+
 <div class="text_box">
 <h2>Grundtips</h2>
 
@@ -44,7 +46,6 @@
 			<p><%= @user.name %> har inte lämnat in något grundtips.</p>
 		<% end %>
 	<% end %>
-	</div>
 <% else%>
 	<p>Informationen kommer att vara tillgängligt när första matchen startat.</p>
 <% end %>
@@ -80,4 +81,5 @@
 	<% end %>
 <% end %>
 
+</div>
 </div>

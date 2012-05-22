@@ -1,6 +1,6 @@
 <div id="nav">
     <span class="nav_item">
-    <%= link_to "Matcher", games_path %>
+    <%= link_to "Matcherna", games_path %>
     </span> |
     <span class="nav_item">
     <%= link_to "Topplistan", users_path %>
@@ -10,7 +10,11 @@
 	<%= link_to "Mina tips", current_user %>
 	</span>
 	<% end %>
-	<span class="nav_item nav_instructions">
-		<%= link_to "Hur gör jag?", "/instructions" %>
+	<span class="nav_instructions">
+        <%= render 'authentication' %> |
+		<span class="nav_item">
+		<%= link_to "?", "/instructions" %>
+		</span>
 	</span>
+	<div style="clear:both"/>
 </div>
