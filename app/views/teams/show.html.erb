@@ -1,15 +1,9 @@
-<%= render 'notifications' %>
-
 <div class="title_box">
   <p>Grupp <%= @team.group.name %></p>
   <h1><%= @team.country %> <%= @team.eliminated? ? " - Utslagna" : "" %></h1>
   <% if current_user && current_user.admin? %>
 	<p><%= link_to "Redigera lag", edit_team_path(@team) %>
   <% end %>
-</div>
-
-<div class="text_box">
-<h2><%= @team.country %>s matcher<h2>
 </div>
 
 <%= render 'games' %>
