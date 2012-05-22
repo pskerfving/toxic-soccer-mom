@@ -1,10 +1,11 @@
 <div id="notifications">
-	<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %>
 	<% if current_user %>
 		<% if !current_user.cleared? %>
-			<p>En administrator måste godkänna att du kan delta i spelet.</p>
+			Vi har nu tagit emot din ansökan om illegalt spel. Vår styrelse behandlar just nu ditt ärende. Beslut fattas inom kort. Du underrättas via mail.
 		<% end %>
 	<% else %>
-		<p>Du måste vara inloggad för att kunna delta.</p>
+		Du måste vara inloggad för att få vara med och leka.
 	<% end %>
+	</p>
 </div>

@@ -27,18 +27,22 @@
 
 
 <body>
+	<div id="content">
     <div id="header">
-        <div id="site_name">
-            <div id="site_title">
-                <h1>Euro2012</h1>
-            </div>
-        </div>
+	<div>
+            	<div id="site_title">
+                	<h1>Euro2012</h1>
+            	</div>
+			<%= render 'notifications' %>
+			<div style="clear:both"/>
+		</div>
+		</div>
 		<%= render 'navigation' %>
-    </div>
-	<%= render 'notifications' %>
-
+</div>
+</div>
 
 <%= yield %>
 
+</div>
 </body>
 </html>

@@ -70,7 +70,11 @@ body {
 	font-family:Helvetica;
 }
 
-@media screen and (min-width:480){
+#content {
+	margin:20px;
+}
+
+@media screen and (min-width:600){
 	body {
 		font-family:Helvetica;
 		background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
@@ -111,6 +115,7 @@ strong {
 .hilite, .me {
 	font-weight:700;
 	background:url('../images/stripe_trans.png');
+	text-shadow: -1px 0 rgb(251, 220, 45), 0 1px rgb(251, 220, 45), 1px 0 rgb(251, 220, 45), 0 -1px rgb(251, 220, 45)
 /*	background-color:rgb(50, 228, 234); */
 }
 
@@ -118,8 +123,19 @@ strong {
 	float:left;
 }
 
+#header {
+	margin:0px 0px 20px 0px;
+}
+
 #header_menus {
 	float:right;
+}
+
+#site_title {
+	float: left;
+	margin-left:-5px;
+	margin-right:10px;
+	margin-bottom:10px;
 }
 
 #site_title h1 {
@@ -127,17 +143,7 @@ strong {
 	font-weight:900;
 	color:black;
 	width:auto;
-	float: left;
-	margin:20px 20px 5px 15px;
 }
-
-#site_tagline {
-	float: right;
-	font-style:italic;
-	font-size:14px;
-	margin:10px;
-}
-
 
 #login {
 	color:black;
@@ -146,7 +152,6 @@ strong {
 #nav {
 	clear:both;
 	padding:10px;
-	margin:20px;
 	color:rgb(251, 142, 26);
 	background-color:rgb(234, 75,49);
 }
@@ -164,14 +169,15 @@ strong {
 }
 
 #notifications {
-	margin:20px;
 	padding:10px;
 	font-weight:700;
 	background:url('../images/stripe_trans.png');
+	height:35px;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	overflow:hidden;
 }
 
 .title_box {
-	margin:20px;
 	padding:10px;
 	color:rgb(234, 75, 49);
 	background-color:rgb(251, 142, 26);
@@ -204,11 +210,9 @@ strong {
 
 
 #game_container {
+	margin:20px 0px 0px 0px;
 }
 
-#main_content {
-	margin:20px;
-}
 
 .table_header_row {
 	margin:10px;
