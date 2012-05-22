@@ -66,13 +66,21 @@ table {
 }
 
 /* Where the action is ------------------------------------*/
-
 body {
 	font-family:Helvetica;
-	background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
-	background-attachment:fixed;
+}
+
+@media screen and (min-width:480){
+	body {
+		font-family:Helvetica;
+		background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
+		background-attachment:fixed;
+	}
 	
-/*	background-color: #999; */
+	#main_content {
+		padding-left:240px;
+	}
+	
 }
 
 h1, h2, h3 {
@@ -200,7 +208,6 @@ strong {
 
 #main_content {
 	margin:20px;
-	padding-left:240px;
 }
 
 .table_header_row {
