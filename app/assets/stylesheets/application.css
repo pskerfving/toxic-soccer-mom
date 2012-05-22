@@ -98,10 +98,11 @@ h1 {
 
 h2 {
 	font-size:32px;	
+	margin-bottom:10px;
 }
 
 h3 {
-	font-size:24px;	
+	font-size:24px;
 }
 
 h4 {
@@ -193,7 +194,7 @@ strong {
 }
 
 .text_box {
-	margin:20px;
+	margin:20px 0px 0px 0px;
 	padding:10px;
 	color:rgb(234, 75, 49);
 	background-color:rgb(225, 225, 225);
