@@ -134,7 +134,7 @@ strong {
 #site_title {
 	float: left;
 	margin-left:-5px;
-	margin-right:10px;
+	margin-right:15px;
 	margin-bottom:10px;
 }
 
@@ -151,9 +151,14 @@ strong {
 
 #nav {
 	clear:both;
+	font-weight:700;
 	padding:10px;
 	color:rgb(251, 142, 26);
 	background-color:rgb(234, 75,49);
+}
+
+#user_name {
+	font-weight:normal;
 }
 
 .nav_item {
