@@ -4,7 +4,7 @@
 		<span class="nav_item"> <%= link_to "Visa godkända", users_path %> </span> | <span class="nav_item"> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
 	<% end %>
 	<% if @first_game_started %>
-		<span><%= link_to "Visa alla grundtips", winners_tips_path %></span>
+		<span class="nav_item"> <%= link_to "Visa alla grundtips", winners_tips_path %></span>
 	<% end %>
 	
 </div>
