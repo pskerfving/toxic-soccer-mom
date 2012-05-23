@@ -60,10 +60,10 @@ class ApplicationController < ActionController::Base
   # TODO: Check that all this saving is efficient
   def recalculate_points
     # First, clear the points for all users
-    users = User.find(:all)
+    users = User.all
     users.each { |u| u.points = 0; u.save }
 
-    games = Game.find(:all)
+    games = Game.all
     games.each do |game|
       if game.final? then
         tips = game.tips

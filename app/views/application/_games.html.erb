@@ -58,6 +58,7 @@
 				<% tip = @user_tips_hash[game.id] %>
 				<% if current_user && current_user.cleared? %>
 					<% if game.started? %>
+					<div>
 						<% if tip %>
 							<%= "Ditt tips: #{tip.home_score.to_s} - #{tip.away_score.to_s}"%>
 							<% if game.final? %>
@@ -66,6 +67,7 @@
 						<% else %>
 							Du tippade inte. (0 poäng)
 						<% end %>
+					</div>
 					<% else %>
 						<div class="hilite notification">Tryck +/- för att tippa.
 						<% if game.cup_game? %>
