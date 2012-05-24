@@ -133,7 +133,9 @@
 					</div>
 					<% end %>
 					<div class="game_comment_footer">
+					<% if current_user %>
 					<%= link_to 'Skriv en kommentar', polymorphic_path([game, :comments]) %>
+					<% end %>
 					</div>
 				</div>
 		    </div>
