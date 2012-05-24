@@ -4,8 +4,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.order("kickoff")
     if params[:show] == "upcoming"
-      @games = Game.where(:final => false)
-#      @games.delete_if { |g| g.final? }
+      @games = Game.where(:final => false).order("kickoff")
     else
       @games = Game.order("kickoff")
     end
