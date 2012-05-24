@@ -54,11 +54,18 @@
 					<% end %>
 		        </div>
 		    </div>
-		   	<div class="game_tip_results">
+		
+		
+		<!-- GAME SECTIONS -->
+			<% if game.cup_game? && game.cup_final? %>
+			<div class = "game_section game_tip_results">
+				Slutresultat: <%= game.cup_home_score %> - <%= game.cup_away_score %>
+			</div>
+			<% end %>
 				<% tip = @user_tips_hash[game.id] %>
 				<% if current_user && current_user.cleared? %>
 					<% if game.started? %>
-					<div>
+					<div class="game_section game_tip_results">
 						<% if tip %>
 							<%= "Ditt tips: #{tip.home_score.to_s} - #{tip.away_score.to_s}"%>
 							<% if game.final? %>
@@ -69,7 +76,7 @@
 						<% end %>
 					</div>
 					<% else %>
-						<div class="hilite notification">Tryck +/- för att tippa.
+						<div class="game_section game_tip_results hilite notification">Tryck +/- för att tippa.
 						<% if game.cup_game? %>
 						<br/>Resultat efter 90 min räknas.
 						<% end %>
@@ -78,7 +85,7 @@
 				<% end %>
 
 				<% if game.started? %>
-				<div class="game_odds">
+			   	<div class="game_section game_tip_results game_odds">
 					Matchens odds:
 					<table class="game_odds_table">
 						<tr class="game_odds_table_header">
@@ -93,7 +100,7 @@
 						</tr>
 					</table>
 				</div>
-				<div>
+				<div class="game_section game_tip_results game_odds">
 					<%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %><br/>
 					<% honorable_tips = @honorable_hash[game.id] %>
 					<% if honorable_tips.length > 0 %>
@@ -103,11 +110,10 @@
 					<% else %>
 						Inget korrekt resultat.
 					<% end %>
-				</div>
+		    	</div>
 				<% end %>
-		    </div>
 
-		    <div class="game_comments">
+		    <div class="game_section game_comments">
 				<div class="game_comment_header">
 					<% comments = game.comments %>
 			    	<div class="nbr_game_comments"><%= comments.count %> kommentarer på matchen.</div>
