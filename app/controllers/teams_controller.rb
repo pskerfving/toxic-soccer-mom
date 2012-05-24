@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
       redirect_to :root, notice: 'Inget riktigt lag.'
       return
     end
-    @games = Game.where('home_id = ? OR away_id = ?', @team.id, @team.id)
+    @games = Game.where('home_id = ? OR away_id = ?', @team.id, @team.id).order("kickoff")
     # Find all tips for the currently logged in user
     setup_user_tips_hash
     setup_winners_right_now
