@@ -74,9 +74,8 @@ body {
 	margin:20px;
 }
 
-@media screen and (min-width:600){
+@media only screen and (min-width:800px){
 	body {
-		font-family:Helvetica;
 		background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
 		background-attachment:fixed;
 	}
