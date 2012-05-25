@@ -55,10 +55,13 @@
 		</td>
 	<% end %>
 	<% if current_user && current_user.admin? %>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    	<td><%= link_to 'Show', user %></td>
+    	<td><%= link_to 'Edit', edit_user_path(user) %></td>
 		<% if !user.admin? %>
 		    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+		<% end %>
+		<% if !user.cleared? %>
+			<td><%= link_to 'Godkänn', clear_user_path(user), method: :put %></td>
 		<% end %>
 	<% end %>
   </tr>

@@ -29,7 +29,13 @@ Uefa::Application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users do
+    
+    member do
+      put 'clear'
+    end
+    
+  end
   
   resources :password_resets
 

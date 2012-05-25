@@ -52,6 +52,23 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def clear
+    @user = User.find(params[:id])
+    @user.cleared = true
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def destroy
     @user = User.find(params[:id])
     if @user.admin?
