@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     # Delete all information related to the user (authorizations, tips and comments)
     auth = Authorization.where(:user_id => @user.id)
     auth.each { |i|
-      if i.provider = "identity"
+      if i.provider == "identity"
         id = Identity.find(i.uid)
         id.destroy
       end
