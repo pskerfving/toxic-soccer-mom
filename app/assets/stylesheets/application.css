@@ -195,6 +195,10 @@ small {
 	background-color:rgb(251, 142, 26);
 }
 
+.title_box span {
+	color:black;
+}
+
 .text_box {
 	margin:20px 0px 0px 0px;
 	padding:30px;
