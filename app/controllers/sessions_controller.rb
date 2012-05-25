@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
       user.admin = false
       user.cleared = false
+      user.points = 0
       user.save
       redirect_to :root, :notice => "Nu är du registrerad. Nästa steg är att logga in."
       UserMailer.welcome(user).deliver
