@@ -1,6 +1,10 @@
 <div class="title_box"><h1><%= @user.name %></h1><h2>
   Totalt antal poäng: <%= @user.points %>
-</h2></div>
+</h2>
+<% if current_user && current_user.admin? %>
+<span><%= @user.id %></span> | <span><%= link_to 'Radera användare', @user, confirm: 'Are you sure?', method: :delete %></span>
+<% end %>
+</div>
 
 <div id="main_content">
 
