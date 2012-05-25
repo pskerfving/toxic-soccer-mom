@@ -32,16 +32,12 @@
 <% prev_pts = -1 %>
 
 <% @users.each do |user| %>
-  <tr class="table_row">
+  <tr class="table_row <%= if user == current_user then "me" end %>">
 	<% if user.points != prev_pts then place = i end %>
 	<% prev_pts = user.points%>
 	<% i += 1 %>
 	<td><%= place %></td>
-	<% if user == current_user %>
-		<%= content_tag(:td, link_to(user.name, user), :class => "me") %>
-	<% else %>
-    	<td><%= link_to user.name, user %></td>
-	<% end %>
+    <td><%= link_to user.name, user %></td>
 	<% if current_user && current_user.admin? %>
     <td><%= user.email %></td>
     <td><%= user.admin %></td>

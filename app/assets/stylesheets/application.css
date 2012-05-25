@@ -119,11 +119,15 @@ strong {
 small {
 	font-size:12px;
 }
-.hilite, .me {
+.hilite {
 	font-weight:700;
 	background:url('../images/stripe_trans.png');
 	text-shadow: -1px 0 rgb(251, 220, 45), 0 1px rgb(251, 220, 45), 1px 0 rgb(251, 220, 45), 0 -1px rgb(251, 220, 45)
 /*	background-color:rgb(50, 228, 234); */
+}
+
+.me {
+	background-color:rgb(251, 220, 45);
 }
 
 #site_logo {
