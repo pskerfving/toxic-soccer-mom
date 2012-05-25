@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if params[:show] == "unapproved"
       @users = User.where(:cleared => false)
     else
-      @users = User.where(:cleared => true).order("points DESC")
+      @users = User.where(:cleared => true).order("points DESC, name ASC")
     end
     setup_latest_game_tip_hash
     @first_game_started = first_game_started?
