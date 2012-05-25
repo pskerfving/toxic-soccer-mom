@@ -116,6 +116,9 @@ strong {
 	font-weight:800;
 }
 
+small {
+	font-size:12px;
+}
 .hilite, .me {
 	font-weight:700;
 	background:url('../images/stripe_trans.png');

@@ -14,6 +14,7 @@
 
 <div class="text_box_lvl2" style="float:left">
 <h3>Skapa konto här...</h3>
+<p><small>Obs! Skapa inget konto här om du vill använda FB!</small></p>
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
     <div class="error_messages">
