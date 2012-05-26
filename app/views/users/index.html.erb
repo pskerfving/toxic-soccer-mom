@@ -25,6 +25,11 @@
 	<% @latest_games.each do |g| %>
 	<th><%= g.name %></th>
 	<% end %>
+	<% if current_user && current_user.admin? %>
+    <th></th>
+    <th></th>
+    <th></th>
+	<% end %>
   </tr>
 
 <% i = 1 %>
@@ -55,10 +60,9 @@
 		</td>
 	<% end %>
 	<% if current_user && current_user.admin? %>
-    	<td><%= link_to 'Show', user %></td>
-    	<td><%= link_to 'Edit', edit_user_path(user) %></td>
+    	<td><%= link_to 'Redigera', edit_user_path(user) %></td>
 		<% if !user.admin? %>
-		    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+		    <td><%= link_to 'Ta bort', user, confirm: 'Är du säker?', method: :delete %></td>
 		<% end %>
 		<% if !user.cleared? %>
 			<td><%= link_to 'Godkänn', clear_user_path(user), method: :put %></td>
