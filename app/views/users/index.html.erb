@@ -1,6 +1,7 @@
 <div class="title_box">
 	<h1>Topplistan</h1>
 	<% if current_user && current_user.admin? %>
+		<span class="nav_item"><%= User.all.length %> anmälda</span> |
 		<span class="nav_item"> <%= link_to "Visa godkända", users_path %> </span> | <span class="nav_item"> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
 	<% end %>
 	<% if @first_game_started %>
