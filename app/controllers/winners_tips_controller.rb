@@ -9,7 +9,7 @@ class WinnersTipsController < ApplicationController
   # GET /winners_tips
   # GET /winners_tips.json
   def index
-    @winners_tips = WinnersTip.all
+    @winners_tips = WinnersTip.joins(:user).order("points DESC, name ASC")
 
     respond_to do |format|
       format.html # index.html.erb
