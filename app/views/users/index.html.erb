@@ -7,7 +7,6 @@
 	<% if @first_game_started %>
 		<span class="nav_item"> <%= link_to "Visa alla grundtips", winners_tips_path %></span>
 	<% end %>
-	
 </div>
 
 
@@ -19,8 +18,8 @@
     <th>Namn</th>
 	<% if current_user && current_user.admin? %>
     <th>Email</th>
-    <th>Admin</th>
-    <th>Cleared</th>
+    <th>Godkänd</th>
+    <th>Vin</th>
 	<% end %>
     <th>Points</th>
 	<% @latest_games.each do |g| %>
@@ -46,8 +45,8 @@
     <td><%= link_to user.name, user %></td>
 	<% if current_user && current_user.admin? %>
     <td><%= user.email %></td>
-    <td><%= user.admin %></td>
     <td><%= user.cleared %></td>
+    <td><%= user.wine %></td>
 	<% end %>
 	<td class="right_adjust"><strong><%= user.points %></strong></td>
 	<% @latest_games.each do |g| %>
@@ -62,11 +61,11 @@
 	<% end %>
 	<% if current_user && current_user.admin? %>
     	<td><%= link_to 'Redigera', edit_user_path(user) %></td>
-		<% if !user.admin? %>
-		    <td><%= link_to 'Ta bort', user, confirm: 'Är du säker?', method: :delete %></td>
-		<% end %>
 		<% if !user.cleared? %>
 			<td><%= link_to 'Godkänn', clear_user_path(user), method: :put %></td>
+		<% end %>
+		<% if !user.wine? %>
+		    <td><%= link_to 'Vin lämnat', wine_user_path(user), method: :put %></td>
 		<% end %>
 	<% end %>
   </tr>

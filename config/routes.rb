@@ -33,6 +33,7 @@ Uefa::Application.routes.draw do
     
     member do
       put 'clear'
+      put 'wine'
     end
     
   end

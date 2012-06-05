@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def index
     if params[:show] == "unapproved"
       @users = User.where(:cleared => false)
+    elsif params[:show] == "unwined"
+      @users = User.where(:wine => false)
     else
       @users = User.where(:cleared => true).order("points DESC, name ASC")
     end
@@ -60,6 +62,21 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def wine
+    @user = User.find(params[:id])
+    @user.wine = true
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to users_path, notice: 'Användaren har lämnat vin! Gött!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
