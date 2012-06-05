@@ -74,12 +74,27 @@ body {
 	margin:20px;
 }
 
+#bosse {
+	visibility:hidden;
+}
+
 @media only screen and (min-width:900px){
 	body {
 		background:url('../images/bosselarsson_lores.jpg') no-repeat -70px 190px;
 		background-attachment:fixed;
 	}
 	
+	#bosse {
+		font-size:40px;
+		font-weight:500;
+		float:left;
+		width:220px;
+		text-align:center;
+		color:rgb(180, 180, 180);
+		padding:30px 10px 10px 10px;
+		visibility:visible;
+	}
+
 	#main_content {
 		padding-left:240px;
 	}

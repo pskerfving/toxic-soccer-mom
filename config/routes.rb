@@ -1,6 +1,6 @@
 Uefa::Application.routes.draw do
 
-  root :to => "games#index"
+  root :to => 'stats#stats'
 
   resources :groups
 
