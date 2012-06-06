@@ -47,6 +47,9 @@ Uefa::Application.routes.draw do
 
   get '/instructions', :to => 'instructions#instructions'
 
+  get '/newbulkmail', :to => 'BulkMails#newbulkmail'
+  post '/sendbulkmail', :to => 'BulkMails#sendbulkmail'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
