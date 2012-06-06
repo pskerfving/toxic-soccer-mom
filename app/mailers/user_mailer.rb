@@ -17,9 +17,15 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail :to => user.email, :subject => "euro2012.ifkff.org - Nytt lösenord"
   end
-  
+
   def user_cleared(user)
     @user = user
     mail :to => user.email, :subject => "euro2012.ifkff.org - Godkänd för att tippa"
   end
+
+  def bulk(users, subject, message)
+    @message = message
+    mail :to => users, :subject => subject
+  end
+  
 end

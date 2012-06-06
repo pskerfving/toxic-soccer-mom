@@ -1,0 +1,26 @@
+<div class="title_box">
+<h1>Nytt massmail</h1>
+</div>
+<div id="main_content">
+<div class="text_box">
+
+<%= form_tag("/sendbulkmail", :method => "post") do %>
+<div>
+  <%= label_tag(:recievers, "Skicka till:") %>
+	<%= select_tag(:recievers, options_for_select([["Alla", 1], ["Ej grundtippat", 2], ["Ej tippat nästa match", 3], ["Ej lämnat vin", 4]])) %>
+	</div>
+	<div>
+  <%= label_tag(:subject, "Ämne:") %>
+ <%= text_field_tag(:subject) %>
+</div>
+	<div>
+  <%= label_tag(:body, "Innehåll:") %>
+ <%= text_area_tag(:body) %>
+</div>
+<div>
+  <%= submit_tag("Skicka mail") %>
+</div>
+<% end %>
+
+</div>
+</div>
