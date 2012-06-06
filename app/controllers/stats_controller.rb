@@ -7,6 +7,12 @@ class StatsController < ApplicationController
     @nbr_wine = User.where(:wine => true).length
     @nbr_days_wine = time_until_wine_deadline
     @nbr_days_register = time_until_first_game
+
+    if current_user
+      @winnerstip = WinnersTip.where(:user_id => current_user.id)
+      @tips = Tip.where(:user_id => current_user.id)
+      @wine = current_user.wine
+    end
   end
 
   def time_until_wine_deadline

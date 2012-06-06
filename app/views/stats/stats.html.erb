@@ -4,6 +4,38 @@
 <div id="main_content">
 	<div class="title_box">
 	<table class="stats">
+	<% if current_user %>
+		<tr>
+			<td><h1>Du har ett konto. <span class="stat">Bra.</span></h1></td>
+		</tr>
+		<tr>
+			<td>
+			<% if !@winnerstip.empty? %>
+				<h1>Du har lämnat grundtips. <span class="stat">Bra.</span></h1>
+			<% else %>
+				<h1>Du har inget grundtips. <span class="stat">Inte så bra.</span></h1>
+			<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<% if !@tips.empty? %>
+				<h1>Du har börjat tippa matcher. <span class="stat">Bra.</span></h1>
+			<% else %>
+				<h1>Du har inte börjat tippa matcher. <span class="stat">Inte så bra.</span></h1>
+			<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<% if @wine %>
+				<h1>Du har lämnat in vin. <span class="stat">Bra.</span></h1>
+			<% else %>
+				<h1>Du har inte lämnat in vin. <span class="stat">Inte så bra.</span></h1>
+			<% end %>
+			</td>
+		</tr>		
+	<% else %>
 		<tr>
 			<td class="stat"><h1><%= @nbr_users %></h1></td>
 			<td><h1>tippare anmälda.</h1></td>
@@ -24,7 +56,7 @@
 			<td class="stat"><h1><%= @nbr_days_wine %></h1></td>
 			<td><h1>dagar kvar att göra rätt för sig.</h1><h1>Sen säger Bosse: "Haj me' daj"</h1></td>
 		</tr>
-	</table>
-	
+	<% end %>
+</table>
 	</div>
 </div>
