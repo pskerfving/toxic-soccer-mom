@@ -151,6 +151,7 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
       @game.final = true
       @game.save
+      recalculate_points
 
       respond_to do |format|
         format.html { redirect_to games_url }
