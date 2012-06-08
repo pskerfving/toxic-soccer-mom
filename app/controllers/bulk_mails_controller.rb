@@ -21,7 +21,11 @@ class BulkMailsController < ApplicationController
     end
 
     users.each do |u|
-      UserMailer.bulk(u.email, params[:subject], params[:body]).deliver
+      begin 
+        UserMailer.bulk(u.email, params[:subject], params[:body]).deliver
+      rescue Exception => e
+        # do nothing, just loop back and try the next email.
+      end
     end
     redirect_to :root
   end
