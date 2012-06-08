@@ -16,7 +16,7 @@
 
 <% @winners_tips.each do |winners_tip| %>
   <tr>
-    <td><%= winners_tip.user.name %></td>
+    <td><%= link_to winners_tip.user.name, winners_tip.user %></td>
     <td><%= winners_tip.winning_team.country %></td>
     <td><%= winners_tip.runner_up.country %></td>
     <td><%= winners_tip.goal_scorer %></td>
