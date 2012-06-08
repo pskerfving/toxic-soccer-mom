@@ -123,7 +123,7 @@
 				<div class="game_comment_list">
 					<% comments.each do |c| %>
 					<div class="game_comment">
-						<div class="game_commenter"><%= c.user.name %> skrev:</div>
+						<div class="game_commenter"><%= link_to c.user.name, user_path(c.user) %> skrev:</div>
 						<div class="game_comment_content"><%= c.content %></div>
 						<% if current_user && c.user == current_user %>
 						<div class="game_comment_edit">
