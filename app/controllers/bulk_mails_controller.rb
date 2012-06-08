@@ -13,6 +13,7 @@ class BulkMailsController < ApplicationController
       users = User.all
     when "2"
       # INTE GRUNDTIPPAT
+      users = User.joins('LEFT JOIN winners_tips ON winners_tips.user_id = users.id').where("winners_tips.user_id IS NULL")
     when "3"
       # INTE TIPPAT NÄSTA MATCH
     when "4"
