@@ -94,9 +94,9 @@
 							<th>2</th>
 						</tr>
 						<tr class="game_odds_table_row">
-							<td><%= (@odds_hash[game.id][-1] != nil) ? @odds_hash[game.id][-1] : "-" %></td>
-							<td><%= (@odds_hash[game.id][0] != nil) ? @odds_hash[game.id][0] : "-" %></td>
-							<td><%= (@odds_hash[game.id][1] != nil) ? @odds_hash[game.id][1] : "-" %></td>
+							<td><%= (@odds_hash[game.id][-1] != nil) ? '%.2f' % @odds_hash[game.id][-1] : "-" %></td>
+							<td><%= (@odds_hash[game.id][0] != nil) ? '%.2f' % @odds_hash[game.id][0] : "-" %></td>
+							<td><%= (@odds_hash[game.id][1] != nil) ? '%.2f' % @odds_hash[game.id][1] : "-" %></td>
 						</tr>
 					</table>
 				</div>
