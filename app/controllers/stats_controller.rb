@@ -12,6 +12,9 @@ class StatsController < ApplicationController
       @winnerstip = WinnersTip.where(:user_id => current_user.id)
       @tips = Tip.where(:user_id => current_user.id)
       @wine = current_user.wine
+      if @wine
+        redirect_to games_path
+      end
     end
   end
 
