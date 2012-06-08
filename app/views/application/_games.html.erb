@@ -105,7 +105,7 @@
 					<% honorable_tips = @honorable_hash[game.id] %>
 					<% if honorable_tips.length > 0 %>
 						<% honorable_tips.each do |t| %>
-							<%= link_to t.user.name, t.user %>
+							<span class="wall_of_honor_user"><%= link_to t.user.name, t.user %></span>
 						<% end %>
 					<% else %>
 						Inget korrekt resultat.
