@@ -1,0 +1,145 @@
+	<div class="game_datetime">
+		<% if game.cup_name && !game.cup_name.empty? %> <div> <%= game.cup_name %> </div><% end %>
+		<%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %>
+	</div>
+	<div class="game_result">
+   		<div class="game_home">
+        	<div class="game_team"><%= game.home_team.placeholder ? game.home_team.abbreviation : link_to(game.home_team.abbreviation, game.home_team) %></div>
+			<% if game.started? && !(current_user && current_user.admin? && game.ongoing?) %>
+        		<div class="game_score"><%= game.home_score %></div>
+			<% else %>
+				<div class="game_tip_panel">
+					<div class="tip_panel_score home_score">
+						<% if current_user && current_user.admin? && game.ongoing? %>
+							<%= game.home_score %>
+						<% else %>
+							<%= @user_tips_hash[game.id] ? @user_tips_hash[game.id].home_score : "-" %>
+						<% end %>
+					</div>
+					<% if current_user && (current_user.cleared? || current_user.admin?) %>
+				    <div class="tip_panel_controls">
+				    	<div class="tip_panel_button" adjust="-1" team="home">-</div>
+				    	<div class="tip_panel_button" adjust="1" team="home">+</div>
+				    </div>
+					<% end %>
+				</div>
+			<% end %>
+        </div>
+    	<div class="game_away">
+        	<div class="game_team"><%= game.away_team.placeholder ? game.away_team.abbreviation : link_to(game.away_team.abbreviation, game.away_team) %></div>
+			<% if game.started? && !(current_user && current_user.admin? && game.ongoing?) %>
+        		<div class="game_score"><%= game.away_score %></div>
+			<% else %>
+				<div class="game_tip_panel">
+					<div class="tip_panel_score away_score">
+						<% if current_user && current_user.admin? && game.ongoing?%>
+							<%= game.away_score %>
+						<% else %>
+							<%= @user_tips_hash[game.id] ? @user_tips_hash[game.id].away_score : "-"%>
+						<% end %>
+					</div>
+					<% if current_user && (current_user.cleared? || current_user.admin?) %>
+				    <div class="tip_panel_controls">
+				    	<div class="tip_panel_button" adjust="-1" team="away">-</div>
+				    	<div class="tip_panel_button" adjust="1" team="away">+</div>
+				    </div>
+					<% end %>
+				</div>
+			<% end %>
+        </div>
+    </div>
+
+
+<!-- GAME SECTIONS -->
+	<% if game.cup_game? && game.cup_final? %>
+	<div class = "game_section game_tip_results">
+		Slutresultat: <%= game.cup_home_score %> - <%= game.cup_away_score %>
+	</div>
+	<% end %>
+		<% tip = @user_tips_hash[game.id] %>
+		<% if current_user && current_user.cleared? %>
+			<% if game.started? %>
+			<div class="game_section game_tip_results">
+				<% if tip %>
+					<%= "Ditt tips: #{tip.home_score.to_s} - #{tip.away_score.to_s}"%>
+					<% if game.final? %>
+					<%= " (#{tip.points.to_s} poäng)" %>
+					<% end %>
+				<% else %>
+					Du tippade inte. (0 poäng)
+				<% end %>
+			</div>
+			<% else %>
+				<div class="game_section game_tip_results hilite notification">Tryck +/- för att tippa.
+				<% if game.cup_game? %>
+				<br/>Resultat efter 90 min räknas.
+				<% end %>
+				</div>
+			<% end %>
+		<% end %>
+
+		<% if game.started? %>
+	   	<div class="game_section game_tip_results game_odds">
+			Matchens odds:
+			<table class="game_odds_table">
+				<tr class="game_odds_table_header">
+					<th>1</th>
+					<th>X</th>
+					<th>2</th>
+				</tr>
+				<tr class="game_odds_table_row">
+					<td><%= (@odds_hash[game.id][-1] != nil) ? '%.2f' % @odds_hash[game.id][-1] : "-" %></td>
+					<td><%= (@odds_hash[game.id][0] != nil) ? '%.2f' % @odds_hash[game.id][0] : "-" %></td>
+					<td><%= (@odds_hash[game.id][1] != nil) ? '%.2f' % @odds_hash[game.id][1] : "-" %></td>
+				</tr>
+			</table>
+		</div>
+		<div class="game_section game_tip_results game_comments">
+			<div>
+		    	<div class="nbr_game_comments"><%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %></div>
+				<a href="#" class="show_game_comments_button">Visa</a>
+				<div style="clear:both"></div>
+			</div>
+			<div class="game_comment_list wall_of_honor_list">
+				<%= render :partial => 'wallofhonorlist', :locals => { :honorable_hash => @honorable_hash, :game => game } %>
+			</div>
+    	</div>
+		<% end %>
+
+    <div class="game_section game_comments">
+		<div class="game_comment_header">
+			<% comments = game.comments %>
+	    	<div class="nbr_game_comments"><%= comments.count %> kommentarer på matchen.</div>
+			<a href="#" class="show_game_comments_button">Visa</a>
+			<div style="clear:both"></div>
+		</div>
+		<div class="game_comment_list">
+			<% comments.each do |c| %>
+			<div class="game_comment">
+				<div class="game_commenter"><%= link_to c.user.name, user_path(c.user) %> skrev:</div>
+				<div class="game_comment_content"><%= c.content %></div>
+				<% if current_user && c.user == current_user %>
+				<div class="game_comment_edit">
+				<%= link_to "Ändra", edit_polymorphic_path([game, c]) %>  <%= link_to "Ta bort", polymorphic_path([game, c]), method: :delete %>
+				</div>
+				<% end %>
+			</div>
+			<% end %>
+			<div class="game_comment_footer">
+			<% if current_user %>
+			<%= link_to 'Skriv en kommentar', polymorphic_path([game, :comments]) %>
+			<% end %>
+			</div>
+		</div>
+    </div>
+	<% if current_user && current_user.admin? %>
+	<div class="game_tip_results">
+		<div>
+		Admin:<br/>
+		<%= link_to "Redigera match", edit_game_path(game) %>
+		<% if game.ongoing? %>
+			<%= link_to "Avsluta matchen", finalize_game_path(game), :method => :put %>
+		<% end %>
+		</div>
+	</div>
+	<% end %>

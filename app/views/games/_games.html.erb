@@ -1,0 +1,15 @@
+<div id="main_content">
+<div id="game_container" class="isotope">
+
+	<% @games.each do |game| %>
+
+		<div class="<%= "game_box #{game.ongoing? ? 'game_ongoing' : ''} isotope-item" %>" id="<%= game.id %>" data-time="<%= game.updated_at.to_i %>">
+
+			<%= render :partial => 'gameboxcontent', :locals => { :game => game } %>
+
+		</div> <!-- Gamebox -->
+
+	<% end %>
+
+</div> 
+</div> <!-- main_content -->

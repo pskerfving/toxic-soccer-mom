@@ -1,0 +1,9 @@
+<% unless @games.empty? %>
+	$(".game_ongoing .game_home .game_score").text("<%= @games.first.home_score %>");
+	$(".game_ongoing .game_away .game_score").text("<%= @games.first.away_score %>");
+	$(".game_ongoing .wall_of_honor_list").html("<%= raw escape_javascript(render :partial => 'wallofhonorlist', :locals => { :honorable_hash => @honorable_hash, :game => @games.first }) %>");
+	$(".game_ongoing").attr("data-time", "<%= @games.first.updated_at.to_i %>");
+	<% if @games.first.final? %>
+		$(".game_ongoing").removeClass('game_ongoing');
+	<% end %>
+<% end %>

@@ -93,6 +93,17 @@ class GamesController < ApplicationController
     end
   end
 
+
+  def getgamebox
+    @games = Game.where("id = ? and updated_at > ?", params[:game_id], Time.at(params[:after].to_i + 1))
+
+    if !@games.empty?
+      setup_winners_right_now
+    end
+    
+  end
+
+
   def ajax_update_score
     @game = Game.find(params[:id])
     team = params[:team]

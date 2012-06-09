@@ -25,8 +25,23 @@
 	  });
 	});
 
-	// Expanding the comments fields of the games view (and closing)
-	$(document).ready(function() {
+	$(function(){
+		if($(".game_ongoing").length > 0) {
+			setTimeout(updateGameBox, 5000);
+		}
+	});
+
+	function updateGameBox() {
+		var game_id = $(".game_ongoing").attr("id");
+		var after = $(".game_ongoing").attr("data-time");
+		$.getScript("/getgamebox.js?game_id=" + game_id + "&after=" + after);
+
+		if($(".game_ongoing").length > 0) {
+			setTimeout(updateGameBox, 5000);
+		}
+	};
+
+	function connectHandlers() {
 		$('.game_comment_list').hide();
 		$('.show_game_comments_button').click(function() {
 			if ($(this).text() == "Visa") {
@@ -38,8 +53,11 @@
 			}
 			$('#game_container').isotope('reLayout');
 			return false;
-		});
-	});
+		})
+	};
+	
+	// Expanding the comments fields of the games view (and closing)
+	$(document).ready(connectHandlers);
 
 	// Placing tips through AJAX (and if your an admin, changing the current result of the game.)
 	$(document).ready(function() {
