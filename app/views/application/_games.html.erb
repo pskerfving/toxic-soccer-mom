@@ -100,16 +100,22 @@
 						</tr>
 					</table>
 				</div>
-				<div class="game_section game_tip_results game_odds">
-					<%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %><br/>
+				<div class="game_section game_tip_results game_comments">
+					<div>
+				    	<div class="nbr_game_comments"><%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %></div>
+						<a href="#" class="show_game_comments_button">Visa</a>
+						<div style="clear:both"></div>
+					</div>
+					<div class="game_comment_list">
 					<% honorable_tips = @honorable_hash[game.id] %>
 					<% if honorable_tips.length > 0 %>
 						<% honorable_tips.each do |t| %>
 							<span class="wall_of_honor_user"><%= link_to t.user.name, t.user %></span>
 						<% end %>
 					<% else %>
-						Inget korrekt resultat.
+						Inget rätt tips.
 					<% end %>
+					</div>
 		    	</div>
 				<% end %>
 
