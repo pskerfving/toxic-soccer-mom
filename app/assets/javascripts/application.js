@@ -27,7 +27,7 @@
 
 	$(function(){
 		if($(".game_ongoing").length > 0) {
-			setTimeout(updateGameBox, 5000);
+			setTimeout(updateGameBox, 7000);
 		}
 	});
 
@@ -37,7 +37,7 @@
 		$.getScript("/getgamebox.js?game_id=" + game_id + "&after=" + after);
 
 		if($(".game_ongoing").length > 0) {
-			setTimeout(updateGameBox, 5000);
+			setTimeout(updateGameBox, 7000);
 		}
 	};
 
