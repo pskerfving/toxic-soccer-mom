@@ -77,6 +77,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Do a faster recaluculate points. Based on the assumption that all users have the right number of points.
+  # Only the game in @game is considered.
+  def recalculate_points_fast
+    if @game.final? then
+      tips = @game.tips
+      tips.each do |tip|
+        tip.points = calculate_tip_points(tip)
+        tip.user.points += tip.points
+        tip.save
+        tip.user.save
+      end
+    end
+  end
+
+
   def calculate_tip_points(t)
     if (t.home_score == t.game.home_score) && (t.away_score == t.game.away_score)
       return 3

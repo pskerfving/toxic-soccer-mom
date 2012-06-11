@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+
+  before_filter :admin_required, :only => [:new, :show, :edit, :update, :create, :destroy, :finalize]
+
   # GET /games
   # GET /games.json
   def index
@@ -158,11 +161,11 @@ class GamesController < ApplicationController
   # For setting the game as final (complete, over, finito).
   # Requires admin
   def finalize
-    if current_user && current_user.admin?
+    if current_user && current_user.admin? # Is this needed?
       @game = Game.find(params[:id])
       @game.final = true
       @game.save
-      recalculate_points
+      recalculate_points_fast
 
       respond_to do |format|
         format.html { redirect_to games_url }
