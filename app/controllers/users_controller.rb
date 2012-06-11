@@ -116,7 +116,7 @@ class UsersController < ApplicationController
   end
   
   def setup_latest_game_tip_hash
-    @latest_games = Game.where('kickoff < ?', Time.zone.now).order("kickoff").limit(5)
+    @latest_games = Game.where('kickoff < ?', Time.zone.now).order("kickoff DESC").limit(5)
     @latest_game_tip_hash = Hash.new
     @latest_games.each do |g|
       @latest_game_tip_hash[g.id] = Hash.new
