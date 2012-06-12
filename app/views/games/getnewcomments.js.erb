@@ -4,4 +4,5 @@
 		$("#game_container #<%= g.id %> .nbr_game_comments").text($("#game_container #<%= g.id %> .game_comment_list").children().length + " kommentarer på matchen.");
 	<% end %>
 	$("#game_container").attr("data-time", "<%= @last_comment.updated_at.to_i %>");
+	$('#game_container').isotope('reLayout');	
 <% end %>
