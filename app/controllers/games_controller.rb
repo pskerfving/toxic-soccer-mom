@@ -142,6 +142,9 @@ class GamesController < ApplicationController
 
   def ajax_update_tip
     @game = Game.find(params[:id])
+    if @game.started? then
+      raise
+    end
     team = params[:team]
     adjust = params[:adjust]
     @tip = Tip.find(:first, :conditions => ["user_id = ? and game_id = ?", current_user.id, @game.id])
