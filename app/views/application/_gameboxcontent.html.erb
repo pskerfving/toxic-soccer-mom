@@ -94,42 +94,32 @@
 				</tr>
 			</table>
 		</div>
-		<div class="game_section game_tip_results game_comments">
+		<div class="game_section game_tip_results expand_content">
 			<div>
-		    	<div class="nbr_game_comments"><%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %></div>
-				<a href="#" class="show_game_comments_button">Visa</a>
+		    	<div class="wall_of_honor_header"><%= game.final? ? "Wall of honor... " : "Vinnare (just nu)... " %></div>
+				<a href="#" class="show_expand_button">Visa</a>
 				<div style="clear:both"></div>
 			</div>
-			<div class="game_comment_list wall_of_honor_list">
+			<div class="wall_of_honor_list expand_list">
 				<%= render :partial => 'wallofhonorlist', :locals => { :honorable_hash => @honorable_hash, :game => game } %>
 			</div>
     	</div>
 		<% end %>
 
-    <div class="game_section game_comments">
+    <div class="game_section game_comments expand_content">
 		<div class="game_comment_header">
 			<% comments = game.comments %>
 	    	<div class="nbr_game_comments"><%= comments.count %> kommentarer på matchen.</div>
-			<a href="#" class="show_game_comments_button">Visa</a>
+			<a href="#" class="show_expand_button">Visa</a>
 			<div style="clear:both"></div>
 		</div>
-		<div class="game_comment_list">
-			<% comments.each do |c| %>
-			<div class="game_comment">
-				<div class="game_commenter"><%= link_to c.user.name, user_path(c.user) %> skrev:</div>
-				<div class="game_comment_content"><%= c.content %></div>
-				<% if current_user && c.user == current_user %>
-				<div class="game_comment_edit">
-				<%= link_to "Ändra", edit_polymorphic_path([game, c]) %>  <%= link_to "Ta bort", polymorphic_path([game, c]), method: :delete %>
-				</div>
-				<% end %>
-			</div>
-			<% end %>
-			<div class="game_comment_footer">
+		<div class="game_comment_list expand_list">
+			<%= render :partial => 'gamecomments', :locals => { :comments => comments, :game => game } %>
+		</div>
+		<div class="game_comment_footer">
 			<% if current_user %>
 			<%= link_to 'Skriv en kommentar', polymorphic_path([game, :comments]) %>
 			<% end %>
-			</div>
 		</div>
     </div>
 	<% if current_user && current_user.admin? %>

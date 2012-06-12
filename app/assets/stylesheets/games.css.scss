@@ -65,9 +65,10 @@
 }
 
 
-.show_game_comments_button {
+.show_expand_button {
 	font-size:10px;
 	font-weight:bold;
+	float:right;
 }
 
 .wall_of_honor_user {
@@ -99,13 +100,9 @@
 	padding:3px;
 }
 
-.nbr_game_comments {
+.nbr_game_comments, .wall_of_honor_header {
 	width:auto;
 	float:left;
-}
-
-.show_game_comments_button {
-	float:right;
 }
 
 .game_comment_edit {

@@ -29,6 +29,11 @@
 		if($(".game_ongoing").length > 0) {
 			setTimeout(updateGameBox, 7000);
 		}
+
+		if($("#game_container").length > 0) {
+			setTimeout(updateComments, 15000);
+		}
+
 	});
 
 	function updateGameBox() {
@@ -39,17 +44,24 @@
 		if($(".game_ongoing").length > 0) {
 			setTimeout(updateGameBox, 7000);
 		}
+
 	};
 
+	function updateComments() {
+		var after = $("#game_container").attr("data-time");
+		$.getScript("/getnewcomments.js?after=" + after);
+		setTimeout(updateComments, 15000);
+	}
+
 	function connectHandlers() {
-		$('.game_comment_list').hide();
-		$('.show_game_comments_button').click(function() {
+		$('.expand_list').hide();
+		$('.show_expand_button').click(function() {
 			if ($(this).text() == "Visa") {
 				$(this).text('Göm');
-				$('.game_comment_list', $(this).closest('.game_comments')).show();				
+				$('.expand_list', $(this).closest('.expand_content')).show();
 			} else {
 				$(this).text('Visa');
-				$('.game_comment_list', $(this).closest('.game_comments')).hide();								
+				$('.expand_list', $(this).closest('.expand_content')).hide();
 			}
 			$('#game_container').isotope('reLayout');
 			return false;

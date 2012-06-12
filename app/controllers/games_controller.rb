@@ -17,6 +17,9 @@ class GamesController < ApplicationController
     setup_winners_right_now
     calculate_odds
 
+    # Find the latest comment. For the polling to work.
+    @last_comment = Comment.order("updated_at DESC").first
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
@@ -104,6 +107,13 @@ class GamesController < ApplicationController
       setup_winners_right_now
     end
     
+  end
+
+
+  def getnewcomments
+    # Find the games with new comments.
+    @games = Game.joins(:comments).where("comments.updated_at > ?", Time.at(params[:after].to_i + 1))
+    @last_comment = Comment.order("updated_at DESC").first
   end
 
 
