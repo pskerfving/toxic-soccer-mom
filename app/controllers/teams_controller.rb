@@ -27,6 +27,8 @@ class TeamsController < ApplicationController
     setup_winners_right_now
     calculate_odds
 
+    @last_comment = Comment.order("updated_at DESC").first
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
