@@ -65,7 +65,7 @@
 			}
 			$('#game_container').isotope('reLayout');
 			return false;
-		})
+		});
 	};
 	
 	// Expanding the comments fields of the games view (and closing)
@@ -90,6 +90,13 @@
 					button.closest('.game_result').find('.away_score').text(data.away_score);
 					notification.text("Resultat sparat.");
 				 }, 'json');
+		});
+	});
+	
+	$(document).ready(function (){
+		$('.write_comment_button').click(function() {
+			var game_id = $(this).closest('.game_box').attr('id');
+			$.getScript("/getcommentform.js?game=" + game_id);
 		});
 	});
 

@@ -1,0 +1,24 @@
+$("#game_container #<%= @game.id %> .game_comment_footer").append("<%= raw escape_javascript(render :partial => 'gamecommentform', :locals => { :game => @game }) %>");
+$("#game_container #<%= @game.id %> .write_comment_button").hide();
+
+$(".button").click(function() {  
+    // validate and process form here
+	var message = $("#<%= @game.id %> textarea#game_comment_textarea").val();
+	var dataStr = "comment[content]=" + message;
+	$.ajax({
+	  type: "POST",
+	  url: "/games/<%= @game.id %>/comments",
+	  data: dataStr,
+	  success: function() {
+		// Ta bort formuläret
+		$("#game_container #<%= @game.id %> .game_comment_form").remove();
+		$("#game_container #<%= @game.id %> .write_comment_button").show();
+		// Lägg in den nya kommentaren i sidan
+		var after = $("#game_container").attr("data-time");
+		$.getScript("/getnewcomments.js?after=" + after);
+	  }  
+	});  
+	return false;
+});
+
+$('#game_container').isotope('reLayout');

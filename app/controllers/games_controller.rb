@@ -109,13 +109,17 @@ class GamesController < ApplicationController
     
   end
 
-
+  # Varför ligger denna här? Det beror egentligen mest på att den används i game#index och liknande.
   def getnewcomments
-    # Find the games with new comments.
+    # Find games with new comments.
     @games = Game.joins(:comments).where("comments.updated_at > ?", Time.at(params[:after].to_i + 1))
-    @last_comment = Comment.order("updated_at DESC").first
+    # Find the latest comment for generating a new timestamp.
+    @last_comment = Comment.order("updated_at DESC").first 
   end
 
+  def getcommentform
+    @game = Game.find(params[:game])
+  end
 
   def ajax_update_score
     @game = Game.find(params[:id])

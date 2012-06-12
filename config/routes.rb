@@ -52,6 +52,7 @@ Uefa::Application.routes.draw do
 
   get '/getgamebox', :to => 'Games#getgamebox'
   get '/getnewcomments', :to => 'Games#getnewcomments'
+  get '/getcommentform', :to => 'Games#getcommentform'
 
 
   # The priority is based upon order of creation:
