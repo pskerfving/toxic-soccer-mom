@@ -12,11 +12,15 @@ $(".button").click(function() {
 	  success: function() {
 		// Ta bort formuläret
 		$("#game_container #<%= @game.id %> .game_comment_form").remove();
+		
+		// Visa länken
 		$("#game_container #<%= @game.id %> .write_comment_button").show();
+
 		// Lägg in den nya kommentaren i sidan
 		var after = $("#game_container").attr("data-time");
 		$.getScript("/getnewcomments.js?after=" + after);
-	  }  
+		return false;
+	  }
 	});  
 	return false;
 });

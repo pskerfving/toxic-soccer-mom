@@ -106,9 +106,24 @@
 }
 
 textarea {
-	width:185px;
+	width:183px;
 	height: 100px;
 	resize:none;
+}
+
+.button {
+	background-color:rgb(251, 220, 45);
+	border-color:rgb(251, 220, 45);
+	border-width:1px;
+	font-family:Helvetica;
+	font-weight:bold;
+	float:right;
+}
+
+.game_comment_textarea {
+	background-color:rgb(251, 220, 45);
+	border-color:rgb(251, 220, 45);
+	border-width:1px;
 }
 
 .game_comment_edit {
