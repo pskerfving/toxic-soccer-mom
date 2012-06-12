@@ -139,7 +139,7 @@ class ApplicationController < ActionController::Base
     @honorable_hash = Hash.new
     @games.each do |g|
       if g.started?
-        tips = Tip.where("game_id =? and home_score = ? and away_score = ?", g.id, g.home_score, g.away_score)
+        tips = Tip.joins(:user).where("game_id =? and home_score = ? and away_score = ?", g.id, g.home_score, g.away_score).order("users.points")
         @honorable_hash[g.id] = tips
       end
     end
