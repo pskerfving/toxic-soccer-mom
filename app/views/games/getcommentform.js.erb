@@ -2,19 +2,19 @@ $("#game_container #<%= @game.id %> .game_comment_footer").append("<%= raw escap
 $("#game_container #<%= @game.id %> .write_comment_button").hide();
 
 $(".button").click(function() {  
-    // validate and process form here
 	var message = $("#<%= @game.id %> textarea#game_comment_textarea").val();
 	var dataStr = "comment[content]=" + message;
+
+	// Ta bort formuläret
+	$("#game_container #<%= @game.id %> .game_comment_form").remove();	
+	// Visa länken
+	$("#game_container #<%= @game.id %> .write_comment_button").show();
+
 	$.ajax({
 	  type: "POST",
 	  url: "/games/<%= @game.id %>/comments",
 	  data: dataStr,
 	  success: function() {
-		// Ta bort formuläret
-		$("#game_container #<%= @game.id %> .game_comment_form").remove();
-		
-		// Visa länken
-		$("#game_container #<%= @game.id %> .write_comment_button").show();
 
 		// Lägg in den nya kommentaren i sidan
 		var after = $("#game_container").attr("data-time");
