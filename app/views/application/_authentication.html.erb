@@ -1,7 +1,7 @@
 <span id="login" class="nav_item">
 	<% if current_user %>
 	<span id="user_name">
-		<%= current_user.name %>
+		<%= current_user.name %> (<%= current_user.points %>)
 		</span>
 		<%= link_to "Logga ut", "/logout" %>
 	<% else %>
