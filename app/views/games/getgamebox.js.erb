@@ -6,4 +6,5 @@
 	<% if @games.first.final? %>
 		$(".game_ongoing").removeClass('game_ongoing');
 	<% end %>
+	$('#game_container').isotope('reLayout');
 <% end %>
