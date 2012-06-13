@@ -11,11 +11,18 @@
 
 <p>
   <b>Goal scorer:</b>
-  <%= @winners_tip.goal_scorer %>
+	<% if @winners_tip.topscorer_player %>
+		<%= @winners_tip.topscorer_player.name %>
+	<% else %>
+		<%= @winners_tip.goal_scorer %>
+	<% end %>
 </p>
 
 <p>
   <b>First swedish scorer:</b>
-  <%= @winners_tip.first_swedish_scorer %>
+	<% if @winners_tip.firstswedish_player %>
+		<%= @winners_tip.firstswedish_player.name %>
+	<% else %>
+		<%= @winners_tip.first_swedish_scorer %>
+	<% end %>
 </p>
-

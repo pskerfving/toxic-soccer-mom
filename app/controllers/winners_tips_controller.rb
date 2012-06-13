@@ -48,6 +48,7 @@ class WinnersTipsController < ApplicationController
   # GET /winners_tips/1/edit
   def edit
     setup_selectable_teams
+    @players = Player.order("name")
   end
 
   # POST /winners_tips

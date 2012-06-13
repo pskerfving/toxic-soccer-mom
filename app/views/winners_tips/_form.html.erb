@@ -25,11 +25,13 @@
   <div class="field">
     Skyttekung<br />
     <%= f.text_field :goal_scorer %>
+	<%= f.select :topscorer_player_id, @players.collect {|p| [p.name, p.id]} %>	
   </div>
 
   <div class="field">
     Förste svenske målskytt<br/>
     <%= f.text_field :first_swedish_scorer %>
+	<%= f.select :firstswedish_player_id, @players.collect {|p| [p.name, p.id]} %>	
   </div>
 
   <div class="actions">

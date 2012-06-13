@@ -77,7 +77,9 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        recalculate_points
+        if @game.final? then
+          recalculate_points
+        end
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { head :no_content }
       else

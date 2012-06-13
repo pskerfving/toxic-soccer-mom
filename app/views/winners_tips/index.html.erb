@@ -30,8 +30,20 @@
 	<td class="right_adjust"><strong><%= winners_tip.user.points %></strong></td>
     <td><%= winners_tip.winning_team.country %></td>
     <td><%= winners_tip.runner_up.country %></td>
-    <td><%= winners_tip.goal_scorer %></td>
-    <td><%= winners_tip.first_swedish_scorer %></td>
+    <td>
+		<% if winners_tip.topscorer_player %>
+			<%= winners_tip.topscorer_player.name %>
+		<% else %>
+			<%= winners_tip.goal_scorer %>
+		<% end %>
+	</td>
+    <td>
+		<% if winners_tip.firstswedish_player %>
+			<%= winners_tip.firstswedish_player.name %>
+		<% else %>
+			<%= winners_tip.first_swedish_scorer %>
+		<% end %>
+	</td>
 	<% if current_user && current_user.admin? %>
     <td><%= link_to 'Show', winners_tip %></td>
     <td><%= link_to 'Edit', edit_winners_tip_path(winners_tip) %></td>
