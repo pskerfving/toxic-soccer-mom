@@ -4,7 +4,8 @@
   <tr>
     <th>#</th>	
     <th>Namn</th>
-	<th>Poäng</th>
+	<th>Total poäng</th>
+	<th>Poäng grundtips</th>
     <th>Vinnande lag</th>
     <th>Finalist</th>
     <th>Skyttekung</th>
@@ -28,6 +29,7 @@
 	<td><%= place %></td>
     <td><%= link_to winners_tip.user.name, winners_tip.user %></td>
 	<td class="right_adjust"><strong><%= winners_tip.user.points %></strong></td>
+	<td class="right_adjust"><strong><%= winners_tip.points %></strong></td>
     <td><%= winners_tip.winning_team.country %></td>
     <td><%= winners_tip.runner_up.country %></td>
     <td>

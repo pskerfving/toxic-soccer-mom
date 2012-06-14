@@ -9,7 +9,7 @@ class WinnersTipsController < ApplicationController
   # GET /winners_tips
   # GET /winners_tips.json
   def index
-    @winners_tips = WinnersTip.joins(:user).order("users.points DESC, name ASC")
+    @winners_tips = WinnersTip.joins(:user).order("users.points DESC, name ASC").where(:key => false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,6 +80,16 @@ class WinnersTipsController < ApplicationController
 
     respond_to do |format|
       if @winners_tip.update_attributes(params[:winners_tip])
+        if @winners_tip.key?
+          # We are saving the key ->
+          # Recalculate all winnerstip points
+          tips = WinnersTip.where(:key => false)
+          tips.each do |i|
+            i.points = i.caluculate_winners_points(@winners_tip)
+            i.save
+          end
+          recalculate_points
+        end
         format.html { redirect_to @user, notice: 'Ditt tips har sparats.' }
         format.json { head :no_content }
       else
@@ -100,6 +110,23 @@ class WinnersTipsController < ApplicationController
     end
   end
 
+  def winnerstipskey
+    @winners_tip = WinnersTip.where(:key => true).first
+    if !@winners_tip then
+      @winners_tip = WinnersTip.new
+      @winners_tip.user = current_user
+      @winners_tip.winning_team_id = 0
+      @winners_tip.runner_up_id = 0
+      @winners_tip.topscorer_player_id = 0
+      @winners_tip.firstswedish_player_id = 0
+      @winners_tip.key = true
+      @winners_tip.save
+    end
+
+    redirect_to edit_winners_tip_path(@winners_tip)
+
+  end
+
   # Remove all placeholders so they are not shown in the selectboxes.
   def setup_selectable_teams
     @teams = Team.find(:all, :order => "country")
@@ -109,6 +136,11 @@ class WinnersTipsController < ApplicationController
   # Before_filter to assure that you do not update someone elses tips.
   def users_own_winners_tip_required
     @winners_tip = WinnersTip.find(params[:id])
+    if current_user && current_user.admin?
+      @user = current_user
+      return
+    end
+
     @user = User.find(@winners_tip.user)
 
     if @user != current_user && current_user && !current_user.admin?

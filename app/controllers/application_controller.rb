@@ -59,18 +59,27 @@ class ApplicationController < ActionController::Base
   # TODO: Add the winners_tips to the calculation
   # TODO: Check that all this saving is efficient
   def recalculate_points
-    # First, clear the points for all users
+    # First, clear the points for all users and add any winners_tips points.
     users = User.all
-    users.each { |u| u.points = 0; u.save }
+    users.each do |u|
+      u.points = 0
+      if u.admin?
+        # If we don't do this, there is a risk that we get the key and not "the other" winners_tip
+        u.winners_tip = WinnersTip.where(:user_id => u.id, :key => false).first
+      end
+      if u.winners_tip
+        u.points = u.winners_tip.points
+      end
+      u.save
+    end
 
+    # Loop through all games and add the points
     games = Game.all
     games.each do |game|
       if game.final? then
         tips = game.tips
         tips.each do |tip|
-          tip.points = calculate_tip_points(tip)
           tip.user.points += tip.points
-          tip.save
           tip.user.save
         end
       end
@@ -79,6 +88,7 @@ class ApplicationController < ActionController::Base
 
   # Do a faster recaluculate points. Based on the assumption that all users have the right number of points.
   # Only the game in @game is considered.
+  # This is always used when a game ends -> recalculate_points assumes that the tips for all final games have points calculated and stored.
   def recalculate_points_fast
     if @game.final? then
       tips = @game.tips

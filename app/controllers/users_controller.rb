@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @tips = Tip.joins(:user, :game).where(:user_id => params[:id]).order("kickoff") # Lite krångligt för att kunna sortera på kickoff.
-    @winners_tip = @user.winners_tip
+    @winners_tip = WinnersTip.where(:user_id => @user.id, :key => false).first
     @first_game_started = first_game_started?    # För att komma åt fr vy. Fattar inte riktigt hur scopen funkar.
 
     respond_to do |format|
