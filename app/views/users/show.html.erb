@@ -24,11 +24,23 @@
 		</tr>
 		<tr>
 			<td>Skyttekung</td>
-			<td class="loose_table_row"><%= @winners_tip.goal_scorer %></td>
+			<td class="loose_table_row">
+			<% if @winners_tip.topscorer_player %>
+				<%= @winners_tip.topscorer_player.name %>
+			<% else %>
+				<%= @winners_tip.goal_scorer %>
+			<% end %>
+			</td>
 		</tr>
 		<tr>
 			<td>Första svenska målskytt</td>
-			<td class="loose_table_row"><%= @winners_tip.first_swedish_scorer %></td>
+			<td class="loose_table_row">
+			<% if @winners_tip.firstswedish_player %>
+				<%= @winners_tip.firstswedish_player.name %>
+			<% else %>
+				<%= @winners_tip.first_swedish_scorer %>
+			<% end %>
+			</td>
 		</tr>
 	</table>
 		<% if current_user && current_user == @user && !@first_game_started && @user.cleared? %>
