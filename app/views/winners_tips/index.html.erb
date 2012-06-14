@@ -34,14 +34,14 @@
 		<% if winners_tip.topscorer_player %>
 			<%= winners_tip.topscorer_player.name %>
 		<% else %>
-			<%= winners_tip.goal_scorer %>
+			<%= winners_tip.goal_scorer %>*
 		<% end %>
 	</td>
     <td>
 		<% if winners_tip.firstswedish_player %>
 			<%= winners_tip.firstswedish_player.name %>
 		<% else %>
-			<%= winners_tip.first_swedish_scorer %>
+			<%= winners_tip.first_swedish_scorer %>*
 		<% end %>
 	</td>
 	<% if current_user && current_user.admin? %>
