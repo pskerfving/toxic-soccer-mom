@@ -113,6 +113,7 @@ class GamesController < ApplicationController
 
   # Varför ligger denna här? Det beror egentligen mest på att den används i game#index och liknande.
   def getnewcomments
+    return
     # Find games with new comments.
     @games = Game.joins(:comments).where("comments.updated_at > ?", Time.at(params[:after].to_i + 1))
     # Find the latest comment for generating a new timestamp.
