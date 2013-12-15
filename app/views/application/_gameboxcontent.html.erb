@@ -1,8 +1,8 @@
-	<div class="game_datetime">
+	<div class="game_section game_datetime">
 		<% if game.cup_name && !game.cup_name.empty? %> <div> <%= game.cup_name %> </div><% end %>
 		<%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %>
 	</div>
-	<div class="game_result">
+	<div class="game_section game_result">
    		<div class="game_home">
         	<div class="game_team"><%= game.home_team.placeholder ? game.home_team.abbreviation : link_to(game.home_team.abbreviation, game.home_team) %></div>
 			<% if game.started? && !(current_user && current_user.admin? && game.ongoing?) %>
@@ -81,7 +81,7 @@
 		<% if game.started? %>
 	   	<div class="game_section game_tip_results game_odds">
 			Matchens odds:
-			<table class="game_odds_table">
+			<table class="table game_odds_table">
 				<tr class="game_odds_table_header">
 					<th>1</th>
 					<th>X</th>

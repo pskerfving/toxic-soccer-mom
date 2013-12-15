@@ -16,6 +16,10 @@ class StatsController < ApplicationController
         redirect_to games_path
       end
     end
+    
+    # Get the leaders for the sidebar
+    @leaders = User.order("points DESC").limit(10)
+
   end
 
   def time_until_wine_deadline

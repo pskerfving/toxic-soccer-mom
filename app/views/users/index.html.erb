@@ -1,5 +1,6 @@
 <div class="title_box">
-	<h1>Topplistan</h1>
+	<h1>Topplista</h1>
+	<% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
 	<% if current_user && current_user.admin? %>
 		<span class="nav_item"><%= User.all.length %> anmälda</span> |
 		<span class="nav_item"> <%= link_to "Visa godkända", users_path %> </span> | <span class="nav_item"> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
@@ -7,12 +8,14 @@
 	<% if @first_game_started %>
 		<span class="nav_item"> <%= link_to "Visa alla grundtips", winners_tips_path %></span>
 	<% end %>
+	<% if !@predicted && @game_ongoing %> | <span class="nav_item"><%= link_to "Om resultatet står sig", :controller => "users", :show => "predicted" %></span><% end %>
+	<% if @predicted %> | <span class="nav_item"><%= link_to "Aktuell ställning", users_path %></span><% end %>
 </div>
 
 
 <div id="main_content">
 
-<table>
+<table class="table">
   <tr class="table_header_row">
 	<th>#</th>
     <th>Namn</th>
@@ -23,7 +26,11 @@
 	<% end %>
     <th>Poäng</th>
 	<% @latest_games.each do |g| %>
-	<th><%= g.name %></th>
+	<% if g.ongoing? %>
+		<th><%= g.name %></th>
+	<% else %>
+		<th class="hidden-xs"><%= g.name %></th>
+	<% end %>
 	<% end %>
 	<% if current_user && current_user.admin? %>
     <th></th>
@@ -48,12 +55,16 @@
     <td><%= user.cleared %></td>
     <td><%= user.wine %></td>
 	<% end %>
-	<td class="right_adjust"><strong><%= user.points %></strong></td>
+	<% if @predicted %>
+		<td class="right_adjust"><strong><%= user.predicted %> (<%= user.points %>)</strong></td>
+	<% else %>
+		<td class="right_adjust"><strong><%= user.points %></strong></td>
+	<% end %>
 	<% @latest_games.each do |g| %>
 		<% if g.ongoing? %>
 			<%= tag("td", {:class => "center_adjust table_game_ongoing"}, true) %>
 		<% else %>
-			<td class="center_adjust">
+			<td class="center_adjust hidden-xs">
 		<% end %>
 		<% t = @latest_game_tip_hash[g.id][user.id] %>
 		<%= t ? "#{t.home_score} - #{t.away_score}" : "-"%>

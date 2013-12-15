@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user
-  
+
   def current_user
     if session[:user_id]
       current_user ||= User.find(session[:user_id])
@@ -99,30 +99,6 @@ class ApplicationController < ActionController::Base
         tip.user.save
       end
     end
-  end
-
-
-  def calculate_tip_points(t)
-    if (t.home_score == t.game.home_score) && (t.away_score == t.game.away_score)
-      return 3
-    end
-    if game_token(t.home_score, t.away_score) == game_token(t.game.home_score, t.game.away_score)
-      return 2
-    end
-    return 0
-  end
-
-  def game_token(home, away)
-    # token 1, function returns -1
-    # token X, function returns 0
-    # token 2, function returns 1
-    if (away - home) < 0
-      return -1
-    end
-    if (away - home) > 0
-      return 1
-    end
-    return 0
   end
 
 

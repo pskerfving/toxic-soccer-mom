@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424145359) do
+ActiveRecord::Schema.define(:version => 20131215081504) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(:version => 20120424145359) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "players", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.text     "content"
@@ -92,21 +98,33 @@ ActiveRecord::Schema.define(:version => 20120424145359) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.boolean  "admin"
     t.boolean  "cleared"
     t.integer  "points"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.boolean  "wine"
+    t.integer  "predicted"
+    t.integer  "approved_by_id"
+    t.datetime "approved_at"
+    t.integer  "wine_by_id"
+    t.datetime "wine_at"
   end
 
   create_table "winners_tips", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "winning_team"
-    t.integer  "runner_up"
+    t.integer  "winning_team_id"
+    t.integer  "runner_up_id"
     t.string   "goal_scorer"
     t.string   "first_swedish_scorer"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "topscorer_player_id"
+    t.integer  "firstswedish_player_id"
+    t.integer  "points"
+    t.boolean  "key",                    :default => false
   end
 
 end

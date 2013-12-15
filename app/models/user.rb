@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :tips
   has_one :winners_tip
 
+  belongs_to :approved_by, :class_name => "User", :foreign_key => "approved_by_id"
+  belongs_to :wine_by, :class_name => "User", :foreign_key => "wine_by_id"
+
   has_many :authorizations
 
   validates :name, :email, :presence => true

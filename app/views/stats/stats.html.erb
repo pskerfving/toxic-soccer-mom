@@ -1,58 +1,58 @@
-<div id="bosse">
-	Bosse
-</div>
-<div id="main_content">
-	<div class="title_box">
+<div class="jumbotron">
+  <h1>Longos Brasil ao vivo!</h1>
+  <p>Festen har börjat. Dax att tippa igen!</p>
 	<table class="stats">
 	<% if current_user %>
 		<tr>
-			<td><h1>Du har ett konto. <span class="stat">Bra.</span></h1></td>
+			<td><h2>Du har ett konto. <span class="stat">Bra.</span></h2></td>
 		</tr>
 		<tr>
 			<td>
 			<% if !@winnerstip.empty? %>
-				<h1>Du har lämnat grundtips. <span class="stat">Bra.</span></h1>
+				<h2>Du har lämnat grundtips. <span class="stat">Bra.</span></h2>
 			<% else %>
-				<h1>Du har inget grundtips. <span class="stat">Inte så bra.</span></h1>
+				<h2>Du har inget grundtips. <span class="stat">Inte så bra.</span></h2>
 			<% end %>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			<% if !@tips.empty? %>
-				<h1>Du har börjat tippa matcher. <span class="stat">Bra.</span></h1>
+				<h2>Du har börjat tippa matcher. <span class="stat">Bra.</span></h2>
 			<% else %>
-				<h1>Du har inte börjat tippa matcher. <span class="stat">Inte så bra.</span></h1>
+				<h2>Du har inte börjat tippa matcher. <span class="stat">Inte så bra.</span></h2>
 			<% end %>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			<% if @wine %>
-				<h1>Du har lämnat in vin. <span class="stat">Bra.</span></h1>
+				<h2>Du har lämnat in vin. <span class="stat">Mycket bra.</span></h2>
 			<% else %>
-				<h1>Du har inte lämnat in vin. <span class="stat">Inte så bra.</span></h1>
+				<h2>Du har inte lämnat in vin. <span class="stat">Inte alls bra.</span></h2>
 			<% end %>
 			</td>
 		</tr>		
 	<% else %>
 		<tr>
-			<td class="stat"><h1><%= @nbr_users %></h1></td>
-			<td><h1>tippare anmälda.</h1></td>
+			<td><h2><%= @nbr_users %></h2></td>
+			<td><h2>tippare anmälda.</h2></td>
 		</tr>
 		<tr>
-			<td class="stat"><h1><%= @nbr_tips %></h1></td>
-			<td><h1>har börjat tippa.</h1></td>
+			<td><h2><%= @nbr_tips %></h2></td>
+			<td><h2>har börjat tippa.</h2></td>
 		</tr>
 		<tr>
-			<td class="stat"><h1><%= @nbr_wine %></h1></td>
-			<td><h1>har lämnat in vin.</h1></td>
+			<td><h2><%= @nbr_wine %></h2></td>
+			<td><h2>har lämnat in vin.</h2></td>
 		</tr>
 		<tr>
-			<td class="stat"><h1><%= @nbr_days_wine %></h1></td>
-			<td><h1>dagar kvar att göra rätt för sig.</h1><h1>Sen säger Bosse: "Haj me' daj"</h1></td>
+			<td><h2><%= @nbr_days_wine %></h2></td>
+			<td><h2>dagar kvar att göra rätt för sig.</h2></td>
 		</tr>
 	<% end %>
 </table>
-	</div>
+
 </div>
+
+

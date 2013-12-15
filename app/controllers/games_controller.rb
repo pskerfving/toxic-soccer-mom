@@ -5,7 +5,6 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.order("kickoff")
     if params[:show] == "upcoming"
       @games = Game.where(:final => false).order("kickoff")
     else
@@ -16,6 +15,9 @@ class GamesController < ApplicationController
     setup_user_tips_hash
     setup_winners_right_now
     calculate_odds
+
+    # Get the leaders for the sidebar
+    @leaders = User.order("points DESC").limit(10)
 
     # Find the latest comment. For the polling to work.
     @last_comment = Comment.order("updated_at DESC").first
@@ -136,9 +138,39 @@ class GamesController < ApplicationController
     end
     @game.save
 
+    recalculate_predicted
+
     respond_to do |format|
       format.html { redirect_to games_url }
       format.json { render json: @game }
+    end
+  end
+
+  # Recalculate the predicted points if the score of ongoing games does not change.
+  def recalculate_predicted
+
+    # reset predicted to actual standing
+    users = User.all
+    users.each do |u|
+      if u.predicted != u.points
+        u.predicted = u.points
+        u.save
+      end
+    end
+
+    # find the ongoing games and iterate over them
+    games = Game.where("kickoff < ? AND final <> true", Time.zone.now)
+    games.each do |g|
+      # get all tips for each game and interate of the tips
+      tips = g.tips
+      tips.each do |t|
+        # update the predicted with the result form the ongoing game
+        predict = calculate_tip_points(t)
+        if predict != 0
+          t.user.predicted += predict
+          t.user.save
+        end
+      end
     end
   end
 
@@ -149,6 +181,9 @@ class GamesController < ApplicationController
     end
     team = params[:team]
     adjust = params[:adjust]
+    if current_user == nil
+      raise "************************** current_user is NIL!"
+    end
     @tip = Tip.find(:first, :conditions => ["user_id = ? and game_id = ?", current_user.id, @game.id])
     if !@tip
       # The user has not made a tip for this game
@@ -176,6 +211,29 @@ class GamesController < ApplicationController
     end
   end
 
+  def calculate_tip_points(t)
+    if (t.home_score == t.game.home_score) && (t.away_score == t.game.away_score)
+      return 3
+    end
+    if game_token(t.home_score, t.away_score) == game_token(t.game.home_score, t.game.away_score)
+      return 2
+    end
+    return 0
+  end
+
+  def game_token(h, a)
+    # token 1, function returns -1
+    # token X, function returns 0
+    # token 2, function returns 1
+    if (a - h) < 0
+      return -1
+    end
+    if (a - h) > 0
+      return 1
+    end
+    return 0
+  end
+
   # PUT /games/1/finalize
   # For setting the game as final (complete, over, finito).
   # Requires admin
@@ -192,5 +250,5 @@ class GamesController < ApplicationController
       end
     end
   end
-    
+
 end

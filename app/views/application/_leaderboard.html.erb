@@ -1,0 +1,26 @@
+<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+<h2>Leaderboard</h2>
+<table class="table">
+  <tr class="table_header_row">
+	<th>#</th>
+    <th>Namn</th>
+    <th>Poäng</th>
+  </tr>
+
+<% i = 1 %>
+<% place = 1 %>
+<% prev_pts = -1 %>
+
+<% @leaders.each do |user| %>
+  <tr class="table_row <%= if user == current_user then "me" end %>">
+	<% if user.points != prev_pts then place = i end %>
+	<% prev_pts = user.points%>
+	<% i += 1 %>
+	<td><%= place %></td>
+    <td><%= link_to user.name, user %></td>
+	<td class="right_adjust"><strong><%= user.points %></strong></td>
+  </tr>
+<% end %>
+</table>
+
+</div><!--/span-->

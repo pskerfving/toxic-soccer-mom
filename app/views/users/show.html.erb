@@ -13,17 +13,17 @@
 
 <% if @first_game_started || (@user == current_user) %>
 	<% if @winners_tip %>
-	<table>
+	<table class="table">
 		<tr>
-			<td>Vinnande lag</td>
+			<td><strong>Vinnande lag</strong></td>
 			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.winning_team).country %></td>
 		</tr>
 		<tr>
-			<td>Finalist</td>
+			<td><strong>Finalist</strong></td>
 			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.runner_up).country %></td>
 		</tr>
 		<tr>
-			<td>Skyttekung</td>
+			<td><strong>Skyttekung</strong></td>
 			<td class="loose_table_row">
 			<% if @winners_tip.topscorer_player %>
 				<%= @winners_tip.topscorer_player.name %>
@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Första svenska målskytt</td>
+			<td><strong>Första svenska målskytt</strong></td>
 			<td class="loose_table_row">
 			<% if @winners_tip.firstswedish_player %>
 				<%= @winners_tip.firstswedish_player.name %>
@@ -70,7 +70,7 @@
 <div class="text_box">
 <h2>Matchtips</h2>
 <% if @tips.length > 0 %>
-<table>
+<table class="table">
   <tr class="table_header_row">
     <th>Match</th>
     <th>Tips</th>

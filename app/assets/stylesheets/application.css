@@ -12,14 +12,37 @@
  *= require_tree .
 */
 
-
 @charset "UTF-8";
 /* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,900);
+@import url(http://fonts.googleapis.com/css?family=Nixie+One);
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	background-image:url('../images/field_bw.jpg');
+	background-attachment:fixed;	
+}
+
+h1, h2 {
+	font-family: 'Nixie One', cursive;
+	font-weight: 900;	
+}
+
+h1 {
+	font-size:64px;
+}
+
+div.jumbotron {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
-*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -41,7 +64,9 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+*/
+
+/* HTML5 display-role reset for older browsers 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -64,8 +89,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/* Where the action is ------------------------------------*/
+*/
+/* Where the action is ------------------------------------
 body {
 	font-family:Helvetica;
 }
@@ -139,9 +164,7 @@ small {
 	font-weight:700;
 	background:url('../images/stripe_trans.png');
 	text-shadow: -1px 0 rgb(251, 220, 45), 0 1px rgb(251, 220, 45), 1px 0 rgb(251, 220, 45), 0 -1px rgb(251, 220, 45)
-/*	background-color:rgb(50, 228, 234); */
 }
-
 .me {
 	background-color:rgb(251, 220, 45);
 }
@@ -306,22 +329,23 @@ th {
 }
 
 table.game_odds_table {
-	color:black;
+//	color:black;
 	margin:5px;
 	width:180px;
-	border:2px solid black;
+	border:0px;
 }
 
 .game_odds_table_header {
 	margin-right:auto;
 	margin-left:auto;
 	font-weight:bold;
-	border-bottom:1px solid black;
+	border-bottom:1px solid gray;
 }
 
 .game_odds_table_header th {
 	margin:5px;
 	padding:3px;
+	text-align:center;
 }
 
 
@@ -330,10 +354,14 @@ table.game_odds_table {
 	padding:3px;
 	text-align:center;
 }
+*/
+
+table.game_odds_table {
+	margin:0px;
+}
 
 .isotope,
 .isotope .isotope-item {
-  /* change duration value to whatever you like */
   -webkit-transition-duration: 0.3s;
      -moz-transition-duration: 0.3s;
       -ms-transition-duration: 0.3s;
@@ -357,7 +385,6 @@ table.game_odds_table {
           transition-property:         transform, opacity;
 }
 
-/**** disabling Isotope CSS3 transitions ****/
 
 .isotope.no-transition,
 .isotope.no-transition .isotope-item,
@@ -368,3 +395,4 @@ table.game_odds_table {
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
+

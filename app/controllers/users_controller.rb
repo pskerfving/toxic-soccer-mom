@@ -2,17 +2,24 @@
 
 class UsersController < ApplicationController
 
-  before_filter :admin_required, :only => [:new, :edit, :update, :create, :destroy]
+  before_filter :admin_required, :only => [:new, :edit, :update, :create, :destroy, :wine, :clear]
 
   def index
-    if params[:show] == "unapproved"
-      @users = User.where(:cleared => false)
-    elsif params[:show] == "unwined"
-      @users = User.where(:wine => false)
+    @predicted = false
+    case params[:show]
+    when "unapproved"
+      @users = User.where(:cleared => false).order("name ASC")
+    when "unwined"
+      @users = User.where(:wine => false).order("name ASC")
+    when "predicted"
+      @predicted = true
+      @users = User.where(:cleared => true).order("predicted DESC, name ASC")
     else
       @users = User.where(:cleared => true).order("points DESC, name ASC")
     end
     setup_latest_game_tip_hash
+    # Any ongoing games right now? To toogle link to the page of predicted standing.
+    @game_ongoing = Game.where("kickoff < ? AND final <> true", Time.zone.now).count > 0
     @first_game_started = first_game_started?
 
     respond_to do |format|
@@ -58,6 +65,8 @@ class UsersController < ApplicationController
   def clear
     @user = User.find(params[:id])
     @user.cleared = true
+    @user.approved_by = current_user
+    @user.approved_at = Time.zone.now
 
     respond_to do |format|
       if @user.save
@@ -73,6 +82,8 @@ class UsersController < ApplicationController
   def wine
     @user = User.find(params[:id])
     @user.wine = true
+    @user.wine_by_id = current_user.id
+    @user.wine_at = Time.zone.now
 
     respond_to do |format|
       if @user.save
