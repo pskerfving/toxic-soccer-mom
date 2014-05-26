@@ -28,6 +28,8 @@ end
 
 gem 'jquery-rails'
 
+gem "therubyracer"
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
