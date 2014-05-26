@@ -1,0 +1,11 @@
+<h1>Dax att betala</h1>
+<p>Det finns två sätt att göra rätt för sig: Lämna in en pava vin till ett värde som inte understiger 140 kr. Eller, betala in 150 kr med hjälp av ett kreditkort och formuläret nedan (vi har lite omkostnader för att hantera betalningen).</p>
+<h2>Men först ett par ord om säkerhet...</h2>
+<p>Vi sparar inget betalningsinformation. Ditt kortnummer och övrig information går direkt från din webbläsare till vår betalningsleverantör (Paymill) utan att vi ser röken av den. Vi får bara reda på när betalningen genomförts. Eftersom vår leverantör tar hand om allt det jobbiga så uppfyller sajten alla PCI-krav och annat sånt IT-tjafs.</p>
+<p><em>Varför använder ni inte HTTPS?</em> Kommunikationen mellan din webbläsare och vår betalninsleverantör är krypterad med vår leverentörs signerade certifikat. Till våra servrar skickas ingen känslig information som behöver skyddas med kryptografi.</p>
+<p><em>Vad händer om någon hackar er databas?</em> Som sagt, vi får varken del av, eller sparar någon betalningsinformation. Så vi kan helt enkelt inte läcka något, till hackare eller någon annan.</p>
+<p>Om du fortfarande inte är övertygad, så kan du alltid lämna in en flaska vin.</p>
+<h2>Så! Nu till det roliga...</h2>
+
+<%= render 'form' %>
+

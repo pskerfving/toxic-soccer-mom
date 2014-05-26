@@ -10,19 +10,21 @@ div.game_box {
 	margin: 0px 20px 20px 0px;
 //	padding: 10px;
 //	background-color: rgba(0, 0, 0, 0.03);
-	color: rgba(70, 70, 70, 1);
+	color: #ffffff;
 }
 
 .game_datetime {
 	font-size:12px;
-	font-weight:700;
+	font-weight:400;
 	padding:5px 5px 5px 10px;
 //	background-color: rgba(0, 0, 0, 0.03);
 //	border-bottom:1px solid rgba(255, 255, 255, 0.5);
 }
 
 .game_cup_name {
-	float:right;
+  font-size:14px;
+  font-weight: 700;
+//	float:right;
 }
 
 .game_result {
@@ -32,14 +34,15 @@ div.game_box {
 }
 
 .game_ongoing .game_result {
-	background:url('../images/stripe_trans.png');
+  background-color: rgba(255, 51, 0, 0.66);
+//	background:url('../images/stripe_trans.png');
 }
 
 .game_team {
 	text-align: center;
 	font-size: 24;
 	font-weight:700;
-	color:#000000;
+	color:white;
 	padding:4px;
 }
 
@@ -53,7 +56,8 @@ div.game_box {
 
 .game_section {
 	margin-top:2px;
-	background-color: rgba(0, 0, 0, 0.03);
+//	background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .game_home {
@@ -117,6 +121,10 @@ div.game_box {
 	float:left;
 }
 
+table.game_odds_table {
+  margin:0px;
+}
+
 textarea {
 	width:183px;
 	height: 100px;
@@ -157,8 +165,9 @@ textarea {
 	float:left;
 	text-align: center;
 	font-size: 18px;
+    font-weight: 900;
 	margin:10px;
-	background-color:#D0D0D0;
+//	background-color:#D0D0D0;
 	color:#FFFFFF;
 	cursor:pointer;
 }

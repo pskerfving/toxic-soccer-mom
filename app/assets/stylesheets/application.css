@@ -18,29 +18,66 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,400,900);
 @import url(http://fonts.googleapis.com/css?family=Nixie+One);
 
+li.nav_user_name {
+    padding:15;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	background-image:url('../images/field_bw.jpg');
-	background-attachment:fixed;	
+	background-image:url('../images/field_dark_2.jpg');
+	background-attachment:fixed;
 }
 
 h1, h2 {
-	font-family: 'Nixie One', cursive;
-	font-weight: 900;	
+	font-family: 'Roboto', cursive;
+	font-weight: 900;
+    color: white;
 }
 
 h1 {
 	font-size:64px;
+    color: white;
+    margin-bottom: 0px;
 }
 
 div.jumbotron {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.jumbotron h1, p {
+    color: white;
+}
+
+div.title_box_nav {
+    color: white;
+    margin-bottom: 40px;
+}
+
+table {
+    color: white;
+}
+
+a {
+    color: white;
+    font-weight: 900;
+}
+
+a:hover {
+    color:gray;
+    font-weight: 900;
 }
 
 
+.me, .table_game_ongoing {
+    background-color: rgba(211, 175, 0, 0.7);
+}
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+li a.attention {
+    color: rgb(255, 51, 0);
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 
@@ -165,9 +202,7 @@ small {
 	background:url('../images/stripe_trans.png');
 	text-shadow: -1px 0 rgb(251, 220, 45), 0 1px rgb(251, 220, 45), 1px 0 rgb(251, 220, 45), 0 -1px rgb(251, 220, 45)
 }
-.me {
-	background-color:rgb(251, 220, 45);
-}
+
 
 #site_logo {
 	float:left;
@@ -356,9 +391,6 @@ table.game_odds_table {
 }
 */
 
-table.game_odds_table {
-	margin:0px;
-}
 
 .isotope,
 .isotope .isotope-item {

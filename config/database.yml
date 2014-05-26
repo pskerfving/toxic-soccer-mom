@@ -5,6 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  host: localhost
   encoding: unicode
   database: uefa_development
   pool: 5

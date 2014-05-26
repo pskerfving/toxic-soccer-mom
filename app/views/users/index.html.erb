@@ -1,6 +1,8 @@
 <div class="title_box">
 	<h1>Topplista</h1>
-	<% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
+  <div class="title_box_nav">
+
+  <% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
 	<% if current_user && current_user.admin? %>
 		<span class="nav_item"><%= User.all.length %> anmälda</span> |
 		<span class="nav_item"> <%= link_to "Visa godkända", users_path %> </span> | <span class="nav_item"> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
@@ -10,8 +12,9 @@
 	<% end %>
 	<% if !@predicted && @game_ongoing %> | <span class="nav_item"><%= link_to "Om resultatet står sig", :controller => "users", :show => "predicted" %></span><% end %>
 	<% if @predicted %> | <span class="nav_item"><%= link_to "Aktuell ställning", users_path %></span><% end %>
-</div>
 
+  </div>
+</div>
 
 <div id="main_content">
 

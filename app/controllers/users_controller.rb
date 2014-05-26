@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
 
-  before_filter :admin_required, :only => [:new, :edit, :update, :create, :destroy, :wine, :clear]
+  before_filter :admin_required, :only => [:new, :create, :destroy, :wine, :clear]
+  before_filter :own_user_or_admin_required, :only => [:update]
 
   def index
     @predicted = false
@@ -44,6 +45,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if !(current_user && @user.id == current_user.id || current_user.admin)
+      redirect_to "/login", notice: 'Logga in som denna användare eller som administratör.'
+    end
   end
 
   def update
@@ -82,7 +86,7 @@ class UsersController < ApplicationController
   def wine
     @user = User.find(params[:id])
     @user.wine = true
-    @user.wine_by_id = current_user.id
+    @user.wine_by = current_user
     @user.wine_at = Time.zone.now
 
     respond_to do |format|

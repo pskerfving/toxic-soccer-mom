@@ -1,0 +1,46 @@
+<form id="payment-form" action="/payments" method="POST">
+
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="payment-errors text-error"></div>
+
+
+  <input class="card-amount-int" type="hidden" value="15000" />
+  <input class="card-currency" type="hidden" value="SEK" />
+
+  <div class="form-row"><label>Card number</label>
+    <input class="card-number" type="text" size="20" /></div>
+
+  <div class="form-row"><label>CVC</label>
+    <input class="card-cvc" type="text" size="4" /></div>
+
+  <div class="form-row"><label>Name</label>
+    <input class="card-holdername" type="text" size="30" /></div>
+
+  <div class="form-row"><label>Expiry date (MM/YYYY)</label>
+    <input class="card-expiry-month" type="text" size="2" />
+    <span></span>
+    <input class="card-expiry-year" type="text" size="4" /></div>
+
+
+  <button class="submit-button" type="submit">Betala 150 kr!</button>
+
+	<input type='hidden' name='user_id' value='<%= current_user.id %>'/>
+
+
+</form>
+
+
+<script type="text/javascript">
+  var PAYMILL_PUBLIC_KEY = '48667398399f6e8f708b4b175f66e051';
+</script>

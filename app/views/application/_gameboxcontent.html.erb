@@ -1,6 +1,6 @@
 	<div class="game_section game_datetime">
-		<% if game.cup_name && !game.cup_name.empty? %> <div> <%= game.cup_name %> </div><% end %>
-		<%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %>
+		<% if game.cup_name && !game.cup_name.empty? %> <div class="game_cup_name"> <%= game.cup_name %> </div><% end %>
+		<div><%= game.kickoff.strftime("%Y-%m-%d, kl %H:%M") %></div>
 	</div>
 	<div class="game_section game_result">
    		<div class="game_home">
@@ -130,6 +130,7 @@
 		<% if game.ongoing? %>
 			<%= link_to "Avsluta matchen", finalize_game_path(game), :method => :put %>
 		<% end %>
+        <%= link_to 'Ta bort', game, confirm: 'Är du säker?', method: :delete %>
 		</div>
 	</div>
 	<% end %>

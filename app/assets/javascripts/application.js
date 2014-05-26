@@ -15,7 +15,6 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require jquery.isotope.min
-//= require jquery.scrolling-parallax
 
 (function($) {
 	

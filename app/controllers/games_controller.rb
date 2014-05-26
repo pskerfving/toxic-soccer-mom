@@ -95,6 +95,7 @@ class GamesController < ApplicationController
   # DELETE /games/1.json
   def destroy
     @game = Game.find(params[:id])
+    @game.comments.destroy_all
     @game.destroy
 
     respond_to do |format|

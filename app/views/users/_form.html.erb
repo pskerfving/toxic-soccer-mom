@@ -17,10 +17,12 @@
     <%= @user.name %>
   </p>
 
-  <p>
-    <b>E-mail:</b>
-    <%= @user.email %>
-  </p>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+	<% if current_user && current_user.admin %>
 
   <div class="field">
     <%= f.label :admin %><br />
@@ -36,7 +38,7 @@
     <%= f.label :points %><br />
     <%= f.number_field :points %>
   </div>
-
+	<% end %>
 
   <div class="actions">
     <%= f.submit "Spara användare" %>

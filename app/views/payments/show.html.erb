@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @payment.user_id %>
+</p>
+
+<p>
+  <b>Paymill payment:</b>
+  <%= @payment.paymill_payment_id %>
+</p>
+
+<p>
+  <b>Paymill token:</b>
+  <%= @payment.paymill_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

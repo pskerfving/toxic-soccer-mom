@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FIFA World Cup 2014</a>
+          <a class="navbar-brand" href="#">FIFA WC 2014</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -56,10 +56,15 @@
 			<% if current_user %>
 			<li><%= link_to "Mina tips", current_user %></li>
 			<% end %>
+            <% if current_user && current_user.cleared && !current_user.wine %>
+                <li><%= link_to "Betala", new_payment_path, :class => "attention" %></li>
+            <% end %>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<% if current_user %>
-			<li><%= current_user.name %> (<%= current_user.points %>)</li>
+            <% user_points = current_user.name %>
+            <% user_points << '(' << current_user.points.to_s << ')' %>
+            <li><%= link_to user_points, current_user, :class=>"nav_user_name" %></li>
 			<li><%= link_to "Logga ut", "/logout" %></li>
 			<% else %>
 			<li><%= link_to "Logga in", "/login" %></li>
@@ -91,7 +96,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; IFKFF Media 2014</p>
       </footer>
 
     </div><!--/.container-->
@@ -103,6 +108,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
   <%= javascript_include_tag "application" %>
     <!-- <script src="offcanvas.js"></script> -->
   </body>

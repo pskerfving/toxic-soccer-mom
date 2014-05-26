@@ -1,5 +1,7 @@
 Uefa::Application.routes.draw do
 
+  resources :payments
+
   resources :players
 
   root :to => 'stats#stats'

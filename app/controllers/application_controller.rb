@@ -27,6 +27,15 @@ class ApplicationController < ActionController::Base
     redirect_to "/login", notice: 'Logga in som administratör.'
   end
 
+  # Check that the user accessing his own records
+  def own_user_or_admin_required
+    if current_user && (current_user.id == User.find(params[:id]) || current_user.admin)
+      return
+    end
+    redirect_to "/login", notice: 'Logga in som denna användare för att ändra uppgifter.'
+  end
+
+
   #TODO: These should be overridden if the user is admin.
 
   # Check that the user is logged in, and that that person has been cleared to place bets
