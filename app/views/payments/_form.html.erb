@@ -18,19 +18,28 @@
   <input class="card-amount-int" type="hidden" value="15000" />
   <input class="card-currency" type="hidden" value="SEK" />
 
-  <div class="form-row"><label>Card number</label>
-    <input class="card-number" type="text" size="20" /></div>
 
-  <div class="form-row"><label>CVC</label>
-    <input class="card-cvc" type="text" size="4" /></div>
+  <table>
+    <tr class="form-row">
+      <td><label>Kortnummer</label></td>
+    <td><input class="card-number" type="text" size="20" /></td>
+    </tr>
 
-  <div class="form-row"><label>Name</label>
-    <input class="card-holdername" type="text" size="30" /></div>
+    <tr class="form-row">
+      <td><label>Namn</label></td>
+      <td><input class="card-holdername" type="text" size="30" /></td>
+    </tr>
 
-  <div class="form-row"><label>Expiry date (MM/YYYY)</label>
-    <input class="card-expiry-month" type="text" size="2" />
-    <span></span>
-    <input class="card-expiry-year" type="text" size="4" /></div>
+    <tr class="form-row">
+      <td><label>CVC</label></td>
+      <td><input class="card-cvc" type="text" size="4" /></td>
+    </tr>
+
+    <tr class="form-row">
+      <td><label>Bäst före (MM/YYYY)</label></td>
+      <td><input class="card-expiry-month" type="text" size="2" /> / <input class="card-expiry-year" type="text" size="4" /></td>
+    </tr>
+  </table>
 
 
   <button class="submit-button" type="submit">Betala 150 kr!</button>

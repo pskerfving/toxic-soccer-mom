@@ -49,7 +49,7 @@ class PaymentsController < ApplicationController
   def create
     # The session has been lost, so we need to reset the user id.
     session[:user_id] = params[:user_id]
-    
+
     @payment = Payment.new
     @payment.paymill_token = params[:paymillToken]
     @payment.user = current_user
@@ -59,6 +59,11 @@ class PaymentsController < ApplicationController
 
     transaction = Paymill::Transaction.create(amount: '15000', currency: 'SEK', description: "Customer: #{current_user.id}", token: @payment.paymill_token)
     @payment.paymill_payment_id = transaction.id
+
+    # Tag the user as eligable to place bets.
+    user = User.find(current_user)
+    user.wine = true
+    user.save
 
     respond_to do |format|
       if @payment.save
