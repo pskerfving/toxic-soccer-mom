@@ -61,6 +61,7 @@
             <% if current_user && current_user.cleared && !current_user.wine %>
                 <li><%= link_to "Betala", new_payment_path, :class => "attention" %></li>
             <% end %>
+            <li><%= link_to "?", '/instructions' %></li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<% if current_user %>
