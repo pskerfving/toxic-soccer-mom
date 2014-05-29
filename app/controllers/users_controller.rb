@@ -3,7 +3,8 @@
 class UsersController < ApplicationController
 
   before_filter :admin_required, :only => [:new, :create, :destroy, :wine, :clear]
-  before_filter :own_user_or_admin_required, :only => [:update]
+  # TODO: Fix so that the user cannot update someone elses email.
+  # before_filter :own_user_or_admin_required, :only => [:update]
 
   def index
     @predicted = false
