@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :authorizations
 
   validates :name, :presence => true
+  validates :email, :uniqueness => true
 
   def send_user_cleared
     if self.cleared?
