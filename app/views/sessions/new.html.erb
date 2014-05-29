@@ -11,11 +11,11 @@
 
 
 <div class="text_box">
-	<h2>FIFA-2014-konto</h2>
+	<h2>VM 2014-konto</h2>
 <p>Vi rekommenderar verkligen inloggning med Facebook/Twitter men i det fall att du är asocial kan du också skapa ett konto direkt hos oss och logga in med detta. (Notera att du loggar in med din email-adress som användarnamn.)</p><br/>
 
 <div class="text_box_lvl2" style="float:left">
-<h3>Skapa konto här...</h3>
+<h2>Skapa konto här...</h2>
 <p><small>Obs! Skapa inget konto här om du vill använda FB!</small></p>
 <%= form_tag "/auth/identity/register" do %>
   <% if @identity && @identity.errors.any? %>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="text_box_lvl2" style="float:left">
-<h3>Logga in här...</h3>
+<h2>Logga in här...</h2>
 <%= form_tag "/auth/identity/callback" do %>
   <div class="field">
     <%= label_tag :auth_key, "E-mail" %><br>

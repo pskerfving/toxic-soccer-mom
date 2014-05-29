@@ -1,6 +1,6 @@
 # coding: UTF-8
 class UserMailer < ActionMailer::Base
-  default from: "support@euro2012.ifkff.org"
+  default from: "support@vm2014.ifkff.org"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -10,17 +10,17 @@ class UserMailer < ActionMailer::Base
   
   def welcome(user)
     @user = user
-    mail :to => user.email, :subject => "euro2012.ifkff.org - Välkommen!"
+    mail :to => user.email, :subject => "vm2014.ifkff.org - Välkommen!"
   end
 
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "euro2012.ifkff.org - Nytt lösenord"
+    mail :to => user.email, :subject => "vm2014.ifkff.org - Nytt lösenord"
   end
 
   def user_cleared(user)
     @user = user
-    mail :to => user.email, :subject => "euro2012.ifkff.org - Godkänd för att tippa"
+    mail :to => user.email, :subject => "vm2014.ifkff.org - Godkänd för att tippa"
   end
 
   def bulk(users, subject, message)

@@ -37,7 +37,7 @@ class WinnersTipsController < ApplicationController
       redirect_to current_user, notice: 'Du har redan sparat ditt grundtips.'
       return
     end
-    setup_selectable_teams
+    setup_selectable_teams_and_players
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,8 +47,7 @@ class WinnersTipsController < ApplicationController
 
   # GET /winners_tips/1/edit
   def edit
-    setup_selectable_teams
-    @players = Player.order("name")
+    setup_selectable_teams_and_players
   end
 
   # POST /winners_tips
@@ -128,9 +127,10 @@ class WinnersTipsController < ApplicationController
   end
 
   # Remove all placeholders so they are not shown in the selectboxes.
-  def setup_selectable_teams
-    @teams = Team.find(:all, :order => "country")
+  def setup_selectable_teams_and_players
+    @teams = Team.order("country")
     @teams.delete_if { |t| t.placeholder? }
+    @players = Player.order("name")
   end
 
   # Before_filter to assure that you do not update someone elses tips.
