@@ -31,7 +31,9 @@ class SessionsController < ApplicationController
       user.save
       session[:user_id] = user.id
       redirect_to :root, :notice => "Nu är du registrerad och inloggad."
-      UserMailer.welcome(user).deliver
+      if user.email != nil
+        UserMailer.welcome(user).deliver
+      end
     end
   end
 
