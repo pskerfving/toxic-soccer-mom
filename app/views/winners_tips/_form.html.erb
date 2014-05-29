@@ -14,7 +14,7 @@
 
 
 	<% teams = @teams.collect {|s| [s.country, s.id]} %>
-	<% players = @players.collect {|s| [s.name, s.id]} %>
+    <% players = @players.collect {|s| [s.name, s.id]} %>
 	<% if @winners_tip.key? %>
 		<h1>Detta är facit</h1>
 		<% teams.insert(0, ["Inte avgjort", 0]) %>
@@ -37,11 +37,13 @@
 	<%= f.select :topscorer_player_id, players %>	
   </div>
 
+<!--
   <div class="field">
     Förste svenske målskytt<br/>
     <%= f.text_field :first_swedish_scorer %>
 	<%= f.select :firstswedish_player_id, players %>
   </div>
+-->
 
   <div class="actions">
     <%= f.submit "Spara Grundtips" %>

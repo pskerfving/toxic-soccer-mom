@@ -41,6 +41,7 @@
 			<% end %>
 			</td>
 		</tr>
+<!--
 		<tr>
 			<td><strong>Första svenska målskytt</strong></td>
 			<td class="loose_table_row">
@@ -51,6 +52,7 @@
 			<% end %>
 			</td>
 		</tr>
+-->
 	</table>
 		<% if current_user && current_user == @user && !@first_game_started && @user.cleared? %>
 			<%= link_to "Ändra grundtips", edit_winners_tip_path(@winners_tip) %>
