@@ -58,9 +58,6 @@
 			<% if current_user %>
 			<li><%= link_to "Mina tips", current_user %></li>
 			<% end %>
-            <% if current_user && current_user.cleared && !current_user.wine %>
-                <li><%= link_to "Betala", new_payment_path, :class => "attention" %></li>
-            <% end %>
             <li><%= link_to "?", '/instructions' %></li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">

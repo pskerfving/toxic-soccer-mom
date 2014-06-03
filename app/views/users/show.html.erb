@@ -12,10 +12,6 @@
 	<p>Du har inte gett oss din mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
 <% end %>
 
-<% if current_user && current_user.id = @user.id && @user.wine == nil %>
-	<p>Du har inte gjort rätt för dig. Lämna in en flaska vin, eller betala <%= link_to "här!", new_payment_path %></p>
-<% end %>
-
 
 <div class="text_box">
 <h2>Grundtips</h2>
