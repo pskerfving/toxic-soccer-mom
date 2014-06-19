@@ -168,4 +168,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def game_token(h, a)
+    # token 1, function returns -1
+    # token X, function returns 0
+    # token 2, function returns 1
+    if (a - h) < 0
+      return -1
+    end
+    if (a - h) > 0
+      return 1
+    end
+    return 0
+  end
+
 end
