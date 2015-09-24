@@ -1,119 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>VM 2014 - Vintips</title>
-
-    <!-- Bootstrap core CSS -->
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-
+<!DOCTYPE HTML>
 <!--
-    <link href="/assets/twitter/bootstrap.css" rel="stylesheet">
-   <link href="/assets/twitter/bootstrap-theme.css" rel="stylesheet">
-   <link href="/assets/twitter/offcanvas.css" rel="stylesheet">
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+<html>
+<head>
+  <title>Ion by TEMPLATED</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/skel-layers.min.js"></script>
+  <script src="js/init.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+  </noscript>
+</head>
+<body id="top">
 
-   <!-- Rails application css -->
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= csrf_meta_tags %>
+<!-- Header -->
+<header id="header" class="skel-layers-fixed">
+  <h1><a href="#">Ion</a></h1>
+  <nav id="nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="left-sidebar.html">Left Sidebar</a></li>
+      <li><a href="right-sidebar.html">Right Sidebar</a></li>
+      <li><a href="no-sidebar.html">No Sidebar</a></li>
+      <li><a href="#" class="button special">Sign Up</a></li>
+    </ul>
+  </nav>
+</header>
 
+<!-- Banner -->
+<section id="banner">
+  <div class="inner">
+    <h2>Vin- & fotbollstips 2016</h2>
+    <p>Nu är det dags igen. Bli medlem. Tippa. Vinn. Drick vin.</p>
+    <ul class="actions">
+      <li><a href="#content" class="button big special">Bli medlem</a></li>
+      <li><a href="#elements" class="button big alt">Logga in</a></li>
+    </ul>
+  </div>
+</section>
 
+<!-- One -->
+<section id="one" class="wrapper style1">
+  <header class="major">
+    <h2>Ipsum feugiat consequat</h2>
+    <p>Tempus adipiscing commodo ut aliquam blandit</p>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="4u">
+        <section class="special box">
+          <i class="icon fa-area-chart major"></i>
+          <h3>Justo placerat</h3>
+          <p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
+        </section>
+      </div>
+      <div class="4u">
+        <section class="special box">
+          <i class="icon fa-refresh major"></i>
+          <h3>Blandit quis curae</h3>
+          <p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
+        </section>
+      </div>
+      <div class="4u">
+        <section class="special box">
+          <i class="icon fa-cog major"></i>
+          <h3>Amet sed accumsan</h3>
+          <p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-    <!-- Custom styles for this template
-    <link href="offcanvas.css" rel="stylesheet">
- 	-->
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">VM 2014</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Matcher", games_path %></li>
-            <li><%= link_to "Topplista", users_path %></li>
-			<% if current_user %>
-			<li><%= link_to "Mina tips", current_user %></li>
-			<% end %>
-            <li><%= link_to "?", '/instructions' %></li>
+<!-- Two -->
+<section id="two" class="wrapper style2">
+  <header class="major">
+    <h2>Commodo accumsan aliquam</h2>
+    <p>Amet nisi nunc lorem accumsan</p>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="6u">
+        <section class="special">
+          <a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
+          <h3>Mollis adipiscing nisl</h3>
+          <p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
+          <ul class="actions">
+            <li><a href="#" class="button alt">Learn More</a></li>
           </ul>
-		  <ul class="nav navbar-nav navbar-right">
-			<% if current_user %>
-            <% user_points = current_user.name %>
-            <% user_points << '(' << current_user.points.to_s << ')' %>
-            <li><%= link_to user_points, current_user, :class=>"nav_user_name" %></li>
-			<li><%= link_to "Logga ut", "/logout" %></li>
-			<% else %>
-			<li><%= link_to "Logga in", "/login" %></li>
-			<% end %>
-	      </ul>
+        </section>
+      </div>
+      <div class="6u">
+        <section class="special">
+          <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+          <h3>Neque ornare adipiscing</h3>
+          <p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
+          <ul class="actions">
+            <li><a href="#" class="button alt">Learn More</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
+<!-- Three -->
+<section id="three" class="wrapper style1">
+  <div class="container">
+    <div class="row">
+      <div class="8u">
+        <section>
+          <h2>Mollis ut adipiscing</h2>
+          <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+          <p>Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.</p>
+        </section>
+      </div>
+      <div class="4u">
+        <section>
+          <h3>Magna massa blandit</h3>
+          <p>Feugiat amet accumsan ante aliquet feugiat accumsan. Ante blandit accumsan eu amet tortor non lorem felis semper. Interdum adipiscing orci feugiat penatibus adipiscing col cubilia lorem ipsum dolor sit amet feugiat consequat.</p>
+          <ul class="actions">
+            <li><a href="#" class="button alt">Learn More</a></li>
+          </ul>
+        </section>
+        <hr />
+        <section>
+          <h3>Ante sed commodo</h3>
+          <ul class="alt">
+            <li><a href="#">Erat blandit risus vis adipiscing</a></li>
+            <li><a href="#">Tempus ultricies faucibus amet</a></li>
+            <li><a href="#">Arcu commodo non adipiscing quis</a></li>
+            <li><a href="#">Accumsan vis lacinia semper</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="container">
+<!-- Footer -->
+<footer id="footer">
+  <div class="container">
+    <div class="row double">
+      <div class="6u">
+        <div class="row collapse-at-2">
+          <div class="6u">
+            <h3>Accumsan</h3>
+            <ul class="alt">
+              <li><a href="#">Nascetur nunc varius</a></li>
+              <li><a href="#">Vis faucibus sed tempor</a></li>
+              <li><a href="#">Massa amet lobortis vel</a></li>
+              <li><a href="#">Nascetur nunc varius</a></li>
+            </ul>
+          </div>
+          <div class="6u">
+            <h3>Faucibus</h3>
+            <ul class="alt">
+              <li><a href="#">Nascetur nunc varius</a></li>
+              <li><a href="#">Vis faucibus sed tempor</a></li>
+              <li><a href="#">Massa amet lobortis vel</a></li>
+              <li><a href="#">Nascetur nunc varius</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="6u">
+        <h2>Aliquam Interdum</h2>
+        <p>Blandit nunc tempor lobortis nunc non. Mi accumsan. Justo aliquet massa adipiscing cubilia eu accumsan id. Arcu accumsan faucibus vis ultricies adipiscing ornare ut. Mi accumsan justo aliquet.</p>
+        <ul class="icons">
+          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+          <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <ul class="copyright">
+      <li>&copy; Untitled. All rights reserved.</li>
+      <li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+      <li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+    </ul>
+  </div>
+</footer>
 
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toppen</button>
-          </p>
-
-		<%= yield %>
-
-
-        </div><!--/span-->
-		<% if @leaders != nil %>
-			<%= render 'leaderboard' %>
-		<% end %>
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <p>&copy; IFKFF Media 2014</p>
-      </footer>
-
-    </div><!--/.container-->
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
-  <%= javascript_include_tag "application" %>
-    <!-- <script src="offcanvas.js"></script> -->
-  </body>
+</body>
 </html>

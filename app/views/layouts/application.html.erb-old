@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>VM 2014 - Vintips</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!--
+    <link href="/assets/twitter/bootstrap.css" rel="stylesheet">
+   <link href="/assets/twitter/bootstrap-theme.css" rel="stylesheet">
+   <link href="/assets/twitter/offcanvas.css" rel="stylesheet">
+-->
+
+   <!-- Rails application css -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+
+
+
+
+    <!-- Custom styles for this template
+    <link href="offcanvas.css" rel="stylesheet">
+ 	-->
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">VM 2014</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Matcher", games_path %></li>
+            <li><%= link_to "Topplista", users_path %></li>
+			<% if current_user %>
+			<li><%= link_to "Mina tips", current_user %></li>
+			<% end %>
+            <li><%= link_to "?", '/instructions' %></li>
+          </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<% if current_user %>
+            <% user_points = current_user.name %>
+            <% user_points << '(' << current_user.points.to_s << ')' %>
+            <li><%= link_to user_points, current_user, :class=>"nav_user_name" %></li>
+			<li><%= link_to "Logga ut", "/logout" %></li>
+			<% else %>
+			<li><%= link_to "Logga in", "/login" %></li>
+			<% end %>
+	      </ul>
+
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+        <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toppen</button>
+          </p>
+
+		<%= yield %>
+
+
+        </div><!--/span-->
+		<% if @leaders != nil %>
+			<%= render 'leaderboard' %>
+		<% end %>
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; IFKFF Media 2014</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- <script src="../../dist/js/bootstrap.min.js"></script> -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+  <%= javascript_include_tag "application" %>
+    <!-- <script src="offcanvas.js"></script> -->
+  </body>
+</html>
