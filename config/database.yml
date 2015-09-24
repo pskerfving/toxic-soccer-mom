@@ -10,8 +10,8 @@ development:
   database: uefa_development
   pool: 5
   timeout: 5000
-  username: petterskerfving
-  password:
+  username: pguser
+  password: pguser
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,8 +22,8 @@ test:
     database: uefa_test
     pool: 5
     timeout: 5000
-    username: petterskerfving
-    password:
+    username: pguser
+    password: pguser
 
 production:
     adapter: postgresql
