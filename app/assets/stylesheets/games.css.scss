@@ -1,16 +1,10 @@
-// Place all the styles related to the Games controller here.
-// They will automatically be included in application.css.scss.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
 div.game_box {
 	width:200px;
 	float:left;
 	margin: 0px 20px 20px 0px;
 //	padding: 10px;
 //	background-color: rgba(0, 0, 0, 0.03);
-	color: #ffffff;
+//	color: #eee;
 }
 
 .game_datetime {
@@ -131,6 +125,7 @@ textarea {
 	resize:none;
 }
 
+/*
 .button {
 	background-color:rgb(251, 142, 26);
 	border-color:rgb(251, 220, 45);
@@ -139,6 +134,7 @@ textarea {
 	font-weight:bold;
 	float:right;
 }
+*/
 
 .game_comment_textarea {
 	background-color:rgb(251, 220, 45);
@@ -180,3 +176,6 @@ textarea {
 .game_box th {
 	border-color:gray;
 }
+
+
+

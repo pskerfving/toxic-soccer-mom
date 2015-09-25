@@ -14,29 +14,29 @@
   <script src="assets/jquery.min.js"></script>
   <script src="assets/skel.min.js"></script>
   <script src="assets/skel-layers.min.js"></script>
-  <script src="assets/init.js"></script> <!--Borde vara med i application.js när det funkar med precompile-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+  <%= javascript_include_tag "application" %>
   <noscript>
     <link rel="stylesheet" href="assets/skel.css" />
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="stylesheet" href="assets/style-xlarge.css" />
   </noscript>
+
   <!-- Rails application css -->
-<!--
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
--->
+
 </head>
 <body id="top">
 
 <!-- Header -->
 <header id="header" class="skel-layers-fixed">
-  <h1><a href="#">Ion</a></h1>
+  <h1><a href="#">UEFA 2016</a></h1>
   <nav id="nav">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="left-sidebar.html">Left Sidebar</a></li>
-      <li><a href="right-sidebar.html">Right Sidebar</a></li>
-      <li><a href="no-sidebar.html">No Sidebar</a></li>
+      <li><a href="games">Matcher</a></li>
+      <li><a href="users">Topplista</a></li>
+      <li><a href="right-sidebar.html">Mina tips</a></li>
       <li><a href="#" class="button special">Sign Up</a></li>
     </ul>
   </nav>
@@ -53,6 +53,8 @@
     </ul>
   </div>
 </section>
+
+<%= yield %>
 
 <!-- One -->
 <section id="one" class="wrapper style1">

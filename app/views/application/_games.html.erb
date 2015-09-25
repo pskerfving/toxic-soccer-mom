@@ -1,15 +1,16 @@
-<div id="main_content">
-<div id="game_container" class="isotope" data-time="<%= @last_comment.updated_at.to_i %>">
+<div class="container">
+  <div class="game_container" data-time="<%= @last_comment.updated_at.to_i %>">
 
-	<% @games.each do |game| %>
+    <% @games.each do |game| %>
 
-		<div class="<%= "game_box #{game.ongoing? ? 'game_ongoing' : ''} isotope-item" %>" id="<%= game.id %>" data-time="<%= game.updated_at.to_i %>">
+      <div class="<%= "game_box #{game.ongoing? ? 'game_ongoing' : ''}" %>" id="<%= game.id %>" data-time="<%= game.updated_at.to_i %>">
 
-			<%= render :partial => 'gameboxcontent', :locals => { :game => game } %>
+        <%= render :partial => 'gameboxcontent', :locals => {:game => game} %>
 
-		</div> <!-- Gamebox -->
+      </div>
+      <!-- Gamebox -->
 
-	<% end %>
+    <% end %>
 
-</div> 
-</div> <!-- main_content -->
+  </div>
+</div> <!-- container -->
