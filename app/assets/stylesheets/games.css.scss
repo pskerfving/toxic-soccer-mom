@@ -155,7 +155,6 @@ textarea {
 	font-size: 48px;
 	font-weight: 900;
 	line-height:48px;
-	color:#606060;
 }
 
 .tip_panel_controls {
@@ -168,6 +167,10 @@ textarea {
   font-size: 24px;
   cursor: pointer;
   float: left;
+}
+
+.game_box.game_ongoing .game_result {
+  color: white;
 }
 
 .game_box table {
