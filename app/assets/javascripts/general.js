@@ -46,7 +46,7 @@
                 $(this).text('Visa');
                 $('.expand_list', $(this).closest('.expand_content')).hide();
             }
-            $('.game_container').isotope('reLayout');
+            $('.game_container').isotope('layout');
             return false;
         });
     };

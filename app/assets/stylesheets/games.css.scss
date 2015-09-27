@@ -50,19 +50,21 @@ div.game_box {
 
 .game_section {
 	margin-top:2px;
-//	background-color: rgba(0, 0, 0, 0.03);
-  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box.game_box {
+  padding: 0;
 }
 
 .game_home {
-	width:100px;
+	width:50%;
 	float:left;
 //	background-color:inherit;
 }
 
 .game_away {
-	width:100px;
-	float:left;
+	width:50%;
+	float:right;
 //	background-color:inherit;
 }
 
@@ -156,16 +158,16 @@ textarea {
 	color:#606060;
 }
 
+.tip_panel_controls {
+  width: 100%;
+}
+
 .tip_panel_button {
-	width:30px;
-	float:left;
-	text-align: center;
-	font-size: 18px;
-    font-weight: 900;
-	margin:10px;
-//	background-color:#D0D0D0;
-	color:#FFFFFF;
-	cursor:pointer;
+  width: 50%;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+  float: left;
 }
 
 .game_box table {
