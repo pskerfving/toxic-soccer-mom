@@ -1,5 +1,5 @@
-<div class="title_box">
-	<h1>Topplista</h1>
+<header class="major">
+  <h2>Topplista</h2>
   <div class="title_box_nav">
 
   <% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
@@ -14,9 +14,9 @@
 	<% if @predicted %> | <span class="nav_item"><%= link_to "Aktuell ställning", users_path %></span><% end %>
 
   </div>
-</div>
+</header>
 
-<div id="main_content">
+<div class="container">
 
 <table class="table">
   <tr class="table_header_row">

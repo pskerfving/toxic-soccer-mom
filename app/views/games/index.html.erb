@@ -1,12 +1,11 @@
-<section class="wrapper">
-  <header class="major">
-    <h2>Matcher</h2>
-    <div class="title_box_nav">
-      <span class="nav_item"> <%= link_to "Visa alla", games_path %> </span> | <span class="nav_item"> <%= link_to "Visa kommande", :controller => "games", :show => "upcoming" %> </span>
-    </div>
-  </header>
+<header class="major">
+  <h2>Matcher</h2>
+
+  <div class="title_box_nav">
+    <span class="nav_item"> <%= link_to "Visa alla", games_path %> </span> |
+    <span class="nav_item"> <%= link_to "Visa kommande", :controller => "games", :show => "upcoming" %> </span>
+  </div>
+</header>
 
 
-  <%= render 'games' %>
-
-</section>
+<%= render 'games' %>
