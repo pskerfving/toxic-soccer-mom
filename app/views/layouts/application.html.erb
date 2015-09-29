@@ -11,10 +11,10 @@
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
   <!--[if lte IE 8]>
-  <script src="assets/html5shiv.js"></script><![endif]-->
-  <script src="assets/jquery.min.js"></script>
-  <script src="assets/skel.min.js"></script>
-  <script src="assets/skel-layers.min.js"></script>
+  <script src="/assets/html5shiv.js"></script><![endif]-->
+  <script src="/assets/jquery.min.js"></script>
+  <script src="/assets/skel.min.js"></script>
+  <script src="/assets/skel-layers.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
   <%= javascript_include_tag "application" %>
   <noscript>
@@ -35,26 +35,30 @@
   <h1><a href="#">UEFA 2016</a></h1>
   <nav id="nav">
     <ul>
-      <li><a href="games">Matcher</a></li>
-      <li><a href="users">Topplista</a></li>
+      <li><a href="/games">Matcher</a></li>
+      <li><a href="/users">Topplista</a></li>
       <li><%= link_to "Mina tips", current_user %></li>
-      <li><a href="#" class="button special">Sign Up</a></li>
+      <li><%= current_user.name %></li>
+      <li><a href="#" class="button">Logga in</a></li>
     </ul>
   </nav>
 </header>
 
 <!-- Banner -->
-<section id="banner">
-  <div class="inner">
-    <h2>Vin- & fotbollstips 2016</h2>
+<div id="banner-collapse" style="position: relative; overflow: hidden; transition: all 0.2s;">
+  <section id="banner">
+    <div class="inner">
+      <h2>Vin- & fotbollstips 2016</h2>
 
-    <p>Nu är det dags igen. Bli medlem. Tippa. Vinn. Drick vin.</p>
-    <ul class="actions">
-      <li><a href="login" class="button big special">Bli medlem</a></li>
-      <li><a href="#elements" class="button big alt">Logga in</a></li>
-    </ul>
-  </div>
-</section>
+      <p>Nu är det dags igen. Bli medlem. Tippa. Vinn. Drick vin.</p>
+      <ul class="actions">
+        <li><a href="/signup" class="button big special">Bli medlem</a></li>
+        <li><a href="/login" class="button big alt">Logga in</a></li>
+      </ul>
+    </div>
+  </section>
+  <div class="banner-toggle">+</div>
+</div>
 
 <section class="wrapper">
   <%= yield %>

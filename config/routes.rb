@@ -44,6 +44,7 @@ Uefa::Application.routes.draw do
   
   resources :password_resets
 
+  get   '/signup', :to => 'sessions#signup'
   get   '/login', :to => 'sessions#new', :as => :login
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'

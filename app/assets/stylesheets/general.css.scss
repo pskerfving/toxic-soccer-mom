@@ -1,3 +1,31 @@
+div#banner-collapse {
+  position: relative;
+  overflow:hidden;
+  height: auto;
+  transition: height 0.2s;
+}
+
+div#banner-collapse.collapsed {
+  height: 3.5em;
+}
+
+.banner-toggle {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+
+  background: rgba(144, 149, 154, 0.75);
+  border-radius: 6px;
+  color: #fff;
+  display: block;
+  font-size: 17px;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  width: 3.5em;
+  cursor: pointer;
+}
+
 /*
 li.nav_user_name {
   padding:15px;

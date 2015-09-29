@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="social">
+    <h2>Registrera dig med</h2>
+    <a href="/auth/facebook" class="button">Facebook</a>
+    <a href="/auth/twitter" class="button">Twitter</a>
+    <a href="/auth/twitter" class="button">Google+</a>
+    <a href="#" class="more-info button alt">Mer info</a>
+    <p class="more-info" style="display: none;">Detta sajten kommer inte att kunna ta del av några personliga uppgifter utöver det som du godkänner när du registrerar dig.</p>
+    <p class="line-thru">eller...</p>
+  </div>
+
+  <div class="row">
+    <div class="12u">
+      <h2 class="align-center">Registrera dig med e-mail</h2>
+      <%= form_tag "/auth/identity/register", :class => 'sign-up-form' do %>
+        <% if @identity && @identity.errors.any? %>
+          <div class="error_messages">
+            <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+            <ul>
+              <% @identity.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= label_tag :name, "Namn (för- och efternamn)" %>
+        <%= text_field_tag :name, @identity.try(:name) %>
+        <%= label_tag :email, "E-mail" %>
+        <p class="more-info inline-info">Vi behöver skicka information till dig. Använd en adress som du läser.</p>
+        <%= text_field_tag :email, @identity.try(:email) %>
+        <%= label_tag :password, "Lösenord" %>
+        <%= password_field_tag :password %>
+        <%= label_tag :password_confirmation, "Upprepa lösenord" %>
+        <%= password_field_tag :password_confirmation %>
+        <div class="submit-container">
+          <%= submit_tag "Skapa konto"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -85,9 +85,14 @@
     });
 
     $(document).ready(function() {
-
         // Hide the notification if it is empty.
         $('div#notifications').find('p:empty').parent().hide();
+    });
+
+    $(document).ready(function() {
+        $('.banner-toggle').click(function(evt) {
+            $('#banner-collapse').toggleClass('collapsed');
+        });
     });
 
 })(jQuery);

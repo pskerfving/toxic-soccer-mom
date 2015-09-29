@@ -1,0 +1,58 @@
+.social {
+  text-align: center;
+}
+
+.social a {
+  margin-bottom: 0.5em;
+}
+
+.social p {
+  margin-top: 2em;
+}
+
+p.more-info {
+  margin-top: 2em;
+  font-size: small;
+}
+
+p.inline-info {
+  margin: 0;
+  margin-bottom: 0.3em;
+  line-height: 1em;
+}
+
+.sign-up-form label {
+  margin: 0;
+}
+
+.sign-up-form input {
+  margin-bottom: 1em;
+}
+
+.sign-up-form .submit-container {
+  text-align: center;
+  margin-top: 2em;
+}
+
+/*
+.social p.line-thru:before {
+  width: 40px;
+  height: 10px;
+  background-color: #fff;
+  content: '';
+  margin: -5px 0 0 -20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+
+.social p.line-thru:after {
+  border-bottom: 1px solid #dfe0e6;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  width: 100%;
+  z-index: -2;
+}*/
