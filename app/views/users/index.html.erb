@@ -1,19 +1,21 @@
 <header class="major">
   <h2>Topplista</h2>
-  <div class="title_box_nav">
+
+  <ul class="sub-nav">
 
   <% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
 	<% if current_user && current_user.admin? %>
-		<span class="nav_item"><%= User.all.length %> anmälda</span> |
-		<span class="nav_item"> <%= link_to "Visa godkända", users_path %> </span> | <span class="nav_item"> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></span> | 
+		<span class="nav_item"><%= User.all.length %> anmälda</span>
+		<li> <%= link_to "Visa godkända", users_path %> </li>
+        <li> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></li>
 	<% end %>
 	<% if @first_game_started %>
-		<span class="nav_item"> <%= link_to "Visa alla grundtips", winners_tips_path %></span>
+		<li> <%= link_to "Visa alla grundtips", winners_tips_path %></li>
 	<% end %>
-	<% if !@predicted && @game_ongoing %> | <span class="nav_item"><%= link_to "Om resultatet står sig", :controller => "users", :show => "predicted" %></span><% end %>
-	<% if @predicted %> | <span class="nav_item"><%= link_to "Aktuell ställning", users_path %></span><% end %>
+	<% if !@predicted && @game_ongoing %><li><%= link_to "Om resultatet står sig", :controller => "users", :show => "predicted" %></li><% end %>
+	<% if @predicted %><li><%= link_to "Aktuell ställning", users_path %></li><% end %>
 
-  </div>
+  </ul>
 </header>
 
 <div class="container">
