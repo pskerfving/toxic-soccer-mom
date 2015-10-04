@@ -2,7 +2,7 @@ div#banner-collapse {
   position: relative;
   overflow:hidden;
   height: auto;
-  transition: height 0.2s;
+  transition: height 0.2s ease;
 }
 
 div#banner-collapse.collapsed {
@@ -24,6 +24,14 @@ div#banner-collapse.collapsed {
   text-align: center;
   width: 3.5em;
   cursor: pointer;
+}
+
+#banner .getting-started-step p {
+  font-size: medium;
+}
+
+#banner .getting-started-step p strong{
+  color: inherit;
 }
 
 .sub-nav {

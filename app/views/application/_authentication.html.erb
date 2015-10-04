@@ -3,7 +3,7 @@
 	<span id="user_name">
 		<%= current_user.name %> (<%= current_user.points %>)
 		</span>
-		<%= link_to "Logga ut", "/logout" %>
+    <%= link_to "Logga ut", "/logout" %>
 	<% else %>
 		<%= link_to "Logga in", "/login" %>
 	<% end %>

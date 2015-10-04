@@ -1,0 +1,53 @@
+<div id="banner-collapse" style="position: relative; overflow: hidden; transition: all 0.2s;">
+  <section id="banner">
+    <div class="inner">
+      <h2>Vin- & fotbollstips 2016</h2>
+      <% if current_user %>
+        <div class="container">
+          <p>Fyra saker behöver hända innan EM börjar...</p>
+
+          <div class="row">
+            <div class="3u">
+              <section class="getting-started-step">
+                <h2>1.</h2>
+
+                <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen!</p>
+              </section>
+            </div>
+            <div class="3u">
+              <section class="getting-started-step">
+                <h2>2.</h2>
+                <% if current_user.cleared %>
+                  <p><strong>Godkännande.</strong> Du har blivit godkänd. Toppen!</p>
+                <% else %>
+                  <p><strong>Godkännande.</strong> Du behöver bli godkänd så att vi vet vem vi har att göra med. Inget du kan göra mer än att vänta och kolla mailen.</p>
+                <% end %>
+              </section>
+            </div>
+            <div class="3u">
+              <section class="getting-started-step">
+                <h2>3.</h2>
+                <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars kommer många sköna poäng att brinna inne.</p>
+              </section>
+            </div>
+            <div class="3u">
+              <section class="getting-started-step">
+                <h2>4.</h2>
+                <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
+              </section>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <p>Nu är det dags igen.Bli medlem.Tippa.Vinn.Drick vin.</p>
+        <ul class="actions">
+          <li><a href="/signup" class="button big special">Bli medlem</a></
+          li>
+          <li><a href="/login" class="button big alt">Logga in</a></
+          li>
+        </ul>
+      <% end %>
+    </div>
+  </section>
+  <div class="banner-toggle">+</div>
+</div>

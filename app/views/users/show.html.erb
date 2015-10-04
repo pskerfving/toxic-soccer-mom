@@ -1,112 +1,117 @@
-<div class="title_box"><h1><%= @user.name %></h1><h2>
-  Totalt antal poäng: <%= @user.points %>
-</h2>
-<% if current_user && current_user.admin? %>
-<span><%= @user.id %></span> | <span><%= link_to 'Radera användare', @user, confirm: 'Are you sure?', method: :delete %></span>
-<% end %>
-</div>
+<header class="major"><h2><%= @user.name %></h2>
+  <p>
+    Totalt antal poäng: <%= @user.points %>
+  </p>
+  <% if current_user && current_user.admin? %>
+    <span>User ID: <%= @user.id %></span> |
+    <span><%= link_to 'Radera användare', @user, confirm: 'Are you sure?', method: :delete %></span>
+  <% end %>
+</header>
 
-<div id="main_content">
+<div class="container">
 
-<% if current_user && current_user.id = @user.id && @user.email == nil %>
-	<p>Du har inte gett oss din mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
-<% end %>
+  <% if current_user && current_user.id = @user.id && @user.email == nil %>
+    <p>Du har inte gett oss din mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
+  <% end %>
 
+  <div class="text_box">
+    <h2>Grundtips</h2>
 
-<div class="text_box">
-<h2>Grundtips</h2>
-
-<% if @first_game_started || (@user == current_user) %>
-	<% if @winners_tip %>
-	<table class="table">
-		<tr>
-			<td><strong>Vinnande lag</strong></td>
-			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.winning_team).country %></td>
-		</tr>
-		<tr>
-			<td><strong>Finalist</strong></td>
-			<td class="loose_table_row"><%= Team.find_by_id(@winners_tip.runner_up).country %></td>
-		</tr>
-		<tr>
-			<td><strong>Skyttekung</strong></td>
-			<td class="loose_table_row">
-			<% if @winners_tip.topscorer_player %>
-				<%= @winners_tip.topscorer_player.name %>
-			<% else %>
-				<%= @winners_tip.goal_scorer %>
-			<% end %>
-			</td>
-		</tr>
-<!--
+    <% if @first_game_started || (@user == current_user) %>
+      <% if @winners_tip %>
+        <table class="table">
+          <tr>
+            <td><strong>Vinnande lag</strong></td>
+            <td class="loose_table_row"><%= Team.find_by_id(@winners_tip.winning_team).country %></td>
+          </tr>
+          <tr>
+            <td><strong>Finalist</strong></td>
+            <td class="loose_table_row"><%= Team.find_by_id(@winners_tip.runner_up).country %></td>
+          </tr>
+          <tr>
+            <td><strong>Skyttekung</strong></td>
+            <td class="loose_table_row">
+              <% if @winners_tip.topscorer_player %>
+                <%= @winners_tip.topscorer_player.name %>
+              <% else %>
+                <%= @winners_tip.goal_scorer %>
+              <% end %>
+            </td>
+          </tr>
+          <!--
 		<tr>
 			<td><strong>Första svenska målskytt</strong></td>
 			<td class="loose_table_row">
-			<% if @winners_tip.firstswedish_player %>
+
+          <% if @winners_tip.firstswedish_player %>
 				<%= @winners_tip.firstswedish_player.name %>
-			<% else %>
+
+          <% else %>
 				<%= @winners_tip.first_swedish_scorer %>
-			<% end %>
+
+          <% end %>
 			</td>
 		</tr>
 -->
-	</table>
-		<% if current_user && current_user == @user && !@first_game_started && @user.cleared? %>
-			<%= link_to "Ändra grundtips", edit_winners_tip_path(@winners_tip) %>
-		<% end %>
-	<% else %>
-		<% if current_user && current_user == @user %>
-		<p>Du har inte lämnat ditt grundtips. 
-			<% if !@first_game_started && @user.cleared? %>
-				Det kan du göra <%= link_to "här", new_winners_tip_path %>.</p>
-			<% else %>
-				<% if @first_game_started %>
-					Det är tyvärr inte längre möjligt p g a att första matchen startat.</p>
-				<% else %>
-					Det kommer du att kunna göra när du blivit godkänd.</p>
-				<% end %>
-			<% end %>
-		<% else %>
-			<p><%= @user.name %> har inte lämnat in något grundtips.</p>
-		<% end %>
-	<% end %>
-<% else%>
-	<p>Informationen kommer att vara tillgängligt när första matchen startat.</p>
-<% end %>
-</div>
-
-<div class="text_box">
-<h2>Matchtips</h2>
-<% if @tips.length > 0 %>
-<table class="table">
-  <tr class="table_header_row">
-    <th>Match</th>
-    <th>Tips</th>
-	<th>Resultat</th>
-    <th>Poäng</th>
-  </tr>
-
-<% for tip in @tips %>
-	<% if tip.game.started? || (current_user && (current_user == @user)) %>
-  <tr class="table_row">
-    <td><%= tip.game.name %></td>
-    <td><%= tip.home_score %> - <%= tip.away_score %></td>
-    <td><%= tip.game.home_score %> - <%= tip.game.away_score %></td>
-    <td><%= tip.points %></td>
-  </tr>
-<% end %>
-<% end %>
-</table>
-<% else %>
-	<% if current_user && current_user == @user%>
-        <% if @user.cleared %>
-		    <p>Du har inte lämnat in några tips. Det kan du göra <%= link_to "här", games_path %>.</p>
-        <% else %>
-            <p>Du har inte lämnat in några tips. Det kommer du att kunna göra <%= link_to "här", games_path %>, efter att du blivit godkänd.</p>
+        </table>
+        <% if current_user && current_user == @user && !@first_game_started && @user.cleared? %>
+          <%= link_to "Ändra grundtips", edit_winners_tip_path(@winners_tip) %>
         <% end %>
-	<% else %>
-		<p><%= @user.name %> har inte lämnat in några matchtips.</p>
-	<% end %>
-<% end %>
+      <% else %>
+        <% if current_user && current_user == @user %>
+          <p>Du har inte lämnat ditt grundtips.
+            <% if !@first_game_started && @user.cleared? %>
+              Det kan du göra <%= link_to "här", new_winners_tip_path %>.</p>
+            <% else %>
+              <% if @first_game_started %>
+                Det är tyvärr inte längre möjligt p g a att första matchen startat.</p>
+              <% else %>
+                Det kommer du att kunna göra när du blivit godkänd.</p>
+              <% end %>
+            <% end %>
+        <% else %>
+          <p><%= @user.name %> har inte lämnat in något grundtips.</p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>Informationen kommer att vara tillgängligt när första matchen startat.</p>
+    <% end %>
+  </div>
 
-</div>
+  <div class="text_box">
+    <h2>Matchtips</h2>
+    <% if @tips.length > 0 %>
+      <table class="table">
+        <tr class="table_header_row">
+          <th>Match</th>
+          <th>Tips</th>
+          <th>Resultat</th>
+          <th>Poäng</th>
+        </tr>
+
+        <% for tip in @tips %>
+          <% if tip.game.started? || (current_user && (current_user == @user)) %>
+            <tr class="table_row">
+              <td><%= tip.game.name %></td>
+              <td><%= tip.home_score %> - <%= tip.away_score %></td>
+              <td><%= tip.game.home_score %> - <%= tip.game.away_score %></td>
+              <td><%= tip.points %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% else %>
+      <% if current_user && current_user == @user %>
+        <% if @user.cleared %>
+          <p>Du har inte lämnat in några tips. Det kan du göra <%= link_to "här", games_path %>.</p>
+        <% else %>
+          <p>Du har inte lämnat in några tips. Det kommer du att kunna göra <%= link_to "här", games_path %>, efter att
+            du blivit godkänd.</p>
+        <% end %>
+      <% else %>
+        <p><%= @user.name %> har inte lämnat in några matchtips.</p>
+      <% end %>
+    <% end %>
+
+  </div>
 </div>
