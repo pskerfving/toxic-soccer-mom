@@ -4,10 +4,11 @@ class SessionsController < ApplicationController
 
   def new
     @identity = env['omniauth.identity']
+    @show_banner = false;
   end
 
   def signup
-
+    @show_banner = false;
   end
 
   def create

@@ -1,74 +1,29 @@
-<div class="title_box"><h1>Inloggning</h1></div>
-<div id="main_content">
+<div class="container">
 
-<div class="text_box">
-	<h2>Facebook/Twitter</h2>
-	<p>Enklast är att logga in med ditt Facebook- eller Twitter-konto. Vi tar inte del av någon information utöver ditt namn och din email-adress. Facebook eller Twitter bekräftar din identitet utan att vi ser ditt lösenord. För ditt eget bästa, kör på detta alternativet!</p><br/>
-    <p>Om du väljer Twitter-inloggning, glöm inte meddela din email-adress. Annars kan du missa viktig information.</p><br/>
-<p><%= link_to "Logga in med Facebook", "/auth/facebook" %></p>
-<p><%= link_to "Logga in med Twitter", "/auth/twitter" %></p>
-</div>
+  <div class="social">
+    <h2>Logga in med</h2>
+    <a href="/auth/facebook" class="button">Facebook</a>
+    <a href="/auth/twitter" class="button">Twitter</a>
+    <a href="/auth/twitter" class="button">Google+</a>
+    <p class="line-thru">eller...</p>
+  </div>
 
 
-<div class="text_box">
-	<h2>VM 2014-konto</h2>
-<p>Vi rekommenderar verkligen inloggning med Facebook/Twitter men i det fall att du är asocial kan du också skapa ett konto direkt hos oss och logga in med detta. (Notera att du loggar in med din email-adress som användarnamn.)</p><br/>
+  <div class="row">
+    <div class="12u">
+      <h2 class="align-center">Logga in med e-mail</h2>
 
-<div class="text_box_lvl2" style="float:left">
-<h2>Skapa konto här...</h2>
-<p><small>Obs! Skapa inget konto här om du vill använda FB!</small></p>
-<%= form_tag "/auth/identity/register" do %>
-  <% if @identity && @identity.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
-      <ul>
-      <% @identity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= form_tag "/auth/identity/callback", :class => 'sign-up-form' do %>
+        <%= label_tag :auth_key, "E-mail" %>
+        <%= text_field_tag :auth_key %>
+        <%= label_tag :password, "Lösenord" %>
+        <%= password_field_tag :password %>
+
+        <div class="submit-container"><%= submit_tag "Logga in" %></div>
+        <p><%= link_to "Jag har glömt mitt lösenord", new_password_reset_path %></p>
       <% end %>
-      </ul>
+
     </div>
-  <% end %>
-  <table>
-    <tr class="field">
-      <td><%= label_tag :name, "Namn (för- och efternamn)" %></td>
-      <td><%= text_field_tag :name, @identity.try(:name) %></td>
-    </tr>
-    <tr class="field">
-      <td><%= label_tag :email, "E-mail" %></td>
-      <td><%= text_field_tag :email, @identity.try(:email) %></td>
-    </tr>
-    <tr class="field">
-      <td><%= label_tag :password, "Lösenord" %></td>
-      <td><%= password_field_tag :password %></td>
-    </tr>
-    <tr class="field">
-      <td><%= label_tag :password_confirmation, "Upprepa lösenord" %></td>
-      <td><%= password_field_tag :password_confirmation %></td>
-    </tr>
-  </table>
-  <div class="actions"><%= submit_tag "Skapa konto" %></div>
-<% end %>
+  </div>
 </div>
 
-<div class="text_box_lvl2" style="float:left">
-<h2>Logga in här...</h2>
-<%= form_tag "/auth/identity/callback" do %>
-      <table>
-        <tr class="field">
-          <td><%= label_tag :auth_key, "E-mail" %></td>
-          <td><%= text_field_tag :auth_key %></td>
-        </tr>
-        <tr class="field">
-          <td><%= label_tag :password, "Lösenord" %></td>
-          <td><%= password_field_tag :password %></td>
-        </tr>
-
-      </table>
-  <div class="actions"><%= submit_tag "Logga in" %></div>
-  <p><%= link_to "Jag har glömt mitt lösenord", new_password_reset_path %></p>
-<% end %>
-</div>
-<div style="clear:both"></div>
-
-</div>
-</div>
