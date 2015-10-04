@@ -1,62 +1,72 @@
-<div class="title_box"><h1>Alla grundtips</h1></div>
-<div id="main_content">
-<table class="table">
-  <tr>
-    <th>#</th>	
-    <th>Namn</th>
-	<th>Total poäng</th>
-	<th>Poäng grundtips</th>
-    <th>Vinnande lag</th>
-    <th>Finalist</th>
-    <th>Skyttekung</th>
-<!--
-    <th>Förste svenske målskytt</th>
--->
-<% if current_user && current_user.admin? %>
-    <th></th>
-    <th></th>
-    <th></th>
-<% end %>
-  </tr>
+<header class="major">
+  <h2>Alla grundtips</h2>
+</header>
 
-<% i = 1 %>
-<% place = 1 %>
-<% prev_pts = -1 %>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Namn</th>
+      <th>Total poäng</th>
+      <th>Poäng grundtips</th>
+      <th>Vinnande lag</th>
+      <th>Finalist</th>
+      <th>Skyttekung</th>
+      <!--
+          <th>Förste svenske målskytt</th>
+      -->
+      <% if current_user && current_user.admin? %>
+        <th></th>
+        <th></th>
+        <th></th>
+      <% end %>
+    </tr>
 
-<% @winners_tips.each do |winners_tip| %>
-  <tr class="table_row <%= if winners_tip.user == current_user then "me" end %>">
-	<% if winners_tip.user.points != prev_pts then place = i end %>
-	<% prev_pts = winners_tip.user.points%>
-	<% i += 1 %>
-	<td><%= place %></td>
-    <td><%= link_to winners_tip.user.name, winners_tip.user %></td>
-	<td class="right_adjust"><strong><%= winners_tip.user.points %></strong></td>
-	<td class="right_adjust"><strong><%= winners_tip.points %></strong></td>
-    <td><%= winners_tip.winning_team.country %></td>
-    <td><%= winners_tip.runner_up.country %></td>
+    <% i = 1 %>
+    <% place = 1 %>
+    <% prev_pts = -1 %>
+
+    <% @winners_tips.each do |winners_tip| %>
+      <tr class="table_row <%= if winners_tip.user == current_user then
+                                 "me"
+                               end %>">
+        <% if winners_tip.user.points != prev_pts then
+             place = i
+           end %>
+        <% prev_pts = winners_tip.user.points %>
+        <% i += 1 %>
+        <td><%= place %></td>
+        <td><%= link_to winners_tip.user.name, winners_tip.user %></td>
+        <td class="right_adjust"><strong><%= winners_tip.user.points %></strong></td>
+        <td class="right_adjust"><strong><%= winners_tip.points %></strong></td>
+        <td><%= winners_tip.winning_team.country %></td>
+        <td><%= winners_tip.runner_up.country %></td>
+        <td>
+          <% if winners_tip.topscorer_player %>
+            <%= winners_tip.topscorer_player.name %>
+          <% else %>
+            <%= winners_tip.goal_scorer %>*
+          <% end %>
+        </td>
+        <!--
     <td>
-		<% if winners_tip.topscorer_player %>
-			<%= winners_tip.topscorer_player.name %>
-		<% else %>
-			<%= winners_tip.goal_scorer %>*
-		<% end %>
-	</td>
-<!--
-    <td>
-		<% if winners_tip.firstswedish_player %>
+
+        <% if winners_tip.firstswedish_player %>
 			<%= winners_tip.firstswedish_player.name %>
-		<% else %>
+
+        <% else %>
 			<%= winners_tip.first_swedish_scorer %>*
-		<% end %>
+
+        <% end %>
 	</td>
 -->
-	<% if current_user && current_user.admin? %>
-    <td><%= link_to 'Show', winners_tip %></td>
-    <td><%= link_to 'Edit', edit_winners_tip_path(winners_tip) %></td>
-    <td><%= link_to 'Destroy', winners_tip, confirm: 'Are you sure?', method: :delete %></td>
-	<% end %>
-  </tr>
-<% end %>
-</table>
+        <% if current_user && current_user.admin? %>
+          <td><%= link_to 'Show', winners_tip %></td>
+          <td><%= link_to 'Edit', edit_winners_tip_path(winners_tip) %></td>
+          <td><%= link_to 'Destroy', winners_tip, confirm: 'Are you sure?', method: :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 
 </div>
