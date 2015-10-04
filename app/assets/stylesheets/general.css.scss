@@ -6,7 +6,7 @@ div#banner-collapse {
 }
 
 div#banner-collapse.collapsed {
-  height: 3.5em;
+  height: 2em;
 }
 
 .banner-toggle {
@@ -19,7 +19,8 @@ div#banner-collapse.collapsed {
   color: #fff;
   display: block;
   font-size: 17px;
-  height: 2em;
+  height: 50%;
+  max-height: 2em;
   line-height: 2em;
   text-align: center;
   width: 3.5em;
