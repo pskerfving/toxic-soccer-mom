@@ -1,12 +1,18 @@
-<div class="title_box"><h1>Skapa nytt lösenord</h1></div>
+<div class="container">
+  <div class="row">
+    <div class="6u -3u">
+      <h2 class="align-center">Glömt lösenord</h2>
 
-<div class="text_box">
-<%= form_tag password_resets_path, :method => :post do %>
-  <p>Skriv in din email-adress för att ändra ditt lösenord. Du kommer att få ett mail med vidare instruktioner.</p><br/>
-  <div class="field">
-    <%= label_tag "E-mail:" %>
-    <%= text_field_tag :email, params[:email] %>
+      <p>För att ändra ditt lösenord, skriv in den email-adress du angav när du blev medlem. Du kommer att få ett mail med vidare instruktioner.</p>
+      <%= form_tag password_resets_path, :method => :post, :class => 'sign-up-form' do %>
+        <div class="field">
+          <%= label_tag "E-mail" %>
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+        <div class="submit-container">
+          <%= submit_tag "Skicka instruktioner" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="actions"><%= submit_tag "Skicka instruktioner" %></div>
-<% end %>
 </div>

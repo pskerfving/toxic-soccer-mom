@@ -2,6 +2,7 @@
 
 class PasswordResetsController < ApplicationController
   def new
+    @show_banner = false
   end
 
   def create

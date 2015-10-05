@@ -18,13 +18,26 @@ div#banner-collapse.collapsed {
   border-radius: 6px;
   color: #fff;
   display: block;
-  font-size: 17px;
-  height: 50%;
-  max-height: 2em;
+  font-size: 12px;
+  height: 2em;
   line-height: 2em;
   text-align: center;
   width: 3.5em;
   cursor: pointer;
+}
+
+.banner-toggle:before {
+  content: "Göm";
+}
+
+div#banner-collapse.collapsed .banner-toggle {
+  height: 2em;
+  width: 5em;
+  font-size: x-small;
+}
+
+div#banner-collapse.collapsed .banner-toggle:before {
+  content: "Visa";
 }
 
 #banner .getting-started-step h2 {
