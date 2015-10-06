@@ -50,6 +50,8 @@ Uefa::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   get '/logout', :to => 'sessions#destroy'
 
+  get '/email_verifications/:id', :to => 'email_verifications#verify_email'
+
   get '/instructions', :to => 'instructions#instructions'
 
   get '/newbulkmail', :to => 'BulkMails#newbulkmail'

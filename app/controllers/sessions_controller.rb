@@ -21,24 +21,39 @@ class SessionsController < ApplicationController
     if @authorization
       # Set the user from the authorization we found
       session[:user_id] = @authorization.user.id
-      redirect_to :root, :notice => "Du är inloggad. Lycka till med tippningen!"
+      if @authorization.user.email_verified
+        redirect_to :root, :notice => "Du är inloggad. Lycka till med tippningen!"
+      else
+        redirect_to :root, :alert => "Du är nu inloggad. För att kunna tippa måste du först bekräfta din mail-adress. Titta i din inbox."
+      end
     else
-      # No authorization found. Create a new user and an authorization form the info provided
+      # No authorization found. Create a new user and an authorization from the info provided
       puts "---------------- HITTADE INGEN PERSON"
       user = User.new :name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
       puts user.name
-      user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
-      puts "---------------- SKAPAT AUTH"      
+      @authorization = user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      puts "---------------- SKAPAT AUTH"
       user.admin = false
       user.cleared = false
       user.points = 0
-      puts "---------------- SPARAR"
-      user.save
-      session[:user_id] = user.id
-      redirect_to :root, :notice => "Nu är du registrerad och inloggad."
-      if user.email != nil
-        UserMailer.welcome(user).deliver
+      # Om email finns, men inte är verifierad. Skicka mail för att få det verifierat.
+      if @authorization.provider == "identity"
+        user.send_email_verification
+        user.email_verified = false
+        redirect_to :root, :notice => "Ditt konto är skapat. Du måste bekräfta din mail-adress. Titta i din inbox."
       end
+      if @authorization.provider == "twitter"
+        user.email_verified = false
+        user.save!
+        redirect_to :root, :notice => "Ditt konto är skapat. Du behöver komplettera med en mail-adress."
+      end
+      if @authorization.provider == "facebook"
+        user.email_verified = true
+        UserMailer.welcome(user).deliver
+        user.save!
+        redirect_to :root, :notice => "Nu ska du ge oss din mail-adress."
+      end
+      session[:user_id] = user.id
     end
   end
 

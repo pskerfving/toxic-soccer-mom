@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140102122125) do
+ActiveRecord::Schema.define(:version => 20151005131952) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -106,19 +106,22 @@ ActiveRecord::Schema.define(:version => 20140102122125) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.boolean  "admin"
     t.boolean  "cleared"
     t.integer  "points"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.boolean  "wine",                   :default => false
+    t.boolean  "wine",                       :default => false
     t.integer  "predicted"
     t.integer  "approved_by_id"
     t.datetime "approved_at"
     t.integer  "wine_by_id"
     t.datetime "wine_at"
+    t.boolean  "email_verified",             :default => false
+    t.string   "email_verification_token"
+    t.datetime "email_verification_sent_at"
   end
 
   create_table "winners_tips", :force => true do |t|

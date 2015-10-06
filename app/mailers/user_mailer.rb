@@ -13,6 +13,11 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "vm2014.ifkff.org - Välkommen!"
   end
 
+  def email_verification(user)
+    @user = user
+    mail :to => user.email, :subject => "vm2014.ifkff.org - Verifiera din mail-adress"
+  end
+
   def password_reset(user)
     @user = user
     mail :to => user.email, :subject => "vm2014.ifkff.org - Nytt lösenord"

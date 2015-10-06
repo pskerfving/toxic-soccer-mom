@@ -11,14 +11,14 @@
               <section class="getting-started-step">
                 <h2>1.</h2>
 
-                <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen!</p>
+                <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen! <% if !current_user.email_verified %>Du måste få din mail-adress verifierad. Kolla mailen.<% end %></p>
               </section>
             </div>
             <div class="3u">
               <section class="getting-started-step">
                 <h2>2.</h2>
                 <% if current_user.cleared %>
-                  <p><strong>Godkännande.</strong> Du har blivit godkänd. Toppen!</p>
+                  <p><strong>Godkännande.</strong> Du har blivit godkänd. Grattis!</p>
                 <% else %>
                   <p><strong>Godkännande.</strong> Du behöver bli godkänd så att vi vet vem vi har att göra med. Inget du kan göra mer än att vänta och kolla mailen.</p>
                 <% end %>

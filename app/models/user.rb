@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def send_email_verification
+    generate_token(:email_verification_token)
+    self.email_verification_sent_at = Time.zone.now
+    self.email_verified = false
+    save!
+    UserMailer.email_verification(self).deliver
+  end
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
