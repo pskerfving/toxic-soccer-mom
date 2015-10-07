@@ -38,6 +38,7 @@ Uefa::Application.routes.draw do
     member do
       put 'clear'
       put 'wine'
+      put 'send_email_verification'
     end
     
   end

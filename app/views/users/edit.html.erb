@@ -1,7 +1,13 @@
-<div class="title_box">
-<h1>Redigera användare</h1></div>
+<header class="major">
+  <% if current_user && current_user.admin? %>
+    <h2>Redigera användare</h2>
+  <% else %>
+    <h2>Uppdatera mina uppgifter</h2>
+  <% end %>
+</header>
+
+<div class="container">
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+</div>

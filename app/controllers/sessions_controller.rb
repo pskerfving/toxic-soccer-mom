@@ -40,12 +40,13 @@ class SessionsController < ApplicationController
       if @authorization.provider == "identity"
         user.send_email_verification
         user.email_verified = false
-        redirect_to :root, :notice => "Ditt konto är skapat. Du måste bekräfta din mail-adress. Titta i din inbox."
+        user.save!  # Too many saves here.
+        redirect_to :root, :notice => "Ditt konto är skapat. Du måste bekräfta din mailadress. Titta i din inbox."
       end
       if @authorization.provider == "twitter"
         user.email_verified = false
         user.save!
-        redirect_to :root, :notice => "Ditt konto är skapat. Du behöver komplettera med en mail-adress."
+        redirect_to edit_users_url(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
       end
       if @authorization.provider == "facebook"
         user.email_verified = true

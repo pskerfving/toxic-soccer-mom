@@ -5,7 +5,7 @@ class EmailVerificationsController < ApplicationController
     user.email_verified = true
     user.save!
     session[:user_id] = user.id
-    redirect_to :root, :notice => "Mail-adress verifierad"
+    redirect_to :root, :notice => "Din mailadress är bekräftad"
   end
 
 end

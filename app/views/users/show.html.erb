@@ -1,7 +1,6 @@
-<header class="major"><h2><%= @user.name %></h2>
-  <p>
-    Totalt antal poäng: <%= @user.points %>
-  </p>
+<header class="major">
+  <h2><%= @user.name %></h2>
+  <p>Poäng: <%= @user.points %></p>
   <% if current_user && current_user.admin? %>
     <span>User ID: <%= @user.id %></span> |
     <span><%= link_to 'Radera användare', @user, confirm: 'Are you sure?', method: :delete %></span>
@@ -10,9 +9,16 @@
 
 <div class="container">
 
-  <% if current_user && current_user.id = @user.id && @user.email == nil %>
-    <p>Du har inte gett oss din mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
-  <% end %>
+    <% if !@user.email_verified && current_user.id == @user.id || current_user.admin? %>
+    <section>
+      <p>Din mailadress (<%= @user.email %>) har inte bekräftats. Det behöver göras för att du ska kunna tippa. För att skicka mail med länk för att bekräfta igen - tryck på knappen.</p>
+      <%= link_to 'Skicka nytt mail', send_email_verification_user_path(@user), method: :put, :class => "button" %>
+    </section>
+    <% end %>
+
+    <% if current_user && current_user.id == @user.id && @user.email == nil %>
+      <p>Du har inte angett någon mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
+    <% end %>
 
   <div class="text_box">
     <h2>Grundtips</h2>

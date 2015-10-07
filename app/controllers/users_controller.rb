@@ -53,10 +53,21 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    user_params = params[:user]
+    if user_params [:email] == @user.email
+      user_params = user_params.except(:email);
+    end
+    if user_params [:cleared] == @user.cleared
+      user_params = user_params.except(:cleared);
+    end
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        @user.send_user_cleared
+      if @user.update_attributes(user_params)
+        if user_params[:email]
+          @user.send_email_verification
+        end
+        if user_params[:cleared]
+          @user.send_user_cleared
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -66,7 +77,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def clear
     @user = User.find(params[:id])
     @user.cleared = true
@@ -75,6 +85,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @user.send_user_cleared
+        format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
         format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
         format.json { head :no_content }
       else
@@ -130,7 +142,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def send_email_verification
+    @user = User.find(params[:id])
+    @user.send_email_verification
+    redirect_to user_url(@user), :notice => "Ett nytt mail har skickats, kolla din inbox."
+  end
+
   def setup_latest_game_tip_hash
     @latest_games = Game.where('kickoff < ?', Time.zone.now).order("kickoff DESC").limit(5)
     @latest_game_tip_hash = Hash.new

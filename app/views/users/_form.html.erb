@@ -1,50 +1,41 @@
-<div class="text_box">
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this group from being saved:</h2>
+<div class="row">
+  <div class="6u -3u">
+    <%= form_for(@user, html: {class: "sign-up-form"}) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this group from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <p>
-    <b>Name:</b>
-    <%= @user.name %>
-  </p>
+      <%= f.label :name, "Namn" %>
+      <%= f.text_field :name %>
 
-      <table>
-        <tr>
-          <td><%= f.label :email %></td>
-          <td><%= f.text_field :email %></td>
-       </tr>
+      <% if current_user && (!current_user.email_verified || current_user.admin?) %>
 
-      </table>
+        <%= f.label :email, "Mailadress" %>
+        <%= f.text_field :email %>
+      <% end %>
 
-	<% if current_user && current_user.admin %>
+      <% if current_user && current_user.admin %>
 
-  <div class="field">
-    <%= f.label :admin %><br />
-    <%= f.check_box :admin %>
+        <%= f.label :admin, "Admin" %>
+        <%= f.check_box :admin %>
+        <%= f.label :cleared, "Cleared" %>
+        <%= f.check_box :cleared %>
+        <%= f.label :points, "Points" %>
+        <%= f.number_field :points %>
+
+      <% end %>
+
+      <div class="submit-container">
+        <%= f.submit "Spara" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :cleared %><br />
-    <%= f.check_box :cleared %>
-  </div>
-
-  <div class="field">
-    <%= f.label :points %><br />
-    <%= f.number_field :points %>
-  </div>
-	<% end %>
-
-  <div class="actions">
-    <%= f.submit "Spara" %>
-  </div>
-<% end %>
 </div>
