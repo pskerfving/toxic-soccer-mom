@@ -68,7 +68,7 @@ class UsersController < ApplicationController
         if user_params[:cleared]
           @user.send_user_cleared
         end
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Dina uppgifter har uppdaterats.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,7 +86,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user.send_user_cleared
-        format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
         format.html { redirect_to users_path, notice: 'Användaren är nu godkänd.' }
         format.json { head :no_content }
       else
