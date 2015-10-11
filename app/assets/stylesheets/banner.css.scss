@@ -2,11 +2,12 @@ div#banner-collapse {
   position: relative;
   overflow:hidden;
   height: auto;
-  transition: height 0.2s ease;
+  transition: all 0.2s ease;
+  max-height: 100em;
 }
 
 div#banner-collapse.collapsed {
-  height: 2em;
+  max-height: 2em;
 }
 
 .banner-toggle {

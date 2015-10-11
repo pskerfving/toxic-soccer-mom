@@ -173,6 +173,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # TODO: Kan skrivas om med <=> operatorn.
   def game_token(h, a)
     # token 1, function returns -1
     # token X, function returns 0
