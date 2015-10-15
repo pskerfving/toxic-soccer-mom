@@ -9,14 +9,13 @@
           <div class="row">
             <div class="3u">
               <section class="getting-started-step">
-                <h2>1.</h2>
-
+                <i class="icon major <%= current_user.email_verified ? "completed" : "" %>">1</i>
                 <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen! <% if !current_user.email_verified %>Du måste få din mail-adress verifierad. Kolla mailen.<% end %></p>
               </section>
             </div>
             <div class="3u">
               <section class="getting-started-step">
-                <h2>2.</h2>
+                <i class="icon major <%= current_user.cleared ? "completed" : "" %>">2</i>
                 <% if current_user.cleared %>
                   <p><strong>Godkännande.</strong> Du har blivit godkänd. Grattis!</p>
                 <% else %>
@@ -26,13 +25,17 @@
             </div>
             <div class="3u">
               <section class="getting-started-step">
-                <h2>3.</h2>
-                <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars kommer många sköna poäng att brinna inne.</p>
+                <i class="icon major <%= current_user.winners_tip ? "completed" : "" %>">3</i>
+                <% if !current_user.winners_tip %>
+                  <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Kolla <%= link_to "här", new_winners_tip_path %></p>
+                <% else %>
+                  <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
+                <% end %>
               </section>
             </div>
             <div class="3u">
               <section class="getting-started-step">
-                <h2>4.</h2>
+                <i class="icon major <%= current_user.wine ? "completed" : "" %>">4</i>
                 <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
               </section>
             </div>

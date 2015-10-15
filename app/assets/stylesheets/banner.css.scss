@@ -51,6 +51,20 @@ div#banner-collapse.collapsed .banner-toggle:before {
 }
 
 #banner .getting-started-step p strong{
-  color: inherit;
+  color: white;
 }
 
+#banner .icon.major {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  font-style: normal;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(144, 144, 144, 0.25);
+}
+
+#banner .icon.major.completed:before {
+  content: "\f05d";
+  position: absolute;
+  top: -0.7em;
+  right: -0.2em;
+}

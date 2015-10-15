@@ -55,7 +55,13 @@
 </div>
 
 <!-- Banner -->
-<%= render :partial => 'banner' %>
+<% if @show_banner %>
+  <% if content_for? :banner %>
+    <%= yield :banner %>
+  <% else %>
+    <%= render :partial => 'banner' %>
+  <% end %>
+<% end %>
 
 <section class="wrapper">
   <%= yield %>
