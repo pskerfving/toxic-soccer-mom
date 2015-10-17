@@ -28,14 +28,34 @@ class Game < ActiveRecord::Base
 
   # Return
   def ongoing?
-    return kickoff < Time.zone.now && !final?
+    kickoff < Time.zone.now && !final?
   end
 
   def started?
-    return kickoff < Time.zone.now
+    kickoff < Time.zone.now
+  end
+
+  def self.first_game_started?
+    Game.order(:kickoff).first.kickoff < Time.zone.now
   end
 
   def reset_score
   end
-    
+
+
+# Do a faster recalculation of points. Based on the assumption that all users have the right number of points.
+# Only the game in @game is considered.
+# This is always used when a game ends -> recalculate_points assumes that the tips for all final games have points calculated and stored.
+  def recalculate_points_fast!
+    if self.final? then
+      tips = self.tips
+      tips.each do |tip|
+        tip.points = tip.calculate_points
+        tip.user.points += tip.points
+        tip.save!
+        tip.user.save!
+      end
+    end
+  end
+
 end

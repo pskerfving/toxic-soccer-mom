@@ -102,25 +102,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Do a faster recaluculate points. Based on the assumption that all users have the right number of points.
-  # Only the game in @game is considered.
-  # This is always used when a game ends -> recalculate_points assumes that the tips for all final games have points calculated and stored.
-  def recalculate_points_fast
-    if @game.final? then
-      tips = @game.tips
-      tips.each do |tip|
-        tip.points = calculate_tip_points(tip)
-        tip.user.points += tip.points
-        tip.save
-        tip.user.save
-      end
-    end
-  end
-
-
-  def first_game_started?
-    Game.order(:kickoff).first().kickoff < Time.zone.now()
-  end
 
   protected
 
@@ -171,20 +152,6 @@ class ApplicationController < ActionController::Base
         end # nbr -> odds - loop
       end # game-loop
     end
-  end
-
-  # TODO: Kan skrivas om med <=> operatorn.
-  def game_token(h, a)
-    # token 1, function returns -1
-    # token X, function returns 0
-    # token 2, function returns 1
-    if (a - h) < 0
-      return -1
-    end
-    if (a - h) > 0
-      return 1
-    end
-    return 0
   end
 
 end

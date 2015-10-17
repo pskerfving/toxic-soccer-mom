@@ -166,7 +166,7 @@ class GamesController < ApplicationController
       tips = g.tips
       tips.each do |t|
         # update the predicted with the result form the ongoing game
-        predict = calculate_tip_points(t)
+        predict = t.calculate_points
         if predict != 0
           t.user.predicted += predict
           t.user.save
@@ -185,7 +185,7 @@ class GamesController < ApplicationController
     if current_user == nil
       raise "************************** current_user is NIL!"
     end
-    @tip = Tip.find(:first, :conditions => ["user_id = ? and game_id = ?", current_user.id, @game.id])
+    @tip = Tip.first(:conditions => ["user_id = ? and game_id = ?", current_user.id, @game.id])
     if !@tip
       # The user has not made a tip for this game
       @tip = Tip.new
@@ -212,16 +212,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def calculate_tip_points(t)
-    if (t.home_score == t.game.home_score) && (t.away_score == t.game.away_score)
-      return 3
-    end
-    if game_token(t.home_score, t.away_score) == game_token(t.game.home_score, t.game.away_score)
-      return 2
-    end
-    return 0
-  end
-
   # PUT /games/1/finalize
   # For setting the game as final (complete, over, finito).
   # Requires admin
@@ -229,8 +219,8 @@ class GamesController < ApplicationController
     if current_user && current_user.admin? # Is this needed?
       @game = Game.find(params[:id])
       @game.final = true
-      @game.save
-      recalculate_points_fast
+      @game.save!
+      @game.recalculate_points_fast!
 
       respond_to do |format|
         format.html { redirect_to games_url }

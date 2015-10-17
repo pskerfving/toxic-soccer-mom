@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     setup_latest_game_tip_hash
     # Any ongoing games right now? To toogle link to the page of predicted standing.
     @game_ongoing = Game.where("kickoff < ? AND final <> true", Time.zone.now).count > 0
-    @first_game_started = first_game_started?
+    @first_game_started = Game.first_game_started?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tips = Tip.joins(:user, :game).where(:user_id => params[:id]).order("kickoff") # Lite krångligt för att kunna sortera på kickoff.
     @winners_tip = WinnersTip.where(:user_id => @user.id, :key => false).first
-    @first_game_started = first_game_started?    # För att komma åt fr vy. Fattar inte riktigt hur scopen funkar.
+    @first_game_started = Game.first_game_started?    # För att komma åt fr vy. Fattar inte riktigt hur scopen funkar.
 
     respond_to do |format|
       format.html # show.html.erb
