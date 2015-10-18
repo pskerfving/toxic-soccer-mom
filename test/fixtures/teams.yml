@@ -1,9 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  country: MyString
-  group_id: 1
+sweden:
+  country: Sverige
+  group: group_a
+  abbreviation: SWE
+  eliminated: false
+  placeholder: false
 
-two:
-  country: MyString
-  group_id: 1
+norway:
+  country: Norge
+  group: group_a
+  abbreviation: NOR
+  eliminated: false
+  placeholder: false
+
+denmark:
+  country: Danmark
+  group: group_a
+  abbreviation: DEN
+  eliminated: false
+  placeholder: false
+

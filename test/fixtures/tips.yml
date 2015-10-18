@@ -1,13 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user_id: 1
-  game_id: 1
+petter_tip_swe_nor:
+  user: user_petter
+  game: game_swe_nor
+  home_score: 1
+  away_score: 3
+
+lennart_tip_swe_nor:
+  user: user_lennart
+  game: game_swe_nor
+  home_score: 1
+  away_score: 2
+
+gunhild_tip_swe_nor:
+  user: user_gunhild
+  game: game_swe_nor
   home_score: 1
   away_score: 1
 
-two:
-  user_id: 1
-  game_id: 1
+petter_tip_den_swe:
+  user: user_petter
+  game: game_den_swe
   home_score: 1
   away_score: 1
+
+petter_tip_nor_den:
+  user: user_petter
+  game: game_nor_den
+  home_score: 1
+  away_score: 1
+
+petter_tip_nor_den:
+  user: user_petter
+  game: game_nor_den
+  home_score: 0
+  away_score: 0
+
+lennart_tip_nor_den:
+  user: user_lennart
+  game: game_nor_den
+  home_score: 1
+  away_score: 2
