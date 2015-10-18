@@ -40,6 +40,8 @@ class Game < ActiveRecord::Base
   end
 
   def reset_score
+    home_score = 0
+    away_score = 0
   end
 
 
@@ -51,6 +53,7 @@ class Game < ActiveRecord::Base
       tips = self.tips
       tips.each do |tip|
         tip.points = tip.calculate_points
+        tip.user.points = 0 unless tip.user.points
         tip.user.points += tip.points
         tip.save!
         tip.user.save!
@@ -58,31 +61,31 @@ class Game < ActiveRecord::Base
     end
   end
 
-
   def self.calculate_odds(games)
-    @odds_hash = Hash.new
+    odds_hash = Hash.new
     games.each do |g|
       if g.started?
-        @odds_hash[g.id] = Hash.new
-        @odds_hash[g.id][-1] = Float(0)
-        @odds_hash[g.id][0] = Float(0)
-        @odds_hash[g.id][1] = Float(0)
+        odds_hash[g.id] = Hash.new
+        odds_hash[g.id][-1] = Float(0)
+        odds_hash[g.id][0] = Float(0)
+        odds_hash[g.id][1] = Float(0)
         g.tips.each do |t|
           token = game_token t.home_score, t.away_score
-          @odds_hash[g.id][token] += 1
+          odds_hash[g.id][token] += 1
 #          (@odds_hash[g.id][token] == nil) ? @odds_hash[g.id][token] = 1 : @odds_hash[g.id][token] += 1
         end # tips-loop
 
 #        @odds_hash[g.id].collect { |i| g.tips.length / i }
         [-1, 0, 1].each do |i|
-          if @odds_hash[g.id][i] > 0
-            @odds_hash[g.id][i] = g.tips.length / @odds_hash[g.id][i]
+          if odds_hash[g.id][i] > 0
+            odds_hash[g.id][i] = g.tips.length / odds_hash[g.id][i]
           else
-            @odds_hash[g.id][i] = nil
+            odds_hash[g.id][i] = nil
           end
         end # nbr -> odds - loop
       end # game-loop
     end
+    odds_hash
   end
 
 end
