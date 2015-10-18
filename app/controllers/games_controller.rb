@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     # Find all tips for the currently logged in user
     setup_user_tips_hash
     setup_winners_right_now
-    calculate_odds
+    Game.calculate_odds(@games)
 
     # Get the leaders for the sidebar
     @leaders = User.order("points DESC").limit(10)
