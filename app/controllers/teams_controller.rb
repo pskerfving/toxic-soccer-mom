@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
     # Find all tips for the currently logged in user
     setup_user_tips_hash
     setup_winners_right_now
-    Game.calculate_odds(@games)
+    @odds_hash = Game.calculate_odds(@games)
 
     @last_comment = Comment.order("updated_at DESC").first
 
