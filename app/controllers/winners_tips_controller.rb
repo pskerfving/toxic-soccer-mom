@@ -128,8 +128,7 @@ class WinnersTipsController < ApplicationController
 
   # Remove all placeholders so they are not shown in the selectboxes.
   def setup_selectable_teams_and_players
-    @teams = Team.order("country")
-    @teams.delete_if { |t| t.placeholder? }
+    @teams = Team.order("country").reject { |t| t.placeholder? }
     @players = Player.order("name")
   end
 

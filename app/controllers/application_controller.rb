@@ -18,18 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if current_user
-      return
-    end
-    redirect_to "/login", notice: 'Vv logga in.'
+    redirect_to("/login", notice: 'Vv logga in.') if current_user
   end
 
   # Check that the user is logged in and admin
   def admin_required
-    if current_user && current_user.admin
-      return
-    end
-    redirect_to "/login", notice: 'Logga in som administratör.'
+    redirect_to("/login", notice: 'Logga in som administratör.') if current_user && current_user.admin
   end
 
   # Check that the user accessing his own records
@@ -59,14 +53,14 @@ class ApplicationController < ActionController::Base
   def first_game_not_started_required
     first_game = Game.order('kickoff').first
     if first_game.kickoff < Time.zone.now && current_user && !current_user.admin?
-      redirect_to :root, notice: 'Första matchen har börjat. Det är för sent att ändra grundtips.'
+      redirect_to :root, notice: 'Går inte att göra eftersom första matchen redan har börjat.'
     end
   end
 
   def first_game_started_required
     first_game = Game.order('kickoff').first
     if first_game.kickoff > Time.zone.now && current_user && !current_user.admin?
-      redirect_to :root, notice: 'Första matchen har inte startat.'
+      redirect_to :root, notice: 'Går inte att göra eftersom första matchen har inte startat.'
     end
   end
 
