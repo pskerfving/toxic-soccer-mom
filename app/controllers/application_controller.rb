@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    redirect_to("/login", notice: 'Vv logga in.') if current_user
+    redirect_to("/login", notice: 'Du måste logga in för att kunna göra detta.') unless current_user
   end
 
   # Check that the user is logged in and admin
   def admin_required
-    redirect_to("/login", notice: 'Logga in som administratör.') if current_user && current_user.admin
+    redirect_to("/login", notice: 'Logga in som administratör.') unless current_user && current_user.admin?
   end
 
   # Check that the user accessing his own records

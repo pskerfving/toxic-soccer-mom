@@ -3,7 +3,7 @@
 
     <% @games.each do |game| %>
 
-      <div class="<%= "box game_box #{game.ongoing? ? 'game_ongoing' : ''}" %>" id="<%= game.id %>" data-time="<%= game.updated_at.to_i %>">
+      <div class="<%= "box game_box #{game.ongoing? ? 'game_ongoing' : ''} #{game.final? ? 'game_final' : ''}" %>" id="<%= game.id %>" data-time="<%= game.updated_at.to_i %>">
 
         <%= render :partial => 'gameboxcontent', :locals => {:game => game} %>
 
