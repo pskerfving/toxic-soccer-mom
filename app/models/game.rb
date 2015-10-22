@@ -70,7 +70,7 @@ class Game < ActiveRecord::Base
         odds_hash[g.id][0] = Float(0)
         odds_hash[g.id][1] = Float(0)
         g.tips.each do |t|
-          token = game_token t.home_score, t.away_score
+          token = t.home_score <=> t.away_score
           odds_hash[g.id][token] += 1
 #          (@odds_hash[g.id][token] == nil) ? @odds_hash[g.id][token] = 1 : @odds_hash[g.id][token] += 1
         end # tips-loop
