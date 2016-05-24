@@ -81,8 +81,8 @@ class UsersController < ApplicationController
   def email
     @show_banner = false
     @user = User.find(params[:id])
-    if !Authorization.find_by_user_id_and_provider(@user.id, "twitter")
-      redirect_to "/", notice: 'Du kan bara ange mailadress om du registrerat dig med Twitter.'
+    if Authorization.find_by_user_id_and_provider(@user.id, "identity")
+      redirect_to "/", notice: 'Du kan bara ange mailadress om du registrerat dig med FB eller Twitter.'
     end
     if !(current_user && @user.id == current_user.id || current_user.admin)
       redirect_to "/login", notice: 'Logga in som denna användare eller som administratör.'
