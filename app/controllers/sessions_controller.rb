@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # raise env['omniauth.auth'].to_yaml
+    puts env['omniauth.auth'].to_yaml
 
     auth_hash = request.env['omniauth.auth']
 
