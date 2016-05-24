@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
       if @authorization.provider == "facebook"
         user.email_verified = true
         user.save!
-#        UserMailer.welcome(user).deliver
+        UserMailer.welcome(user).deliver
         redirect_to :root
       end
       session[:user_id] = user.id
