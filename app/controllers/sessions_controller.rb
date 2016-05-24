@@ -50,9 +50,9 @@ class SessionsController < ApplicationController
       end
       if @authorization.provider == "facebook"
         user.email_verified = true
-        UserMailer.welcome(user).deliver
         user.save!
-        redirect_to :root, :notice => "Nu ska du ge oss din mail-adress."
+#        UserMailer.welcome(user).deliver
+        redirect_to :root
       end
       session[:user_id] = user.id
     end
