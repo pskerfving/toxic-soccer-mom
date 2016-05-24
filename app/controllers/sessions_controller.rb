@@ -50,7 +50,9 @@ class SessionsController < ApplicationController
         redirect_to email_user_path(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
       end
       if @authorization.provider == "facebook"
-        user.email_verified = true
+        if user.email
+          user.email_verified = true
+        end
         user.save!
         if user.email
           UserMailer.welcome(user).deliver
