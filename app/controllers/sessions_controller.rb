@@ -38,9 +38,9 @@ class SessionsController < ApplicationController
       user.points = 0
       # Om email finns, men inte är verifierad. Skicka mail för att få det verifierat.
       if @authorization.provider == "identity"
-        user.send_email_verification
         user.email_verified = false
         user.save!  # Too many saves here.
+        user.send_email_verification
         redirect_to :root, :notice => "Ditt konto är skapat. Du måste bekräfta din mailadress. Titta i din inbox."
       end
       if @authorization.provider == "twitter"
