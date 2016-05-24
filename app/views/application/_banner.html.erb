@@ -26,17 +26,25 @@
             <div class="3u">
               <section class="getting-started-step">
                 <i class="icon major <%= current_user.winners_tip ? "completed" : "" %>">3</i>
-                <% if !current_user.winners_tip %>
-                  <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Kolla <%= link_to "här", new_winners_tip_path %></p>
+                <% if !current_user.cleared %>
+                  <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Och du kommer att kunna göra det när du är godkänd.</p>
                 <% else %>
-                  <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
+                  <% if !current_user.winners_tip %>
+                    <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Kolla <%= link_to "här", new_winners_tip_path %></p>
+                  <% else %>
+                    <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
+                  <% end %>
                 <% end %>
               </section>
             </div>
             <div class="3u">
               <section class="getting-started-step">
                 <i class="icon major <%= current_user.wine ? "completed" : "" %>">4</i>
-                <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
+                <% if !current_user.wine %>
+                  <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
+                <% else %>
+                  <p><strong>Lämna in vin.</strong> Du har fullgjort dina åtaganden. Respekt!</p>
+                <% end %>
               </section>
             </div>
           </div>
