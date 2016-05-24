@@ -31,6 +31,7 @@ class SessionsController < ApplicationController
       puts "---------------- HITTADE INGEN PERSON"
       user = User.new :name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
       puts user.name
+      puts user.email
       @authorization = user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
       puts "---------------- SKAPAT AUTH"
       user.admin = false
