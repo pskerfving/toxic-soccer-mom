@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       if @authorization.user.email_verified
         redirect_to :root, :notice => "Du är inloggad. Lycka till med tippningen!"
       else
-        redirect_to :root, :alert => "Du är nu inloggad. För att kunna tippa måste du först bekräfta din mail-adress. Titta i din inbox."
+        redirect_to :root, :notice => "Du är nu inloggad. För att kunna tippa måste du först bekräfta din mail-adress. Titta i din inbox."
       end
     else
       # No authorization found. Create a new user and an authorization from the info provided
@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
       if @authorization.provider == "twitter"
         user.email_verified = false
         user.save!
-        redirect_to edit_users_url(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
+        redirect_to email_users_path(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
       end
       if @authorization.provider == "facebook"
         user.email_verified = true

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="6u -3u">
+      <h2 class="align-center">Ange en e-mail du läser</h2>
+      <%= form_for(@user, html: {class: "sign-up-form"}) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this group from being saved:</h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <% if current_user && (!current_user.email_verified || current_user.admin?) %>
+
+          <%= f.label :email, "Mailadress" %>
+          <%= f.text_field :email %>
+        <% end %>
+
+        <div class="submit-container">
+          <%= f.submit "Spara" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

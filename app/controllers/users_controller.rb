@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
 
-  before_filter :admin_required, :only => [:new, :create, :destroy, :wine, :clear]
+  before_filter :admin_required, :only => [ :new, :create, :destroy, :wine, :clear ]
+  before_filter :login_required, :only => [ :email ]
   # TODO: Fix so that the user cannot update someone elses email.
   # before_filter :own_user_or_admin_required, :only => [:update]
 
@@ -75,6 +76,21 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def email
+    @show_banner = false
+    @user = User.find(params[:id])
+    if !Authorization.find_by_user_id_and_provider(@user.id, "twitter")
+      redirect_to "/", notice: 'Du kan bara ange mailadress om du registrerat dig med Twitter.'
+    end
+    if !(current_user && @user.id == current_user.id || current_user.admin)
+      redirect_to "/login", notice: 'Logga in som denna användare eller som administratör.'
+    end
+  end
+
+  def post_email
+
   end
 
   def clear

@@ -39,6 +39,7 @@ Uefa::Application.routes.draw do
       put 'clear'
       put 'wine'
       put 'send_email_verification'
+      get 'email' # getting the form for the user to provide her email.
     end
     
   end
