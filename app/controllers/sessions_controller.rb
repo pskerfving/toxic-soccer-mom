@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
       if @authorization.provider == "twitter"
         user.email_verified = false
         user.save!
-        redirect_to email_users_path(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
+        redirect_to email_user_path(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
       end
       if @authorization.provider == "facebook"
         user.email_verified = true
