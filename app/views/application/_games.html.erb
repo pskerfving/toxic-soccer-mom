@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="game_container" data-time="<%= @last_comment.updated_at.to_i %>">
+  <div class="game_container" data-time="<%= if @last_comment then @last_comment.updated_at.to_i end %>">
 
     <% @games.each do |game| %>
 
