@@ -10,7 +10,15 @@
   <p>Om allt stämmer, och du är du, så behöver du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
   <p>När detta är gjort kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
   <p>Skulle du uppfylla de högt ställda krav som finns för deltagande, så kommer du att få ett nytt mail.</p>
-  <p>När du under de närmsta veckorna loggar in på sajten är det viktigt att du gör detta på samma sätt som när du blev medlem (dvs FB, Twitter eller med e-mail/lösenord). Annars kommer det att bli helt bananas!</p>
+  <p>När du under de närmsta veckorna loggar in på sajten är det viktigt att du gör detta på samma sätt som när du registrerade dig. Annars kommer det att bli helt bananas! Dubbla konton, försvunna tips, kaos.</p>
+  <% case @authorization.provider %>
+    <% when "identity" %>
+      <p>Du registrerade dig med e-mail/lösenord. Håll dig borta från de svarta knapparna!</p>
+    <% when "facebook" %>
+      <p>Du registrerade dig via Facebook. Logga in genom att trycka på Facebook-knappen. Enkelt.</p>
+    <% when "twitter" %>
+      <p>Du registrerade dig via Twitter. Logga in genom att trycka på Twitter-knappen. Enkelt.</p>
+  <% end %>
   <p>Kul att just <strong>du</strong> är med!</p>
   <p>mvh,<br>Tävlingsledningen</p>
   <footer><%= link_to "Vin- & Fotbollstips 2016", root_url %></footer>

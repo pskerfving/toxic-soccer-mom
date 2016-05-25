@@ -15,6 +15,7 @@ class UserMailer < ActionMailer::Base
 
   def email_verification(user)
     @user = user
+    @authorization = Authorization.where(:user_id => @user.id).first
     mail :to => user.email, :subject => "em2016.ifkff.org - Verifiera din mail-adress"
   end
 
