@@ -4,13 +4,13 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Välkommen att vara med i vintipset 2016, <%= @user.name %></h1>
-<p>
-  Du har lyckats skapa ett konto och angett denna mailadressen (<%= @user.email %>).<br>
-</p>
-<p>
-  För att bekräfta att mail-adressen klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a>.
-</p>
-<p>Thanks for joining and have a great day!</p>
+  <h1>Vin- & Fotbollstips 2016</h1>
+  <p><%= @user.name %>, någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
+  <p>Om det stämmer, och du är du, så kan du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
+  <p>När detta är gjort kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
+  <p>Skulle du uppfylla de högt ställda krav som finns för deltagande, så kommer du att få ett nytt mail.</p>
+  <p>Kul att just <strong>du</strong> är med!</p>
+  <p>mvh,<br>Tävlingsledningen</p>
+  <footer><%= link_to "Vin- & Fotbollstips 2016":root %></footer>
 </body>
 </html>
