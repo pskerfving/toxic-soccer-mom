@@ -5,8 +5,9 @@
 </head>
 <body>
   <h1>Vin- & Fotbollstips 2016</h1>
-  <p><%= @user.name %>, någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
-  <p>Om det stämmer, och du är du, så kan du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
+  <p><%= @user.name %>,</p>
+  <p>Någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
+  <p>Om allt stämmer, och du är du, så behöver du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
   <p>När detta är gjort kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
   <p>Skulle du uppfylla de högt ställda krav som finns för deltagande, så kommer du att få ett nytt mail.</p>
   <p>Kul att just <strong>du</strong> är med!</p>
