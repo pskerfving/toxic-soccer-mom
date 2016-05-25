@@ -62,16 +62,19 @@ class UsersController < ApplicationController
       user_params = user_params.except(:cleared);
     end
     respond_to do |format|
+      @notice = 'Dina uppgifter har uppdaterats.'
       if @user.update_attributes(user_params)
         if user_params[:email]
           @user.send_email_verification
+          @notice = @notice + ' Ett mail har skickats för att verifiera mail-adressen.'
         end
         if user_params[:cleared]
           @user.send_user_cleared
         end
-        format.html { redirect_to @user, notice: 'Dina uppgifter har uppdaterats.' }
+        format.html { redirect_to @user, notice: @notice }
         format.json { head :no_content }
       else
+        Rails.logger.info(@user.errors.messages.inspect)
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -87,10 +90,6 @@ class UsersController < ApplicationController
     if !(current_user && @user.id == current_user.id || current_user.admin)
       redirect_to "/login", notice: 'Logga in som denna användare eller som administratör.'
     end
-  end
-
-  def post_email
-
   end
 
   def clear

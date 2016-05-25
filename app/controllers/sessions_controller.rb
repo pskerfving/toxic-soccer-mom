@@ -24,7 +24,11 @@ class SessionsController < ApplicationController
       if @authorization.user.email_verified
         redirect_to :root, :notice => "Du är inloggad. Lycka till med tippningen!"
       else
-        redirect_to :root, :notice => "Du är nu inloggad. För att kunna tippa måste du först bekräfta din mail-adress. Titta i din inbox."
+        if !@authorization.user.email
+          redirect_to email_user_path(@authorization.user), :notice => "Du är nu inloggad. Du måste ange en mail-adress."
+        else
+          redirect_to :root, :notice => "Du är nu inloggad. För att kunna tippa måste du först bekräfta din mail-adress. Titta i din inbox."
+        end
       end
     else
       # No authorization found. Create a new user and an authorization from the info provided
