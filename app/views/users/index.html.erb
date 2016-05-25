@@ -56,7 +56,7 @@
 	<td><%= place %></td>
     <td><%= link_to user.name, user %></td>
 	<% if current_user && current_user.admin? %>
-    <td><%= user.email %></td>
+    <td><%= user.email %><%= !user.email_verified ? "*" : "" %></td>
     <td><%= user.cleared %></td>
     <td><%= user.wine %></td>
 	<% end %>
@@ -87,4 +87,7 @@
   </tr>
 <% end %>
 </table>
+  <% if current_user && current_user.admin? %>
+    <p>* Mail-adresser som inte har verifierats.</p>
+  <% end %>
 </div>
