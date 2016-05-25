@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Välkommen att vara med i vintipset 2016, <%= @user.name %></h1>
+<p>
+  Du har lyckats skapa ett konto och angett denna mailadressen (<%= @user.email %>).<br>
+</p>
+<p>
+  För att bekräfta att mail-adressen klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a>.
+</p>
+<p>Thanks for joining and have a great day!</p>
+</body>
+</html>
