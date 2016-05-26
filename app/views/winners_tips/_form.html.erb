@@ -22,23 +22,27 @@
 	<% end %>
 
   <div class="field">
-    Vinnande lag<br />
-	<%= f.select :winning_team_id, teams %>
+    <label>Vinnande lag</label>
+    <p>Du får 5 poäng om detta laget vinner turneringen</p>
+	  <%= f.select :winning_team_id, teams %>
   </div>
 
   <div class="field">
-    Finalist<br />
+    <label>Finalist</label>
+    <p>Du får 5 poäng om detta laget går till final, oavsett vinst eller förlust</p>
     <%= f.select :runner_up_id, teams %>
   </div>
 
   <div class="field">
-    Skyttekung<br />
+    <label>Skyttekung</label>
+    <p>Du får 5 poäng om denna spelaren gör flest mål, på minst speltid vid oavgjort.</p>
     <%= f.text_field :goal_scorer %>
 	<!--<%= f.select :topscorer_player_id, players %>	-->
   </div>
 
   <div class="field">
-    Förste svenske målskytt<br/>
+    <label>Förste svenske målskytt</label>
+    <p>Du får 5 poäng om denna svenske spelaren strutar först.</p>
     <%= f.text_field :first_swedish_scorer %>
 	<!--<%= f.select :firstswedish_player_id, players %>-->
   </div>
