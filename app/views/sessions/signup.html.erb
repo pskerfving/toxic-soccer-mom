@@ -27,7 +27,7 @@
         <%= label_tag :name, "Namn (för- och efternamn)" %>
         <%= text_field_tag :name, @identity.try(:name) %>
         <%= label_tag :email, "E-mail" %>
-        <p class="more-info inline-info">Vi behöver skicka information till dig. Använd en adress som du läser.</p>
+        <p class="more-info inline-info">Vi kommer att skicka information till dig. Använd en adress som du läser.</p>
         <%= text_field_tag :email, @identity.try(:email) %>
         <%= label_tag :password, "Lösenord" %>
         <%= password_field_tag :password %>

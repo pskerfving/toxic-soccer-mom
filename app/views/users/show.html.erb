@@ -9,11 +9,11 @@
 
 <div class="container">
 
-    <% if !@user.email_verified && current_user.id == @user.id || current_user.admin? %>
-    <section>
-      <p>Din mailadress (<%= @user.email %>) har inte bekräftats. Det behöver göras för att du ska kunna tippa. För att skicka mail med länk för att bekräfta igen - tryck på knappen.</p>
-      <%= link_to 'Skicka nytt mail', send_email_verification_user_path(@user), method: :put, :class => "button" %>
-    </section>
+    <% if !@user.email_verified && current_user && (current_user.id == @user.id || current_user.admin?) %>
+      <section>
+        <p>Din mailadress (<%= @user.email %>) har inte bekräftats. Det behöver göras för att du ska kunna tippa. För att skicka mail med länk för att bekräfta igen - tryck på knappen.</p>
+        <%= link_to 'Skicka nytt mail', send_email_verification_user_path(@user), method: :put, :class => "button" %>
+      </section>
     <% end %>
 
     <% if current_user && current_user.id == @user.id && @user.email == nil %>
