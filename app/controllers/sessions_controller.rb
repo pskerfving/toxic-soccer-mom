@@ -56,6 +56,8 @@ class SessionsController < ApplicationController
       if @authorization.provider == "facebook"
         if user.email
           user.email_verified = true
+        else
+          user.email_verified = false
         end
         user.save!
         if user.email
@@ -64,6 +66,12 @@ class SessionsController < ApplicationController
         else
           redirect_to email_user_path(user), :notice => 'Ditt konto är skapat. Du behöver komplettera med en mailadress.'
         end
+      end
+      if @authorization.provider == "github"
+        user.email_verified = true
+        user.save!
+        user.send_email_verification
+        redirect_to :root, :notice => 'Ditt konto är skapat.'
       end
       session[:user_id] = user.id
     end

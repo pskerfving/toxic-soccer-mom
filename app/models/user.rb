@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   def send_email_verification
     generate_token(:email_verification_token)
     self.email_verification_sent_at = Time.zone.now
-    self.email_verified = false
     save!
     UserMailer.email_verification(self).deliver
   end

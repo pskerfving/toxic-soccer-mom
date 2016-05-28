@@ -79,6 +79,9 @@ GEM
       rack
     omniauth-facebook (1.5.1)
       omniauth-oauth2 (~> 1.1.0)
+    omniauth-github (1.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
@@ -163,6 +166,7 @@ DEPENDENCIES
   less-rails
   omniauth
   omniauth-facebook
+  omniauth-github
   omniauth-identity
   omniauth-twitter (= 1.0.1)
   paymill
@@ -173,3 +177,6 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+
+BUNDLED WITH
+   1.10.6

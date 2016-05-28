@@ -4,23 +4,27 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <h1>Vin- & Fotbollstips 2016</h1>
-  <p><%= @user.name %>,</p>
-  <p>Någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
+<h1>Vin- & Fotbollstips 2016</h1>
+<p><%= @user.name %>,</p>
+<p>Någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
+<% if !@user.email_verified? %>
   <p>Om allt stämmer, och du är du, så behöver du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
-  <p>När detta är gjort kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
-  <p>Skulle du uppfylla de högt ställda krav som finns för deltagande, så kommer du att få ett nytt mail.</p>
-  <p>När du under de närmsta veckorna loggar in på sajten är det viktigt att du gör detta på samma sätt som när du registrerade dig. Annars kommer det att bli helt bananas! Dubbla konton, försvunna tips, kaos.</p>
-  <% case @authorization.provider %>
-    <% when "identity" %>
-      <p>Du registrerade dig med e-mail/lösenord. Håll dig borta från de svarta knapparna!</p>
-    <% when "facebook" %>
-      <p>Du registrerade dig via Facebook. Logga in genom att trycka på Facebook-knappen. Enkelt.</p>
-    <% when "twitter" %>
-      <p>Du registrerade dig via Twitter. Logga in genom att trycka på Twitter-knappen. Enkelt.</p>
-  <% end %>
-  <p>Kul att just <strong>du</strong> är med!</p>
-  <p>mvh,<br>Tävlingsledningen</p>
-  <footer><%= link_to "Vin- & Fotbollstips 2016", root_url %></footer>
+<% end %>
+<p>Härnäst kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
+<p>Skulle du mot förmodan uppfylla de högt ställda krav som ställs för deltagande, så kommer du att få ett nytt mail.</p>
+<p>När du under de närmsta veckorna loggar in på sajten är det viktigt att du gör detta på samma sätt som när du registrerade dig. Annars kommer det att bli helt bananas! Dubbla konton, försvunna tips, kaos.</p>
+<% case @authorization.provider %>
+<% when "identity" %>
+  <p>Du registrerade dig med e-mail/lösenord. Håll dig borta från de svarta knapparna!</p>
+<% when "facebook" %>
+  <p>Du registrerade dig via Facebook. Logga in genom att trycka på Facebook-knappen. Enkelt.</p>
+<% when "twitter" %>
+  <p>Du registrerade dig via Twitter. Logga in genom att trycka på Twitter-knappen. Enkelt.</p>
+<% when "github" %>
+  <p>Du registrerade dig via Github (bästa valet). Logga in genom att trycka på Github-knappen. Enkelt.</p>
+<% end %>
+<p>Kul att just <strong>du</strong> är med. Och varmt välkommen.</p>
+<p>mvh,<br>Tävlingsledningen</p>
+<footer><%= link_to "Vin- & Fotbollstips 2016", root_url %></footer>
 </body>
 </html>
