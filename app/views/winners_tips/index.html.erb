@@ -12,9 +12,7 @@
       <th>Vinnande lag</th>
       <th>Finalist</th>
       <th>Skyttekung</th>
-      <!--
-          <th>Förste svenske målskytt</th>
-      -->
+      <th>Förste svenske målskytt</th>
       <% if current_user && current_user.admin? %>
         <th></th>
         <th></th>
@@ -48,18 +46,13 @@
             <%= winners_tip.goal_scorer %>*
           <% end %>
         </td>
-        <!--
-    <td>
-
-        <% if winners_tip.firstswedish_player %>
-			<%= winners_tip.firstswedish_player.name %>
-
-        <% else %>
-			<%= winners_tip.first_swedish_scorer %>*
-
-        <% end %>
-	</td>
--->
+        <td>
+          <% if winners_tip.firstswedish_player %>
+			      <%= winners_tip.firstswedish_player.name %>
+          <% else %>
+			      <%= winners_tip.first_swedish_scorer %>*
+          <% end %>
+      	</td>
         <% if current_user && current_user.admin? %>
           <td><%= link_to 'Show', winners_tip %></td>
           <td><%= link_to 'Edit', edit_winners_tip_path(winners_tip) %></td>
