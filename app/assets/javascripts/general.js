@@ -66,7 +66,7 @@
             }
             var button = $(this);
             var notification = $(this).closest('.game_box').find('.notification');
-            notification.text("Sparar...")
+            notification.text("Sparar...");
             $.post(url, { adjust: $(this).attr('adjust'), team: $(this).attr('team') },
                 function(data) {
                     button.closest('.game_result').find('.home_score').text(data.home_score);
