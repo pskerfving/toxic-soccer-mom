@@ -1,21 +1,11 @@
-<div class="title_box">
+<header class="major">
+  <h2><%= @team.country %></h2>
   <p>Grupp <%= @team.group.name %></p>
-  <h1><%= @team.country %> <%= @team.eliminated? ? " - Utslagna" : "" %></h1>
   <% if current_user && current_user.admin? %>
-	<p><%= link_to "Redigera lag", edit_team_path(@team) %>
+    <p><%= link_to "Redigera lag", edit_team_path(@team) %>
   <% end %>
+</header>
+
+<div class="container">
+  <%= render 'games' %>
 </div>
-
-<%= render 'games' %>
-
-
-<!--
-<p>
-	<b>Flag:</b>
-	<% if @team.has_flag? %>
-		<%= image_tag @team.flag_path %>
-	<% else %>
-		No Flag.
-	<% end %>
-</p>
--->
