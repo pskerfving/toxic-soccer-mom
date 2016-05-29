@@ -23,7 +23,7 @@ class StatsController < ApplicationController
   end
 
   def time_until_wine_deadline
-    deadline = Time.utc(2014, "jun", 12)
+    deadline = Time.utc(2016, "jun", 10)
     return ((deadline - Time.now)/(3600*24) + 1).round
   end
 

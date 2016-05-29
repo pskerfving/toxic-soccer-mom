@@ -2,64 +2,65 @@
   <%= render :partial => 'banner' %>
 <% end %>
 
-<header class="major">
-  <h2>I år går resan till Frankrike!</h2>
-  <p>Dax att tippa igen!</p>
-</header>
+<% if current_user && current_user.admin? %>
+  <div class="container">
+    <table class="stats">
+      <% if current_user %>
+        <tr>
+          <td><h2>Du har ett konto. <span class="stat">Bra.</span></h2></td>
+        </tr>
+        <tr>
+          <td>
+            <% if !@winnerstip.empty? %>
+              <h2>Du har lämnat grundtips. <span class="stat">Bra.</span></h2>
+            <% else %>
+              <h2>Du har inget grundtips. <span class="stat">Inte så bra.</span></h2>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if !@tips.empty? %>
+              <h2>Du har börjat tippa matcher. <span class="stat">Bra.</span></h2>
+            <% else %>
+              <h2>Du har inte börjat tippa matcher. <span class="stat">Inte så bra.</span></h2>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if @wine %>
+              <h2>Du har lämnat in vin. <span class="stat">Mycket bra.</span></h2>
+            <% else %>
+              <h2>Du har inte lämnat in vin. <span class="stat">Inte alls bra.</span></h2>
+            <% end %>
+          </td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><h2><%= @nbr_users %></h2></td>
+          <td><h2>tippare anmälda.</h2></td>
+        </tr>
+        <tr>
+          <td><h2><%= @nbr_tips %></h2></td>
+          <td><h2>har börjat tippa.</h2></td>
+        </tr>
+        <tr>
+          <td><h2><%= @nbr_wine %></h2></td>
+          <td><h2>har lämnat in vin.</h2></td>
+        </tr>
+        <tr>
+          <td><h2><%= @nbr_days_wine %></h2></td>
+          <td><h2>dagar kvar att göra rätt för sig.</h2></td>
+        </tr>
+      <% end %>
+    </table>
 
-<div class="container">
-	<table class="stats">
-	<% if current_user %>
-		<tr>
-			<td><h2>Du har ett konto. <span class="stat">Bra.</span></h2></td>
-		</tr>
-		<tr>
-			<td>
-			<% if !@winnerstip.empty? %>
-				<h2>Du har lämnat grundtips. <span class="stat">Bra.</span></h2>
-			<% else %>
-				<h2>Du har inget grundtips. <span class="stat">Inte så bra.</span></h2>
-			<% end %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<% if !@tips.empty? %>
-				<h2>Du har börjat tippa matcher. <span class="stat">Bra.</span></h2>
-			<% else %>
-				<h2>Du har inte börjat tippa matcher. <span class="stat">Inte så bra.</span></h2>
-			<% end %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<% if @wine %>
-				<h2>Du har lämnat in vin. <span class="stat">Mycket bra.</span></h2>
-			<% else %>
-				<h2>Du har inte lämnat in vin. <span class="stat">Inte alls bra.</span></h2>
-			<% end %>
-			</td>
-		</tr>		
-	<% else %>
-		<tr>
-			<td><h2><%= @nbr_users %></h2></td>
-			<td><h2>tippare anmälda.</h2></td>
-		</tr>
-		<tr>
-			<td><h2><%= @nbr_tips %></h2></td>
-			<td><h2>har börjat tippa.</h2></td>
-		</tr>
-		<tr>
-			<td><h2><%= @nbr_wine %></h2></td>
-			<td><h2>har lämnat in vin.</h2></td>
-		</tr>
-		<tr>
-			<td><h2><%= @nbr_days_wine %></h2></td>
-			<td><h2>dagar kvar att göra rätt för sig.</h2></td>
-		</tr>
-	<% end %>
-</table>
-
-</div>
-
+  </div>
+<% else %>
+  <header class="major">
+    <h2>Resan går till Frankrike!</h2>
+    <p>De flesta av er vet redan vad detta går ut på. <%= @nbr_users %> personer har redan anmält sig.</p>
+  </header>
+<% end %>
 

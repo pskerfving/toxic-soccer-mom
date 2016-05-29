@@ -35,14 +35,14 @@
 
 <!-- Header -->
 <header id="header" class="skel-layers-fixed">
-  <h1><%= link_to "EM 2016", root_path %></h1>
+  <h1><%= link_to "EM 2016", instructions_path %></h1>
   <nav id="nav">
     <ul>
       <li><a href="/games">Matcher</a></li>
       <li><a href="/users">Topplista</a></li>
       <% if current_user %>
-        <li><%= link_to "Mina tips", current_user %></li>
-        <li><%= link_to current_user.name, logout_path %></li>
+        <li><%= link_to current_user.name, current_user %></li>
+        <li><%= link_to "Logga ut", logout_path, :class => "button" %></li>
       <% end %>
     </ul>
   </nav>
