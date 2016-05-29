@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class EmailVerificationsController < ApplicationController
 
   def verify_email

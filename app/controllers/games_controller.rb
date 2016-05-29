@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class GamesController < ApplicationController
 
   before_filter :admin_required, :only => [:new, :show, :edit, :update, :create, :destroy, :finalize]

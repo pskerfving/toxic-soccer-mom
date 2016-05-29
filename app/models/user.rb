@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :uniqueness => true
 
+  def cleared
+    return cleared? && email_verified?
+  end
+
   def send_user_cleared
     if self.cleared?
       UserMailer.user_cleared(self).deliver
