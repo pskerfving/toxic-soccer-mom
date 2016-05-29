@@ -8,10 +8,10 @@
 <p><%= @user.name %>,</p>
 <p>Någon (förhoppningsvis du själv) har angivit denna mail-adressen för sitt deltagande i ovan nämnda evenemang.</p>
 <% if !@user.email_verified? %>
-  <p>Om allt stämmer, och du är du, så behöver du verifiera adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
+  <p>Om allt stämmer, och du är du, så behöver du bekräfta adressen genom att klicka <a href="<%= root_url + 'email_verifications/' + @user.email_verification_token%>">här</a></p>
 <% end %>
 <p>Härnäst kommer tävlingsledningen att se över din ansökan och och förhoppningsvis godkänna densamma.</p>
-<p>Skulle du mot förmodan uppfylla de högt ställda krav som ställs för deltagande, så kommer du att få ett nytt mail.</p>
+<p>Skulle du, mot förmodan, uppfylla de högt ställda krav som ställs för deltagande, så kommer du att få ett nytt mail.</p>
 <p>När du under de närmsta veckorna loggar in på sajten är det viktigt att du gör detta på samma sätt som när du registrerade dig. Annars kommer det att bli helt bananas! Dubbla konton, försvunna tips, kaos.</p>
 <% case @authorization.provider %>
 <% when "identity" %>
