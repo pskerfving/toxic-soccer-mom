@@ -10,17 +10,19 @@
 <div class="container">
 
     <% if !@user.email_verified && current_user && (current_user.id == @user.id || current_user.admin?) %>
-      <section>
+      <div class="row resend_email">
         <p>Din mailadress (<%= @user.email %>) har inte bekräftats. Det behöver göras för att du ska kunna tippa. För att skicka mail med länk för att bekräfta igen - tryck på knappen.</p>
         <%= link_to 'Skicka nytt mail', send_email_verification_user_path(@user), method: :put, :class => "button" %>
-      </section>
+        <p>Om du fortfarande inte fått något mail, titta om det fångats i ditt spam-filter. Har du fått flera mail är det viktigt
+          att du använder länken i det senast skickade mailet. Annars blir det bananas!</p>
+      </div>
     <% end %>
 
     <% if current_user && current_user.id == @user.id && @user.email == nil %>
       <p>Du har inte angett någon mailadress. Gör det <%= link_to "här!", edit_user_path(@user) %></p>
     <% end %>
 
-  <div class="text_box">
+  <div class="container">
     <h2>Grundtips</h2>
 
     <% if @first_game_started || (@user == current_user) %>
@@ -80,7 +82,7 @@
     <% end %>
   </div>
 
-  <div class="text_box">
+  <div class="container">
     <h2>Matchtips</h2>
     <% if @tips.length > 0 %>
       <table class="table">
