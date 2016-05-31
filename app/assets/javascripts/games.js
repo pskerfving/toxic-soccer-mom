@@ -15,4 +15,24 @@ $(document).ready(function() {
         $('.upcoming_btn').addClass("active");
         $('.game_container').isotope({filter: ':not(.game_final)'});
     });
+
+    $('.write_comment_button').click(function(evt) {
+        evt.preventDefault();
+        var game_id = $(this).closest('.game_box').attr('id');
+        $.getScript("/getcommentform.js?game=" + game_id);
+    });
+
+    $('.expand_list').hide();
+    $('.show_expand_button').click(function() {
+        if ($(this).text() == "Visa") {
+            $(this).text('Göm');
+            $('.expand_list', $(this).closest('.expand_content')).show();
+        } else {
+            $(this).text('Visa');
+            $('.expand_list', $(this).closest('.expand_content')).hide();
+        }
+        $('.game_container').isotope('layout');
+        return false;
+    });
+    
 });

@@ -35,24 +35,7 @@
         $.getScript("/getnewcomments.js?after=" + after);
         setTimeout(updateComments, 15000);
     }
-
-    function connectHandlers() {
-        $('.expand_list').hide();
-        $('.show_expand_button').click(function() {
-            if ($(this).text() == "Visa") {
-                $(this).text('Göm');
-                $('.expand_list', $(this).closest('.expand_content')).show();
-            } else {
-                $(this).text('Visa');
-                $('.expand_list', $(this).closest('.expand_content')).hide();
-            }
-            $('.game_container').isotope('layout');
-            return false;
-        });
-    };
-
-    // Expanding the comments fields of the games view (and closing)
-    $(document).ready(connectHandlers);
+    
 
     // Placing tips through AJAX (and if your an admin, changing the current result of the game.)
     $(document).ready(function() {
@@ -76,14 +59,7 @@
                 }, 'json');
         });
     });
-
-    $(document).ready(function (){
-        $('.write_comment_button').click(function() {
-            var game_id = $(this).closest('.game_box').attr('id');
-            $.getScript("/getcommentform.js?game=" + game_id);
-        });
-    });
-
+    
     $(document).ready(function() {
         // Hide the notification if it is empty.
         $('div#notifications').find('p:empty').parent().hide();

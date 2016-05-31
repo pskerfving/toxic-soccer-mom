@@ -1,6 +1,7 @@
 # coding: UTF-8
 class CommentsController < ApplicationController
 
+  skip_before_filter  :verify_authenticity_token
   before_filter :find_commentable
   before_filter :login_required
 

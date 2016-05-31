@@ -1,28 +1,34 @@
-$("#game_container #<%= @game.id %> .game_comment_footer").append("<%= raw escape_javascript(render :partial => 'gamecommentform', :locals => { :game => @game }) %>");
-$("#game_container #<%= @game.id %> .write_comment_button").hide();
+$(".game_container #<%= @game.id %> .game_comment_footer").append("<%= raw escape_javascript(render :partial => 'gamecommentform', :locals => { :game => @game }) %>");
+$(".game_container #<%= @game.id %> .write_comment_button").hide();
+$(".game_container #<%= @game.id %> .game_comment_textarea").focus();
 
-$(".button").click(function() {  
+$(".button").click(function() {
 	var message = $("#<%= @game.id %> textarea#game_comment_textarea").val();
 	var dataStr = "comment[content]=" + message;
 
 	// Ta bort formuläret
-	$("#game_container #<%= @game.id %> .game_comment_form").remove();	
+	$(".game_container #<%= @game.id %> .game_comment_form").remove();
 	// Visa länken
-	$("#game_container #<%= @game.id %> .write_comment_button").show();
+	$(".game_container #<%= @game.id %> .write_comment_button").show();
+  // Make sure the comments are showing
+  $(".game_container #<%= @game.id %> .game_comment_list").show();
+  $(".game_container #<%= @game.id %> .show_expand_button").text("Göm");
 
 	$.ajax({
 	  type: "POST",
 	  url: "/games/<%= @game.id %>/comments",
 	  data: dataStr,
 	  success: function() {
-
-		// Lägg in den nya kommentaren i sidan
-		var after = $("#game_container").attr("data-time");
-		$.getScript("/getnewcomments.js?after=" + after);
-		return false;
-	  }
-	});  
+      // Lägg in den nya kommentaren i sidan
+      var after = $(".game_container").attr("data-time");
+      $.getScript("/getnewcomments.js?after=" + after);
+      return false;
+	  },
+    failure: function() {
+      console.log("Failed to store comment!")
+    }
+	});
 	return false;
 });
 
-$('#game_container').isotope('reLayout');
+$(".game_container").isotope('layout');

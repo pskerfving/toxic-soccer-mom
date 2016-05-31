@@ -122,11 +122,11 @@ table.game_odds_table {
 }
 
 textarea {
-	width:183px;
-	height: 100px;
-	resize:none;
+  resize: none;
+  margin-bottom: 1em;
+  padding: 5px;
+  font-size: small;
 }
-
 /*
 .button {
 	background-color:rgb(251, 142, 26);
