@@ -30,6 +30,7 @@ class WinnersTipsController < ApplicationController
   # GET /winners_tips/new
   # GET /winners_tips/new.json
   def new
+    @show_banner = false
     @winners_tip = WinnersTip.new
     @winners_tip.user = current_user
     user_tip = WinnersTip.where(:user_id => current_user).first

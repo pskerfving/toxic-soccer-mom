@@ -30,7 +30,8 @@
                   <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Och du kommer att kunna göra det när du är godkänd.</p>
                 <% else %>
                   <% if !current_user.winners_tip %>
-                    <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Kolla <%= link_to "här", new_winners_tip_path %></p>
+                    <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Klicka...</p>
+                    <%= link_to "Lämna Grundtips", new_winners_tip_path, :class => "button alt" %>
                   <% else %>
                     <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
                   <% end %>
