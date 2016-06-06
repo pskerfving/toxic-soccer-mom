@@ -1,7 +1,7 @@
 # coding: UTF-8
 class WinnersTipsController < ApplicationController
 
-  before_filter :cleared_required, :only => [:edit, :update, :create, :show, :new, :destroy]
+  before_filter :cleared_required, :only => [:index, :edit, :update, :create, :show, :new, :destroy]
   before_filter :first_game_not_started_required, :only => [:edit, :update, :new]
   before_filter :first_game_started_required, :only => [:index]
   before_filter :users_own_winners_tip_required, :only => [:show, :edit, :update, :destroy]
@@ -147,5 +147,5 @@ class WinnersTipsController < ApplicationController
       redirect_to :root, notice: "Detta verkar inte vara ditt tips."
     end
   end
-  
+
 end
