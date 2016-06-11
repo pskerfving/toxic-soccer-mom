@@ -35,7 +35,9 @@ $(document).ready(function() {
         return false;
     });
 
-    skel.on("ready", function() {
-        $('.game_container').isotope('layout');
-    });
+});
+
+skel.on("ready", function() {
+    console.log("RELAYOUT------------");
+    $('.game_container').isotope('layout');
 });
