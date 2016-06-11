@@ -37,10 +37,7 @@ $(document).ready(function() {
 
 });
 
-skel.on("ready", function() {
-    // TODO: Find a correct solution to this terribel ugly hack.
-    setTimeout(function() {
-        console.log("RELAYOUT------------");
-        $('.game_container').isotope('layout');
-    }, 1000);
+$(window).load(function() {
+    // Cannot be called until the height of all elements is known.
+    $('.game_container').isotope('layout');
 });
