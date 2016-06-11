@@ -38,6 +38,9 @@ $(document).ready(function() {
 });
 
 skel.on("ready", function() {
-    console.log("RELAYOUT------------");
-    $('.game_container').isotope('layout');
+    // TODO: Find a correct solution to this terribel ugly hack.
+    setTimeout(function() {
+        console.log("RELAYOUT------------");
+        $('.game_container').isotope('layout');
+    }, 1000);
 });
