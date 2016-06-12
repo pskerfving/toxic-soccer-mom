@@ -3,9 +3,7 @@
 
   <ul class="sub-nav">
 
-  <% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
 	<% if current_user && current_user.admin? %>
-		<span class="nav_item"><%= User.all.length %> anmälda</span>
 		<li> <%= link_to "Visa godkända", users_path %> </li>
         <li> <%= link_to "Visa ej godkända", :controller => "users", :show => "unapproved" %></li>
 	<% end %>
@@ -16,6 +14,8 @@
 	<% if @predicted %><li><%= link_to "Aktuell ställning", users_path %></li><% end %>
 
   </ul>
+  <% if @predicted %><h2>Om resultatet i pågående matcher står sig...</h2><% end %>
+
 </header>
 
 <div class="container">
