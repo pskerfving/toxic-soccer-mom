@@ -37,5 +37,10 @@ class UserMailer < ActionMailer::Base
   def reminder_winnerstip(user)
     mail :to => user.email, :subject => "EM2016 - Påminnelse grundtips"
   end
-  
+
+  def reminder_wine(user)
+    @user = user
+    mail :to => user.email, :subject => "EM2016 - Du måste lämna vin!"
+  end
+
 end

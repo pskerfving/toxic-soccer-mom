@@ -43,4 +43,16 @@ class BulkMailsController < ApplicationController
     redirect_to :root
   end
 
+  def reminder_wine
+    users = User.where(:wine => false)
+    users.each do |u|
+      begin
+        UserMailer.reminder_wine(u).deliver
+      rescue Exception => e
+        # do nothing, just loop back and try the next email.
+      end
+    end
+    redirect_to :root
+  end
+
 end

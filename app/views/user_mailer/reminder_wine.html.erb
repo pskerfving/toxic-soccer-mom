@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>En notis om att göra rätt för sig!</h1>
+<p>Många har varit duktiga och lämnat in vin. Men du, <%= @user.name %>, är tyvärr inte en av dessa.
+Kanske har du varit duktig och meddelat Tävlingsledningen om problem med leveransen, men du har ändå inte lämnat vin
+och förtjänar att skämmas lite. För att inte tala om i fall du bara låtit saken bero!</p>
+<p>Det är inte svårt, det handlar om knappt mer pengar än en lunch på stan. Kom igen nu!</p>
+<p>Om du har några frågor, läs <%= link_to "här", instructions_url %></p>
+<p>Högaktningsfullt,<br>Tävlingsledningen</p>
+<footer><%= link_to "Vin- & Fotbollstips 2016", root_url %></footer>
+</body>
+</html>
