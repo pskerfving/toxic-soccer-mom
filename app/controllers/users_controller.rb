@@ -173,5 +173,12 @@ class UsersController < ApplicationController
       end
     end    
   end
-  
+
+  def games_display_mode
+    user = User.find(params[:id])
+    user.games_display_mode = params[:query]
+    user.save!
+    render :nothing => true, :status => 200
+  end
+
 end

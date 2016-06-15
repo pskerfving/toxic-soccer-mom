@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151005131952) do
+ActiveRecord::Schema.define(:version => 20160613201440) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20151005131952) do
     t.boolean  "email_verified",             :default => false
     t.string   "email_verification_token"
     t.datetime "email_verification_sent_at"
+    t.string   "games_display_mode",         :default => "all"
   end
 
   create_table "winners_tips", :force => true do |t|

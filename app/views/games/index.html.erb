@@ -2,8 +2,17 @@
   <h2>Matcher</h2>
 
   <ul class="sub-nav">
-    <li class="all_btn active"><a href="#">Visa alla</a></li>
-    <li class="upcoming_btn"><a href="#">Visa kommande</a></li>
+    <% if current_user %>
+      <li class="all_btn <%= current_user.games_display_mode == "all" ? "active" : "" %>">
+        <%= link_to "Visa alla", games_display_mode_user_path(current_user, :query => "all"), :method => :put, :remote => true %>
+      </li>
+      <li class="upcoming_btn <%= current_user.games_display_mode == "upcoming" ? "active" : "" %>">
+        <%= link_to "Visa kommande", games_display_mode_user_path(current_user, :query => "upcoming"), :method => :put, :remote => true %>
+      </li>
+    <% else %>
+      <li class="all_btn active"><a href="#">Visa alla</a></li>
+      <li class="upcoming_btn"><a href="#">Visa kommande</a></li>
+    <% end %>
   </ul>
 </header>
 

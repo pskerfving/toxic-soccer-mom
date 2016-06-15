@@ -16,6 +16,10 @@ $(document).ready(function() {
         $('.game_container').isotope({filter: ':not(.game_final)'});
     });
 
+    if($('.upcoming_btn').hasClass("active")) {
+        $('.game_container').isotope({filter: ':not(.game_final)'});
+    };
+
     $('.write_comment_button').click(function(evt) {
         evt.preventDefault();
         var game_id = $(this).closest('.game_box').attr('id');
