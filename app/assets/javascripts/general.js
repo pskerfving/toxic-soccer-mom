@@ -22,7 +22,7 @@
         var game_id = $(".game_ongoing").attr("id");
         var after = $(".game_ongoing").attr("data-time");
         $.getScript("/getgamebox.js?game_id=" + game_id + "&after=" + after);
-        _gaq.push(['_trackPageview', '/getgamebox']);
+//        _gaq.push(['_trackPageview', '/getgamebox']);
 
         if($(".game_ongoing").length > 0) {
             setTimeout(updateGameBox, 7000);
@@ -55,7 +55,7 @@
                     button.closest('.game_result').find('.home_score').text(data.home_score);
                     button.closest('.game_result').find('.away_score').text(data.away_score);
                     notification.text("Resultat sparat.");
-                    _gaq.push(['_trackPageview', '/ajax_update_tip']);
+//                    _gaq.push(['_trackPageview', '/ajax_update_tip']);
                 }, 'json');
         });
     });
