@@ -181,4 +181,8 @@ class UsersController < ApplicationController
     render :nothing => true, :status => 200
   end
 
+  def historic_results
+    render json: Tip.historic_results
+  end
+
 end

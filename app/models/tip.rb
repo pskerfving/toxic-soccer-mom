@@ -23,5 +23,33 @@ class Tip < ActiveRecord::Base
   end
 
 
+  def self.game_col game_id
+    <<-EOT
+   (select sum(points) as total
+    from tips t
+    where game_id <= #{game_id}  and t.user_id = users.id
+    order by total) as g#{game_id}
+    EOT
+  end
+
+  def self.game_cols
+    game_ids.map { |uid| game_col(uid) }.join(', ')
+  end
+
+  def self.game_ids
+    game_ids ||= Game.where(final: true).order(:id).map(&:id)
+  end
+
+
+  def self.historic_results
+    sql = "select name, #{game_cols} from users order by points DESC limit 10"
+    recs = ActiveRecord::Base.connection.select_all(sql)
+    recs.map do |rec|
+      games = game_ids.map {|id| rec["g#{id}"]}
+      games.unshift rec['name']
+      games
+    end
+  end
+
   # om inte unik kombination av user/game, uppdatera befintlig.
 end

@@ -67,6 +67,9 @@ Uefa::Application.routes.draw do
   get '/getcommentform', :to => 'Games#getcommentform'
   get '/winnerstipskey', :to => 'WinnersTips#winnerstipskey'
 
+  # for the ajax call to get the point history of the leaders
+  get '/historic_results', :to => 'Users#historic_results'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
