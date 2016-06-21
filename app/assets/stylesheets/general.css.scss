@@ -59,6 +59,16 @@ form input {
   margin-bottom: 1em;
 }
 
+form#new_game input[type="checkbox"] {
+  float: none;
+  opacity: 1;
+  -moz-appearance: checkbox;
+  -webkit-appearance: checkbox;
+  -o-appearance: checkbox;
+  -ms-appearance: checkbox;
+  appearance: checkbox;
+}
+
 form select {
   margin-bottom: 1em;
 }

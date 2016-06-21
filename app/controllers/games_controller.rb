@@ -64,7 +64,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        recalculate_points
+#        recalculate_points
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else
