@@ -3,53 +3,63 @@
     <div class="inner">
       <h2>Vin- & fotbollstips 2016</h2>
       <% if current_user %>
-        <div class="container">
-          <p>Fyra saker behöver hända innan EM börjar...</p>
-
-          <div class="row">
-            <div class="3u">
-              <section class="getting-started-step">
-                <i class="icon major <%= current_user.email_verified ? "completed" : "" %>">1</i>
-                <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen! <% if !current_user.email_verified %>Du måste få din mail-adress verifierad. Kolla mailen.<% end %></p>
-              </section>
-            </div>
-            <div class="3u">
-              <section class="getting-started-step">
-                <i class="icon major <%= current_user.cleared ? "completed" : "" %>">2</i>
-                <% if current_user.cleared %>
-                  <p><strong>Godkännande.</strong> Du har blivit godkänd. Grattis!</p>
-                <% else %>
-                  <p><strong>Godkännande.</strong> Du behöver bli godkänd så att vi vet vem vi har att göra med. Inget du kan göra mer än att vänta och kolla mailen.</p>
-                <% end %>
-              </section>
-            </div>
-            <div class="3u">
-              <section class="getting-started-step">
-                <i class="icon major <%= current_user.winners_tip ? "completed" : "" %>">3</i>
-                <% if !current_user.cleared %>
-                  <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Och du kommer att kunna göra det när du är godkänd.</p>
-                <% else %>
-                  <% if !current_user.winners_tip %>
-                    <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Klicka...</p>
-                    <%= link_to "Lämna Grundtips", new_winners_tip_path, :class => "button alt" %>
-                  <% else %>
-                    <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
-                  <% end %>
-                <% end %>
-              </section>
-            </div>
-            <div class="3u">
-              <section class="getting-started-step">
-                <i class="icon major <%= current_user.wine ? "completed" : "" %>">4</i>
-                <% if !current_user.wine %>
-                  <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
-                <% else %>
-                  <p><strong>Lämna in vin.</strong> Du har fullgjort dina åtaganden. Respekt!</p>
-                <% end %>
-              </section>
+        <% if @show_leaderboard_graph %>
+          <div class="container" id="leader_board_graph_jumbotron">
+            <p id="leaderboard_graph_button">Så här har ställningen utvecklats i toppen...</p>
+            <div id="leaderboard_graph_container">
+              <div id="legend"></div>
+              <div id="leaderboard_graph_canvas"></div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <div class="container">
+            <p>Fyra saker behöver hända innan EM börjar...</p>
+
+            <div class="row">
+              <div class="3u">
+                <section class="getting-started-step">
+                  <i class="icon major <%= current_user.email_verified ? "completed" : "" %>">1</i>
+                  <p><strong>Bli medlem.</strong> Du har skapat ett konto. Toppen! <% if !current_user.email_verified %>Du måste få din mail-adress verifierad. Kolla mailen.<% end %></p>
+                </section>
+              </div>
+              <div class="3u">
+                <section class="getting-started-step">
+                  <i class="icon major <%= current_user.cleared ? "completed" : "" %>">2</i>
+                  <% if current_user.cleared %>
+                    <p><strong>Godkännande.</strong> Du har blivit godkänd. Grattis!</p>
+                  <% else %>
+                    <p><strong>Godkännande.</strong> Du behöver bli godkänd så att vi vet vem vi har att göra med. Inget du kan göra mer än att vänta och kolla mailen.</p>
+                  <% end %>
+                </section>
+              </div>
+              <div class="3u">
+                <section class="getting-started-step">
+                  <i class="icon major <%= current_user.winners_tip ? "completed" : "" %>">3</i>
+                  <% if !current_user.cleared %>
+                    <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Och du kommer att kunna göra det när du är godkänd.</p>
+                  <% else %>
+                    <% if !current_user.winners_tip %>
+                      <p><strong>Lämna in grundtips.</strong> Detta måste göras innan första matchen börjar. Annars brinner många sköna poäng inne. Klicka...</p>
+                      <%= link_to "Lämna Grundtips", new_winners_tip_path, :class => "button alt" %>
+                    <% else %>
+                      <p><strong>Lämna in grundtips.</strong> Du har lämnat in ditt grundtips. Duktigt!</p>
+                    <% end %>
+                  <% end %>
+                </section>
+              </div>
+              <div class="3u">
+                <section class="getting-started-step">
+                  <i class="icon major <%= current_user.wine ? "completed" : "" %>">4</i>
+                  <% if !current_user.wine %>
+                    <p><strong>Lämna in vin.</strong> Lämnas till någon av arrangörerna så snabbt det bara går. Mer info <a href="/instructions">här</a></p>
+                  <% else %>
+                    <p><strong>Lämna in vin.</strong> Du har fullgjort dina åtaganden. Respekt!</p>
+                  <% end %>
+                </section>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% else %>
         <p>Bli medlem. Tippa. Vinn. Drick vin.</p>
         <ul class="actions">

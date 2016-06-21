@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def index
     @predicted = false
+    @show_leaderboard_graph = true
     case params[:show]
     when "unapproved"
       @users = User.where(:cleared => false).order("name ASC")
