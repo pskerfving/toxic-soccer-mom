@@ -14,7 +14,7 @@
 
 
 	<% teams = @teams.collect {|s| [s.country, s.id]} %>
-    <% players = @players.collect {|s| [s.name, s.id]} %>
+  <% players = @players.collect {|s| [s.name, s.id]} %>
 	<% if @winners_tip.key? %>
 		<h1>Detta är facit</h1>
 		<% teams.insert(0, ["Inte avgjort", 0]) %>
@@ -37,14 +37,18 @@
     <label>Skyttekung</label>
     <p>Du får 5 poäng om spelaren gör flest mål, på minst speltid vid oavgjort.</p>
     <%= f.text_field :goal_scorer %>
-	<!--<%= f.select :topscorer_player_id, players %>	-->
+    <% if current_user && current_user.admin? %>
+	    <%= f.select :topscorer_player_id, players %>
+    <% end %>
   </div>
 
   <div class="field">
     <label>Förste svenske målskytt</label>
     <p>Du får 5 poäng om spelaren strutar först av di' gule. Duh!</p>
     <%= f.text_field :first_swedish_scorer %>
-	<!--<%= f.select :firstswedish_player_id, players %>-->
+    <% if current_user && current_user.admin? %>
+	    <%= f.select :firstswedish_player_id, players %>
+    <% end %>
   </div>
 
   <div class="actions">
