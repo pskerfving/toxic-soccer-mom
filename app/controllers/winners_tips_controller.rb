@@ -85,10 +85,15 @@ class WinnersTipsController < ApplicationController
           # Recalculate all winnerstip points
           tips = WinnersTip.where(:key => false)
           tips.each do |i|
-            i.points = i.caluculate_winners_points(@winners_tip)
-            i.save
+            i.calculate_winners_points(@winners_tip)
+            puts "--------------------- POINTS"
+            puts i.points
+            # add the points to the users total.
+            i.user.points += i.points
+            # save both tip and user
+            i.save!
+            i.user.save!
           end
-          recalculate_points
         end
         format.html { redirect_to @user, notice: 'Ditt tips har sparats.' }
         format.json { head :no_content }
